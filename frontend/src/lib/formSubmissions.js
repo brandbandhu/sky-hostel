@@ -1,5 +1,10 @@
 import { supabase } from "./supabaseClient";
 
+const missingConfigError = {
+  code: "SUPABASE_CONFIG_MISSING",
+  message: "Supabase configuration is missing. Please set REACT_APP_SUPABASE_URL and REACT_APP_SUPABASE_ANON_KEY."
+};
+
 const isTableMissing = (error) => {
   if (!error) return false;
   if (error.code === "42P01" || error.code === "PGRST205") return true;
@@ -23,6 +28,8 @@ export const getFriendlySupabaseError = (error) => {
 };
 
 export const submitLeadForm = async ({ name, phone, lookingFor, source = "home_form" }) => {
+  if (!supabase) return { error: missingConfigError };
+
   const payload = {
     name,
     phone,
@@ -52,6 +59,8 @@ export const submitLeadForm = async ({ name, phone, lookingFor, source = "home_f
 };
 
 export const submitContactForm = async ({ name, email, phone, subject, message }) => {
+  if (!supabase) return { error: missingConfigError };
+
   const contactInsert = await supabase.from("contact_messages").insert([
     {
       name,
