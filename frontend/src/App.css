@@ -1,0 +1,106 @@
+/* Sky Hostels Custom Styles */
+
+* {
+    scroll-behavior: smooth;
+}
+
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.slide-in-from-top {
+    animation: slideInFromTop 0.3s ease-out forwards;
+}
+
+/* Button Hover Effects */
+button,
+a[class*="bg-"] {
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover,
+a[class*="bg-"]:hover {
+    transform: translateY(-2px);
+}
+
+/* Card Hover Effects */
+[class*="shadow-"]:hover {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-padding-top: 80px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f9ff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0ea5e9;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0369a1;
+}
+
+/* Selection Color */
+::selection {
+    background: #0ea5e9;
+    color: white;
+}
+
+/* Focus Styles */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+/* Image Loading */
+img {
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Prevent layout shift */
+img[src*="unsplash"] {
+    background: linear-gradient(to bottom, #f0f9ff, #e0f2fe);
+}
