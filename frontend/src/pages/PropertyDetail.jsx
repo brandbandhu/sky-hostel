@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { Facebook, Instagram } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
+import logoImage from "../assets/images/logo.png";
 import "./Home.css";
 import "./PropertyDetail.css";
+const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
+const FACEBOOK_LINK = "https://www.facebook.com/profile.php?id=61588214504098";
+const REGISTRATION_FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSdu8fzkKVPr2MXzm_d7p04J7WF9z6CQbDbJV9V1QKr1iP9F6g/viewform?usp=header";
 
 const propertyDetails = {
-  "sky-oasis": {
-    title: "Sky Oasis",
+  "sky-1": {
+    title: "Sky 1",
     subtitle: "Boys Hostel",
-    distance: "500 meters from MIT ADT, Loni Kalbhor",
+    distance: "300 metre from Vishwaraj Hospital",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1800&q=80",
     description:
-      "Sky Oasis is a premium boys hostel designed for students who want comfort, discipline, and convenience near MIT ADT, Loni Kalbhor. The property is planned for daily student life with clean rooms, practical storage, study-friendly common areas, and dependable core services. Its location helps reduce commute stress, while on-site support systems make day-to-day living smooth, safe, and organized.",
+      "Sky 1 is a premium boys hostel wing designed for students who want comfort, discipline, and convenience near Vishwaraj Hospital. The property is planned for daily student life with clean rooms, practical storage, study-friendly common areas, and dependable core services.",
     highlights: [
       "Well-maintained boys hostel rooms with comfortable layouts",
       "High-speed Wi-Fi support for lectures, assignments, and online classes",
       "Daily housekeeping with consistent hygiene standards",
       "24 Hrs electricity and water availability for uninterrupted routine",
-      "Food / mess support with student-friendly meal timings",
+      "Food facility support with student-friendly meal timings",
       "Laundry facility with washing machine access",
       "24 Hrs CCTV and security monitoring for resident safety",
-      "Close campus connectivity: 500 meters from MIT ADT, Loni Kalbhor"
+      "Wing distance: 300 metre from Vishwaraj Hospital"
     ],
     gallery: [
       "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=2200&q=80",
@@ -30,58 +35,18 @@ const propertyDetails = {
       "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=2200&q=80"
     ]
   },
-  "sky-aura": {
-    title: "Sky Aura",
-    subtitle: "Girls Hostel",
-    distance: "400 meters from MIT ADT, Loni Kalbhor",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80",
-    description:
-      "Sky Aura is a girls hostel focused on safety, convenience, and a calm environment for academics. It provides a balanced setup with essential facilities and easy daily access near MIT ADT.",
-    highlights: [
-      "Safe and professionally managed girls accommodation",
-      "Wi-Fi enabled spaces for study and productivity",
-      "Daily cleaning with housekeeping staff",
-      "Laundry and mess support available"
-    ],
-    gallery: [
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1617098474202-0d0d7f60aafa?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=2200&q=80"
-    ]
-  },
-  "sky-shivneri": {
-    title: "Sky Shivneri",
-    subtitle: "Girls Hostel",
-    distance: "600 meters from MIT ADT, Loni Kalbhor",
-    image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1800&q=80",
-    description:
-      "Sky Shivneri is designed for students looking for a peaceful and secure girls hostel experience. The property combines comfort-focused infrastructure with dependable day-to-day facilities.",
-    highlights: [
-      "Spacious and comfortable stay options",
-      "24 Hrs CCTV and security support",
-      "Reliable electricity and water availability",
-      "Convenient location for MIT ADT students"
-    ],
-    gallery: [
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=2200&q=80"
-    ]
-  },
-  "sky-den": {
-    title: "Sky Den",
-    subtitle: "Coming Soon",
-    distance: "Yet To Decide",
+  "sky-2": {
+    title: "Sky 2",
+    subtitle: "Boys Hostel",
+    distance: "50 metre from Vishwaraj Hospital",
     image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1800&q=80",
     description:
-      "Sky Den is an upcoming property in the Sky Hostel portfolio. Detailed location and room information will be announced soon as planning and final setup are completed.",
+      "Sky 2 is a boys hostel wing located very close to Vishwaraj Hospital. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
     highlights: [
-      "New accommodation option under development",
-      "Planned with modern student-focused amenities",
-      "Expected to follow the same quality standards",
-      "Bookings and details will open soon"
+      "Wing distance: 50 metre from Vishwaraj Hospital",
+      "Modern student-focused amenities",
+      "Safe and secure managed environment",
+      "Clean and practical room setup"
     ],
     gallery: [
       "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=2200&q=80",
@@ -111,7 +76,7 @@ const PropertyDetail = () => {
       keywords: getSeoKeywords([
         `${property.title} ${property.subtitle}`,
         `Hostel near MIT ADT University College ${property.title}`,
-        "Premium Boys & Girls Hostel Near MIT ADT University College, Loni Kalbhor",
+        "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor",
         "MIT ADT University College hostel"
       ]),
       path: `/properties/${slug}`
@@ -136,15 +101,16 @@ const PropertyDetail = () => {
         <header className="property-local-header">
           <div className="property-local-header-inner">
             <Link to="/" className="property-local-logo">
-              SKY <span>HOSTELS</span>
+              <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
             </Link>
             <nav className="property-local-nav">
               <Link to="/">Home</Link>
+              <Link to="/about">About Us</Link>
               <Link to="/properties">Our Properties</Link>
               <Link to="/facilities-benefits">Facilities &amp; Benefits</Link>
             </nav>
             <div className="property-local-actions">
-              <a href="/#quoteForm" className="property-local-btn property-local-btn-solid">Get in touch</a>
+              <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="property-local-btn property-local-btn-solid">Google Registration Form</a>
               <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`} className="property-local-btn property-local-btn-outline">
                 {contactInfo.phone}
               </a>
@@ -303,11 +269,11 @@ const PropertyDetail = () => {
               <div className="sky-home-footer-grid">
                 <div className="sky-home-footer-col sky-home-footer-brand">
                   <div className="sky-home-footer-logo">
-                    <span className="sky-home-footer-logo-icon">S</span>
-                    <span className="sky-home-footer-logo-text">SKY HOSTEL</span>
+                    <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
                   </div>
                   <nav className="sky-home-footer-nav">
                     <Link to="/">Home</Link>
+                    <Link to="/about">About Us</Link>
                     <Link to="/properties">Our Properties</Link>
                     <Link to="/facilities-benefits">Facilities & Benefits</Link>
                   </nav>
@@ -336,16 +302,24 @@ const PropertyDetail = () => {
                 <div className="sky-home-footer-col">
                   <h4 className="sky-home-footer-heading">Socials</h4>
                   <a
-                    href="https://www.instagram.com/"
+                    href={INSTAGRAM_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="sky-home-footer-social"
                     aria-label="Instagram"
                   >
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z" />
-                    </svg>
+                    <Instagram size={28} />
                   </a>
+                  <a
+                    href={FACEBOOK_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sky-home-footer-social"
+                    aria-label="Facebook"
+                  >
+                    <Facebook size={28} />
+                  </a>
+                  
                 </div>
 
                 <div className="sky-home-footer-col sky-home-footer-newsletter">
@@ -380,3 +354,6 @@ const PropertyDetail = () => {
 };
 
 export default PropertyDetail;
+
+
+

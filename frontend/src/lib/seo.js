@@ -1,14 +1,13 @@
-const DEFAULT_TITLE = "Sky Hostels | Premium Boys & Girls Hostel Near MIT ADT University College, Loni Kalbhor";
+const DEFAULT_TITLE = "Sky Hostels | Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor";
 
 const DEFAULT_DESCRIPTION =
-  "Premium Boys & Girls Hostel Near MIT ADT University College, Loni Kalbhor. Sky Hostels offers safe, comfortable, and student-friendly accommodation with modern amenities.";
+  "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor. Sky Hostels offers safe, comfortable, and student-friendly accommodation with modern amenities.";
 
 const BASE_KEYWORDS = [
-  "Premium Boys & Girls Hostel Near MIT ADT University College, Loni Kalbhor",
+  "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor",
   "MIT ADT University College hostel",
   "Hostel near MIT ADT University College",
   "Boys hostel near MIT ADT Loni Kalbhor",
-  "Girls hostel near MIT ADT Loni Kalbhor",
   "Sky Hostels",
   "student hostel Loni Kalbhor",
   "hostel in Pune Solapur Highway",

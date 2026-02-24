@@ -1,38 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Facebook, Instagram } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { getFriendlySupabaseError, submitContactForm } from "../lib/formSubmissions";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
+import logoImage from "../assets/images/logo.png";
 import "./Home.css";
 import "./Properties.css";
+const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
+const FACEBOOK_LINK = "https://www.facebook.com/profile.php?id=61588214504098";
 
 const properties = [
   {
-    slug: "sky-oasis",
-    distance: "500 meters from MIT ADT, Loni Kalbhor",
-    title: "Sky Oasis",
+    slug: "sky-1",
+    distance: "300 metre from Vishwaraj Hospital",
+    title: "Sky 1",
     subtitle: "Boys Hostel",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    slug: "sky-aura",
-    distance: "400 meters from MIT ADT, Loni Kalbhor",
-    title: "Sky Aura",
-    subtitle: "Girls Hostel",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    slug: "sky-shivneri",
-    distance: "600 meters from MIT ADT, Loni Kalbhor",
-    title: "Sky Shivneri",
-    subtitle: "Girls Hostel",
-    image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    slug: "sky-den",
-    distance: "Yet To Decide",
-    title: "Sky Den",
-    subtitle: "Coming Soon",
+    slug: "sky-2",
+    distance: "50 metre from Vishwaraj Hospital",
+    title: "Sky 2",
+    subtitle: "Boys Hostel",
     image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80"
   }
 ];
@@ -45,13 +35,12 @@ const Properties = () => {
     setSeoMeta({
       title: "Our Properties | MIT ADT University College Hostel Options | Sky Hostels",
       description:
-        "Explore Sky Hostels properties near MIT ADT University College, Loni Kalbhor including Sky Oasis, Sky Aura, and Sky Shivneri for boys and girls.",
+        "Explore Sky Hostels wing-wise properties near Vishwaraj Hospital: Sky 1 and Sky 2 for boys.",
       keywords: getSeoKeywords([
         "Our Properties Sky Hostels",
-        "Sky Oasis Boys Hostel",
-        "Sky Aura Girls Hostel",
-        "Sky Shivneri Girls Hostel",
-        "MIT ADT University College hostel options"
+        "Sky 1 boys hostel",
+        "Sky 2 boys hostel",
+        "Boys hostel near Vishwaraj Hospital"
       ]),
       path: "/properties"
     });
@@ -241,11 +230,11 @@ const Properties = () => {
               <div className="sky-home-footer-grid">
                 <div className="sky-home-footer-col sky-home-footer-brand">
                   <div className="sky-home-footer-logo">
-                    <span className="sky-home-footer-logo-icon">S</span>
-                    <span className="sky-home-footer-logo-text">SKY HOSTEL</span>
+                    <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
                   </div>
                   <nav className="sky-home-footer-nav">
                     <Link to="/">Home</Link>
+                    <Link to="/about">About Us</Link>
                     <Link to="/properties">Our Properties</Link>
                     <Link to="/facilities-benefits">Facilities & Benefits</Link>
                   </nav>
@@ -274,16 +263,24 @@ const Properties = () => {
                 <div className="sky-home-footer-col">
                   <h4 className="sky-home-footer-heading">Socials</h4>
                   <a
-                    href="https://www.instagram.com/"
+                    href={INSTAGRAM_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="sky-home-footer-social"
                     aria-label="Instagram"
                   >
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z" />
-                    </svg>
+                    <Instagram size={28} />
                   </a>
+                  <a
+                    href={FACEBOOK_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sky-home-footer-social"
+                    aria-label="Facebook"
+                  >
+                    <Facebook size={28} />
+                  </a>
+                  
                 </div>
 
                 <div className="sky-home-footer-col sky-home-footer-newsletter">
@@ -307,3 +304,6 @@ const Properties = () => {
 };
 
 export default Properties;
+
+
+

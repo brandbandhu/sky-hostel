@@ -1,15 +1,21 @@
-﻿import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Facebook, Instagram } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
+import logoImage from "../assets/images/logo.png";
+import hostelBuildingImage from "../assets/images/hostel building.jpeg";
 import "./Home.css";
 import "./FacilitiesBenefits.css";
+const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
+const FACEBOOK_LINK = "https://www.facebook.com/profile.php?id=61588214504098";
+const REGISTRATION_FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSdu8fzkKVPr2MXzm_d7p04J7WF9z6CQbDbJV9V1QKr1iP9F6g/viewform?usp=header";
 
 const facilityCards = [
   {
-    title: "Food / Mess Facility",
+    title: "Food Facility Available",
     description:
-      "Nutritious meals are served with both mess and food facility support for daily convenience. Menus are planned for students and working residents, with hygienic preparation standards. Regular meal timings help maintain routine and comfort throughout the week.",
+      "Nutritious meals are served daily for convenience. Menus are planned for students and working residents, with hygienic preparation standards. Regular meal timings help maintain routine and comfort throughout the week.",
     image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1400&q=80"
   },
   {
@@ -37,16 +43,16 @@ const facilityCards = [
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80"
   },
   {
-    title: "Security / CCTV",
+    title: "Secure Entry",
     description:
       "24-hour security support with CCTV monitoring helps maintain a safe hostel environment. Entry and movement are monitored to improve resident safety. Continuous surveillance adds confidence for both residents and families.",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1400&q=80"
   },
   {
-    title: "Parking (if available)",
+    title: "Two-wheeler Parking Available",
     description:
-      "Parking space is available (subject to availability) for residents with vehicles. Designated parking support helps reduce daily commute hassle. It adds convenience and better accessibility for routine travel.",
-    image: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1400&q=80"
+      "Designated two-wheeler parking is available for residents with vehicles. It helps reduce daily commute hassle and adds convenience for routine travel.",
+    image: hostelBuildingImage
   }
 ];
 
@@ -55,10 +61,10 @@ const FacilitiesBenefits = () => {
     setSeoMeta({
       title: "Facilities & Benefits | Hostel Near MIT ADT University College | Sky Hostels",
       description:
-        "Discover facilities and benefits at Sky Hostels near MIT ADT University College, including food, Wi-Fi, housekeeping, laundry, CCTV security, and more.",
+        "Discover facilities and benefits at Sky Hostels near MIT ADT University College, including food facility, Wi-Fi, housekeeping, laundry, secure entry, and more.",
       keywords: getSeoKeywords([
         "Facilities and Benefits hostel",
-        "Food mess facility hostel",
+        "Food facility hostel",
         "Wi-Fi hostel MIT ADT",
         "24 Hrs CCTV hostel",
         "Laundry and housekeeping hostel"
@@ -72,15 +78,16 @@ const FacilitiesBenefits = () => {
         <div className="facilities-shell">
           <header className="facilities-local-header">
             <Link to="/" className="facilities-local-logo">
-              SKY <span>HOSTELS</span>
+              <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
             </Link>
             <nav className="facilities-local-nav">
               <Link to="/">Home</Link>
+              <Link to="/about">About Us</Link>
               <Link to="/properties">Our Properties</Link>
               <Link to="/facilities-benefits">Facilities &amp; Benefits</Link>
             </nav>
             <div className="facilities-local-actions">
-              <Link to="/#quoteForm" className="facilities-local-btn facilities-local-btn-solid">Get in touch</Link>
+              <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="facilities-local-btn facilities-local-btn-solid">Google Registration Form</a>
               <a
                 href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`}
                 className="facilities-local-btn facilities-local-btn-outline"
@@ -169,11 +176,11 @@ const FacilitiesBenefits = () => {
                   <div className="sky-home-footer-grid">
                     <div className="sky-home-footer-col sky-home-footer-brand">
                       <div className="sky-home-footer-logo">
-                        <span className="sky-home-footer-logo-icon">S</span>
-                        <span className="sky-home-footer-logo-text">SKY HOSTEL</span>
+                        <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
                       </div>
                       <nav className="sky-home-footer-nav">
                         <Link to="/">Home</Link>
+                        <Link to="/about">About Us</Link>
                         <Link to="/properties">Our Properties</Link>
                         <Link to="/facilities-benefits">Facilities &amp; Benefits</Link>
                       </nav>
@@ -202,16 +209,24 @@ const FacilitiesBenefits = () => {
                     <div className="sky-home-footer-col">
                       <h4 className="sky-home-footer-heading">Socials</h4>
                       <a
-                        href="https://www.instagram.com/"
+                        href={INSTAGRAM_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="sky-home-footer-social"
                         aria-label="Instagram"
                       >
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z" />
-                        </svg>
+                        <Instagram size={28} />
                       </a>
+                      <a
+                        href={FACEBOOK_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="sky-home-footer-social"
+                        aria-label="Facebook"
+                      >
+                        <Facebook size={28} />
+                      </a>
+                      
                     </div>
                     <div className="sky-home-footer-col sky-home-footer-newsletter">
                       <h4 className="sky-home-footer-heading">Stay Connected</h4>
@@ -247,5 +262,8 @@ const FacilitiesBenefits = () => {
 };
 
 export default FacilitiesBenefits;
+
+
+
 
 

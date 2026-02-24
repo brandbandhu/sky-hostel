@@ -28,6 +28,12 @@
   text-transform: uppercase;
 }
 
+.property-local-logo .brand-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
 .property-local-logo span {
   color: #334155;
   font-weight: 400;

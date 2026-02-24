@@ -1,42 +1,34 @@
 ﻿import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Instagram } from "lucide-react";
 import { getFriendlySupabaseError, submitLeadForm } from "../lib/formSubmissions";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import cloudVideo from "../cloud video.mp4";
+import hostelBuildingImage from "../assets/images/hostel building.jpeg";
+import logoImage from "../assets/images/logo.png";
 import "./Home.css";
 
 const { useRef } = React;
 const WHATSAPP_LINK = contactInfo.whatsappLink;
 const PHONE_NUMBER_LINK = contactInfo.phone.replace(/[^\d+]/g, "");
+const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
+const FACEBOOK_LINK = "https://www.facebook.com/profile.php?id=61588214504098";
+const REGISTRATION_FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSdu8fzkKVPr2MXzm_d7p04J7WF9z6CQbDbJV9V1QKr1iP9F6g/viewform?usp=header";
 
 const properties = [
   {
-    slug: "sky-oasis",
-    distance: "500 meters from MIT ADT, Loni Kalbhor",
-    title: "Sky Oasis",
+    slug: "sky-1",
+    distance: "300 metre from Vishwaraj Hospital",
+    title: "Sky 1",
     subtitle: "Boys Hostel",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80"
+    image: hostelBuildingImage
   },
   {
-    slug: "sky-aura",
-    distance: "400 meters from MIT ADT, Loni Kalbhor",
-    title: "Sky Aura",
-    subtitle: "Girls Hostel",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    slug: "sky-shivneri",
-    distance: "600 meters from MIT ADT, Loni Kalbhor",
-    title: "Sky Shivneri",
-    subtitle: "Girls Hostel",
-    image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    slug: "sky-den",
-    distance: "Yet To Decide",
-    title: "Sky Den",
-    subtitle: "Coming Soon",
+    slug: "sky-2",
+    distance: "50 metre from Vishwaraj Hospital",
+    title: "Sky 2",
+    subtitle: "Boys Hostel",
     image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80"
   }
 ];
@@ -51,7 +43,7 @@ const creativeRooms = [
 
 const locationFeature = {
   title: "500 meters from MIT ADT, Loni Kalbhor",
-  text: "Are you looking for a hostel near MIT ADT Loni Kalbhor? Sky Hostel offers a safe and comfortable environment for both girls and boys with modern amenities. Enjoy facilities like high-speed Wi-Fi, hygienic food service, and professionally managed living spaces designed for study and daily comfort.",
+  text: "Are you looking for a boys hostel near MIT ADT Loni Kalbhor? Sky Hostel offers a safe and comfortable environment with modern amenities. Enjoy facilities like high-speed Wi-Fi, hygienic food service, and professionally managed living spaces designed for study and daily comfort.",
   image: "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1800&q=80"
 };
 
@@ -71,24 +63,6 @@ const facilitiesTiles = [
   {
     title: "Secure Entry",
     image: "https://images.unsplash.com/photo-1486304873000-235643847519?auto=format&fit=crop&w=1200&q=80"
-  }
-];
-
-const testimonials = [
-  {
-    text: "The rooms are clean, the food is hygienic, and the management team is genuinely helpful. It feels safe and easy to focus on studies here.",
-    name: "Aarav Kulkarni",
-    role: "Resident"
-  },
-  {
-    text: "High-speed Wi-Fi and a calm environment made a big difference in my routine. The location near MIT ADT saves a lot of daily travel time.",
-    name: "Sneha Patil",
-    role: "Resident"
-  },
-  {
-    text: "From secure entry to friendly staff, everything is well organized. Sky Hostel gives a premium feel without compromising affordability.",
-    name: "Ritika Deshmukh",
-    role: "Resident"
   }
 ];
 
@@ -112,16 +86,15 @@ const Home = () => {
 
   useEffect(() => {
     setSeoMeta({
-      title: "Premium Boys & Girls Hostel Near MIT ADT University College, Loni Kalbhor | Sky Hostels",
+      title: "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor | Sky Hostels",
       description:
-        "Sky Hostels offers premium boys and girls hostel accommodation near MIT ADT University College, Loni Kalbhor with Wi-Fi, food, security, and modern amenities.",
+        "Sky Hostels offers premium boys hostel accommodation near MIT ADT University College, Loni Kalbhor with Wi-Fi, food, security, and modern amenities.",
       keywords: getSeoKeywords([
-        "Premium Boys & Girls Hostel Near MIT ADT University College, Loni Kalbhor",
+        "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor",
         "MIT ADT University College hostel",
         "Hostel near MIT ADT University College",
-        "Sky Oasis hostel",
-        "Sky Aura hostel",
-        "Sky Shivneri hostel",
+        "Sky 1 boys hostel",
+        "Sky 2 boys hostel",
         "hostel facilities near MIT ADT"
       ]),
       path: "/"
@@ -347,7 +320,6 @@ const Home = () => {
                       Select an option
                     </option>
                     <option value="Boys Hostel">Boys Hostel</option>
-                    <option value="Girls Hostel">Girls Hostel</option>
                   </select>
                 </div>
 
@@ -368,7 +340,7 @@ const Home = () => {
         <nav className="navbar">
           <div className="container nav-wrap">
             <a href="#home" className="logo" aria-label="Sky Hostels Home">
-              SKY <span>HOSTELS</span>
+              <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
             </a>
 
             <button
@@ -385,6 +357,9 @@ const Home = () => {
 
             <ul className="nav-links">
               <li>
+                <Link to="/about">About Us</Link>
+              </li>
+              <li>
                 <Link to="/properties">Our Properties</Link>
               </li>
               <li>
@@ -393,8 +368,8 @@ const Home = () => {
             </ul>
 
             <div className="nav-actions">
-              <a href="#quoteForm" className="btn btn-solid small">
-                Get in touch
+              <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-solid small">
+                Google Registration Form
               </a>
               <a href={`tel:${PHONE_NUMBER_LINK}`} className="btn btn-outline small">
                 {contactInfo.phone}
@@ -403,14 +378,17 @@ const Home = () => {
           </div>
 
           <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+            <Link to="/about" onClick={closeMobileMenu}>
+              About Us
+            </Link>
             <Link to="/properties" onClick={closeMobileMenu}>
               Our Properties
             </Link>
             <Link to="/facilities-benefits" onClick={closeMobileMenu}>
               Facilities & Benefits
             </Link>
-            <a href="#quoteForm" className="btn btn-solid" onClick={closeMobileMenu}>
-              Get in touch
+            <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-solid" onClick={closeMobileMenu}>
+              Google Registration Form
             </a>
             <a href={`tel:${PHONE_NUMBER_LINK}`} className="btn btn-outline" onClick={closeMobileMenu}>
               {contactInfo.phone}
@@ -427,8 +405,9 @@ const Home = () => {
                 <br />
                 Accommodation.
               </h1>
-              <p className="subtext">Premium Boys & Girls Hostel Near MIT ADT University College, Loni Kalbhor.</p>
-
+              <p className="subtext">
+                Trusted Boys Hostel Near Vishwaraj Hospital with Safe &amp; Secure Stay
+              </p>
               <div className="cta-row">
                 <a href={`tel:${PHONE_NUMBER_LINK}`} className="btn btn-solid">
                   Call Now
@@ -442,6 +421,7 @@ const Home = () => {
                   WhatsApp
                 </a>
               </div>
+              <p className="subtext">Only Few Seats Available – Hurry Up!</p>
 
               <div className="quote-card fade-up" id="quoteForm">
                 <h2>Want a quote? Just fill in the form and we'll take it from there.</h2>
@@ -487,7 +467,6 @@ const Home = () => {
                         Select an option
                       </option>
                       <option value="Boys Hostel">Boys Hostel</option>
-                      <option value="Girls Hostel">Girls Hostel</option>
                     </select>
                   </div>
 
@@ -506,8 +485,8 @@ const Home = () => {
               </div>
               <div className="hero-image-stack">
                 <img
-                  src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=80"
-                  alt="Modern hostel room interior"
+                  src={hostelBuildingImage}
+                  alt="Sky Hostel building"
                 />
                 <div className="hero-image-glass" aria-hidden="true" />
               </div>
@@ -616,25 +595,26 @@ const Home = () => {
             <div className="facilities-grid">
               <article className="facilities-large-media fade-up" style={{ "--delay": "40ms" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1500&q=80"
-                  alt="Sky Hostel premium room"
+                  src={hostelBuildingImage}
+                  alt="Sky Hostel building exterior"
                 />
               </article>
 
               <article className="facilities-copy fade-up" style={{ "--delay": "120ms" }}>
                 <h4>Facilities & Amenities</h4>
                 <ul className="facilities-list">
-                  <li><strong>Food / Mess Facility:</strong> Yes both facilities available</li>
+                  <li><strong>Food Facility Available:</strong> Yes</li>
                   <li><strong>Wi-Fi:</strong> High Speed Wi-Fi network available</li>
                   <li><strong>Electricity / Water:</strong> 24 Hrs Available</li>
                   <li><strong>Housekeeping:</strong> Daily Cleaning available with HK Staff</li>
                   <li><strong>Laundry:</strong> Washing Machine Facilities Available</li>
-                  <li><strong>Security / CCTV:</strong> 24 Hrs Available</li>
-                  <li><strong>Parking (if available):</strong> Available</li>
+                  <li><strong>Secure Entry:</strong> 24 Hrs Available</li>
+                  <li><strong>Two-wheeler parking available:</strong> Yes</li>
                 </ul>
                 <a href="#quoteForm" className="facilities-feature-btn">
                   Explore Features
                 </a>
+                <p className="subtext">Only Few Seats Available – Hurry Up!</p>
               </article>
 
               <div className="facilities-tiles">
@@ -647,29 +627,6 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="testimonials-header fade-up">
-              <p className="testimonials-label">Testimonials</p>
-              <h3>What Our Residents Are Saying</h3>
-            </div>
-
-            <div className="testimonials-grid">
-              {testimonials.map((item, index) => (
-                <article
-                  className="testimonial-card fade-up"
-                  style={{ "--delay": `${index * 200}ms` }}
-                  key={item.name}
-                >
-                  <span className="quote-mark" aria-hidden="true">
-                    &#10077;
-                  </span>
-                  <p className="testimonial-text">{item.text}</p>
-                  <div className="testimonial-strip">
-                    <h4>{item.name}</h4>
-                    <span>{item.role}</span>
-                  </div>
-                </article>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -730,11 +687,11 @@ const Home = () => {
               <div className="sky-home-footer-grid">
               <div className="sky-home-footer-col sky-home-footer-brand">
                 <div className="sky-home-footer-logo">
-                  <span className="sky-home-footer-logo-icon">S</span>
-                  <span className="sky-home-footer-logo-text">SKY HOSTEL</span>
+                  <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
                 </div>
                 <nav className="sky-home-footer-nav">
                   <Link to="/">Home</Link>
+                  <Link to="/about">About Us</Link>
                   <Link to="/properties">Our Properties</Link>
                   <Link to="/facilities-benefits">Facilities & Benefits</Link>
                 </nav>
@@ -761,14 +718,24 @@ const Home = () => {
               <div className="sky-home-footer-col">
                 <h4 className="sky-home-footer-heading">Socials</h4>
                 <a
-                  href="https://www.instagram.com/"
+                  href={INSTAGRAM_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="sky-home-footer-social"
                   aria-label="Instagram"
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  <Instagram size={28} />
                 </a>
+                <a
+                  href={FACEBOOK_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sky-home-footer-social"
+                  aria-label="Facebook"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.19 2.23.19v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
+                </a>
+                
               </div>
               <div className="sky-home-footer-col sky-home-footer-newsletter">
                 <h4 className="sky-home-footer-heading">Stay Connected</h4>
@@ -820,3 +787,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

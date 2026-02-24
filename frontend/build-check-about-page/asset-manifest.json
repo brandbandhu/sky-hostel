@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8a7e072b.css",
+    "main.js": "/static/js/main.f6c6cf9e.js",
+    "static/media/cloud video.mp4": "/static/media/cloud video.efbc7e777621c2afa1c7.mp4",
+    "static/media/hostel building.jpeg": "/static/media/hostel building.a8e82618e8be980204a2.jpeg",
+    "static/media/logo.png": "/static/media/logo.f81c9afae45e462b92a9.png",
+    "index.html": "/index.html",
+    "main.8a7e072b.css.map": "/static/css/main.8a7e072b.css.map",
+    "main.f6c6cf9e.js.map": "/static/js/main.f6c6cf9e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8a7e072b.css",
+    "static/js/main.f6c6cf9e.js"
+  ]
+}

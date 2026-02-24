@@ -77,11 +77,19 @@
   text-transform: uppercase;
   line-height: 1;
   color: #0f172a;
+  display: inline-flex;
+  align-items: center;
 }
 
 .sky-home .logo span {
   font-weight: 400;
   color: #334155;
+}
+
+.sky-home .brand-logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
 .sky-home .nav-links {
@@ -324,7 +332,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 35%;
 }
 
 .sky-home .hero-image-glass {
@@ -418,8 +426,8 @@
 
 .sky-home .properties-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(320px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(2, minmax(380px, 1fr));
+  gap: 12px;
 }
 
 .sky-home .property-card {
@@ -1412,6 +1420,11 @@
   margin-bottom: 20px;
 }
 
+.sky-home .sky-home-footer-logo .brand-logo-img {
+  height: 42px;
+  width: auto;
+}
+
 .sky-home .sky-home-footer-logo-icon {
   width: 42px;
   height: 42px;
@@ -1487,6 +1500,10 @@
   display: inline-flex;
   color: rgba(224, 242, 254, 0.9);
   margin-top: 4px;
+}
+
+.sky-home .sky-home-footer-social + .sky-home-footer-social {
+  margin-left: 12px;
 }
 
 .sky-home .sky-home-footer-social:hover {
@@ -1736,6 +1753,7 @@
   .sky-home .hero-media {
     min-height: 460px;
     order: 2;
+    overflow: hidden;
   }
 
   .sky-home .hero-copy {
@@ -1823,6 +1841,16 @@
 
 
 @media (max-width: 900px) {
+  .sky-home .hero-media {
+    min-height: 390px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .sky-home .hero-media img {
+    object-position: center 25%;
+  }
+
   .sky-home .nav-links,
   .sky-home .nav-actions {
     display: none;
@@ -1896,6 +1924,10 @@
   .sky-home .hero-media {
     min-height: 330px;
     border-radius: 20px;
+  }
+
+  .sky-home .hero-media img {
+    object-position: center 20%;
   }
 
   .sky-home .hero-blur-shape {
@@ -2247,6 +2279,10 @@
 
   .sky-home .sky-home-footer-logo-text {
     font-size: 1rem;
+  }
+
+  .sky-home .brand-logo-img {
+    height: 34px;
   }
 
   .sky-home .sky-home-footer-heading {

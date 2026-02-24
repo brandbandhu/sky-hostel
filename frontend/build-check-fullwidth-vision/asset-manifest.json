@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.35d7fa72.css",
+    "main.js": "/static/js/main.ccd026f9.js",
+    "static/media/cloud video.mp4": "/static/media/cloud video.efbc7e777621c2afa1c7.mp4",
+    "static/media/hostel building.jpeg": "/static/media/hostel building.a8e82618e8be980204a2.jpeg",
+    "static/media/dining.jpeg": "/static/media/dining.4ed995fb07113bd4dd00.jpeg",
+    "static/media/bedroom.jpeg": "/static/media/bedroom.f14618460de5e287bd7d.jpeg",
+    "static/media/logo.png": "/static/media/logo.f81c9afae45e462b92a9.png",
+    "index.html": "/index.html",
+    "main.35d7fa72.css.map": "/static/css/main.35d7fa72.css.map",
+    "main.ccd026f9.js.map": "/static/js/main.ccd026f9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.35d7fa72.css",
+    "static/js/main.ccd026f9.js"
+  ]
+}

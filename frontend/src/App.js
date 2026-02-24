@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Properties from "./pages/Properties";
 import FacilitiesBenefits from "./pages/FacilitiesBenefits";
 import PropertyDetail from "./pages/PropertyDetail";
+import About from "./pages/About";
 
 const AppLayout = () => {
   const location = useLocation();
@@ -17,21 +18,27 @@ const AppLayout = () => {
   const isPropertyDetail = location.pathname.startsWith("/properties/") && location.pathname !== "/properties";
   const isProperties = location.pathname === "/properties" || location.pathname.startsWith("/properties/");
   const isFacilities = location.pathname === "/facilities-benefits" || location.pathname === "/facilities";
+  const isAbout = location.pathname === "/about";
 
   return (
     <>
-      {!isHome && !isFacilities && !isPropertyDetail && <Header />}
-      {!isHome && !isProperties && !isFacilities && <WelcomePopup />}
+      {!isHome && !isFacilities && !isPropertyDetail && !isAbout && <Header />}
+      {!isHome && !isProperties && !isFacilities && !isAbout && <WelcomePopup />}
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/properties" element={<Properties />} />
+        <Route path="/properties/sky-oasis" element={<Navigate to="/properties/sky-1" replace />} />
+        <Route path="/properties/sky-den" element={<Navigate to="/properties/sky-2" replace />} />
+        <Route path="/properties/sky-aura" element={<Navigate to="/properties/sky-1" replace />} />
+        <Route path="/properties/sky-shivneri" element={<Navigate to="/properties/sky-2" replace />} />
         <Route path="/properties/:slug" element={<PropertyDetail />} />
         <Route path="/facilities-benefits" element={<FacilitiesBenefits />} />
         <Route path="/facilities" element={<FacilitiesBenefits />} />
+        <Route path="/about" element={<About />} />
       </Routes>
 
-      {!isHome && !isProperties && !isFacilities && <Footer />}
+      {!isHome && !isProperties && !isFacilities && !isAbout && <Footer />}
       {!isHome && <WhatsAppFloat />}
       <Toaster position="top-right" />
     </>

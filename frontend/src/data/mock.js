@@ -1,14 +1,14 @@
 // Mock data for Sky Hostels
 
 export const contactInfo = {
-  phone: '+91-7028156980',
+  phone: '+91 9130888003',
   email: 'skyhostels3@gmail.com',
   address: 'SKY HOSTELS, Gat No. 310, Opp. Vishwaraj Hospital, Near Kulkarni Clinic, Sky Apartment, Pune Solapur Highway, Kadamwak Wasti, Haveli Taluka, Pune 412201',
-  whatsappLink: 'https://wa.me/917028156980'
+  whatsappLink: 'https://wa.me/919130888003'
 };
 
 export const heroContent = {
-  title: 'Premium Boys & Girls Hostel Near Vishwaraj Hospital, Pune',
+  title: 'Premium Boys Hostel Near Vishwaraj Hospital, Pune',
   subtitle: 'Affordable Double Sharing Rooms • 24x7 Security • High-Speed Wi-Fi',
   backgroundImage: 'https://images.unsplash.com/photo-1605848312612-bfc9e8b12d56?w=1920&q=80'
 };

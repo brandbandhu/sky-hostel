@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { contactInfo } from '../data/mock';
+import logoImage from '../assets/images/logo.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,6 +20,7 @@ const Header = () => {
 
   const navLinks = [
     { path: '/', label: 'Home' },
+    { path: '/about', label: 'About Us' },
     { path: '/properties', label: 'Our Properties' },
     { path: '/facilities-benefits', label: 'Facilities & Benefits' }
   ];
@@ -39,9 +41,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <span className="text-[1.35rem] sm:text-[1.6rem] lg:text-[1.9rem] tracking-[0.1em] font-semibold text-slate-900 leading-none uppercase">
-              SKY <span className="font-normal text-slate-700">HOSTELS</span>
-            </span>
+            <img src={logoImage} alt="Sky Hostels" className="h-8 sm:h-9 lg:h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
