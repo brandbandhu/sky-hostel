@@ -5,6 +5,9 @@ import { contactInfo } from "../data/mock";
 import { getFriendlySupabaseError, submitContactForm } from "../lib/formSubmissions";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
+import hostelBuildingImage from "../assets/images/hostel building.jpeg";
+import skyOasisImage from "../assets/images/sky Oasis.jpeg";
+
 import "./Home.css";
 import "./Properties.css";
 const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
@@ -13,17 +16,17 @@ const FACEBOOK_LINK = "https://www.facebook.com/profile.php?id=61588214504098";
 const properties = [
   {
     slug: "sky-1",
-    distance: "300 metre from Vishwaraj Hospital",
+    distance: "300 metre from MIT ADT University, Rajbaug Campus",
     title: "Sky 1",
     subtitle: "Boys Hostel",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80"
+    image: hostelBuildingImage
   },
   {
     slug: "sky-2",
-    distance: "50 metre from Vishwaraj Hospital",
-    title: "Sky 2",
+    distance: "10 metre from MIT ADT University, Rajbaug Campus",
+    title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
-    image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80"
+    image: skyOasisImage
   }
 ];
 
@@ -35,12 +38,12 @@ const Properties = () => {
     setSeoMeta({
       title: "Our Properties | MIT ADT University College Hostel Options | Sky Hostels",
       description:
-        "Explore Sky Hostels wing-wise properties near Vishwaraj Hospital: Sky 1 and Sky 2 for boys.",
+        "Explore Sky Hostels wing-wise properties near MIT ADT University, Rajbaug Campus: Sky 1 and Sky 2 - Chintamani Park for boys.",
       keywords: getSeoKeywords([
         "Our Properties Sky Hostels",
         "Sky 1 boys hostel",
-        "Sky 2 boys hostel",
-        "Boys hostel near Vishwaraj Hospital"
+        "Sky 2 Chintamani Park boys hostel",
+        "Boys hostel near MIT ADT University Rajbaug Campus"
       ]),
       path: "/properties"
     });

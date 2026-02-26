@@ -4,6 +4,8 @@ import { Facebook, Instagram } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
+import skyOasisImage from "../assets/images/sky Oasis.jpeg";
+
 import "./Home.css";
 import "./PropertyDetail.css";
 const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
@@ -14,10 +16,10 @@ const propertyDetails = {
   "sky-1": {
     title: "Sky 1",
     subtitle: "Boys Hostel",
-    distance: "300 metre from Vishwaraj Hospital",
+    distance: "300 metre from MIT ADT University, Rajbaug Campus",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1800&q=80",
     description:
-      "Sky 1 is a premium boys hostel wing designed for students who want comfort, discipline, and convenience near Vishwaraj Hospital. The property is planned for daily student life with clean rooms, practical storage, study-friendly common areas, and dependable core services.",
+      "Sky 1 is a premium boys hostel wing designed for students who want comfort, discipline, and convenience near MIT ADT University, Rajbaug Campus. The property is planned for daily student life with clean rooms, practical storage, study-friendly common areas, and dependable core services.",
     highlights: [
       "Well-maintained boys hostel rooms with comfortable layouts",
       "High-speed Wi-Fi support for lectures, assignments, and online classes",
@@ -26,7 +28,7 @@ const propertyDetails = {
       "Food facility support with student-friendly meal timings",
       "Laundry facility with washing machine access",
       "24 Hrs CCTV and security monitoring for resident safety",
-      "Wing distance: 300 metre from Vishwaraj Hospital"
+      "Wing distance: 300 metre from MIT ADT University, Rajbaug Campus"
     ],
     gallery: [
       "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=2200&q=80",
@@ -36,20 +38,20 @@ const propertyDetails = {
     ]
   },
   "sky-2": {
-    title: "Sky 2",
+    title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
-    distance: "50 metre from Vishwaraj Hospital",
-    image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1800&q=80",
+    distance: "10 metre from MIT ADT University, Rajbaug Campus",
+    image: skyOasisImage,
     description:
-      "Sky 2 is a boys hostel wing located very close to Vishwaraj Hospital. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
+      "Sky 2 - Chintamani Park is a boys hostel wing located very close to MIT ADT University, Rajbaug Campus. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
     highlights: [
-      "Wing distance: 50 metre from Vishwaraj Hospital",
+      "Wing distance: 10 metre from MIT ADT University, Rajbaug Campus",
       "Modern student-focused amenities",
       "Safe and secure managed environment",
       "Clean and practical room setup"
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=2200&q=80",
+      skyOasisImage,
       "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=2200&q=80",
       "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=2200&q=80",
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=2200&q=80"

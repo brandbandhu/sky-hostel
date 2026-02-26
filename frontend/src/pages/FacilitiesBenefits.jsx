@@ -4,7 +4,13 @@ import { Facebook, Instagram } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
-import hostelBuildingImage from "../assets/images/hostel building.jpeg";
+import electricityWaterImage from "../assets/images/facilities/Electricity  Water.png";
+import foodFacilityImage from "../assets/images/facilities/Food Facility Available.png";
+import housekeepingImage from "../assets/images/facilities/Housekeeping.png";
+import laundryImage from "../assets/images/facilities/Laundry.png";
+import secureEntryImage from "../assets/images/facilities/Secure Entry.png";
+import twoWheelerParkingImage from "../assets/images/facilities/Two-wheeler Parking Available.png";
+import wifiImage from "../assets/images/facilities/Wi-Fi.png";
 import "./Home.css";
 import "./FacilitiesBenefits.css";
 const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
@@ -16,43 +22,43 @@ const facilityCards = [
     title: "Food Facility Available",
     description:
       "Nutritious meals are served daily for convenience. Menus are planned for students and working residents, with hygienic preparation standards. Regular meal timings help maintain routine and comfort throughout the week.",
-    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1400&q=80"
+    image: foodFacilityImage
   },
   {
     title: "Wi-Fi",
     description:
       "High-speed Wi-Fi is available across key hostel areas for study, classes, and streaming. The network is designed to support daily academic and professional usage. Residents can stay connected smoothly throughout the day.",
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80"
+    image: wifiImage
   },
   {
     title: "Electricity / Water",
     description:
       "24-hour electricity and water supply is available to ensure uninterrupted daily living. Residents can study, rest, and manage routines without utility disruptions. Reliable basic services help maintain a comfortable and stress-free stay.",
-    image: "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1400&q=80"
+    image: electricityWaterImage
   },
   {
     title: "Housekeeping",
     description:
       "Daily cleaning is handled by trained HK staff to keep rooms and shared areas neat. Regular upkeep supports hygiene and a healthier environment for all residents. Clean spaces also improve comfort, focus, and overall hostel experience.",
-    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=80"
+    image: housekeepingImage
   },
   {
     title: "Laundry",
     description:
       "Washing machine facilities are available for convenient in-house laundry management. Residents can wash clothes on schedule without depending on outside services. This saves time and makes day-to-day living easier.",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80"
+    image: laundryImage
   },
   {
     title: "Secure Entry",
     description:
       "24-hour security support with CCTV monitoring helps maintain a safe hostel environment. Entry and movement are monitored to improve resident safety. Continuous surveillance adds confidence for both residents and families.",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1400&q=80"
+    image: secureEntryImage
   },
   {
     title: "Two-wheeler Parking Available",
     description:
       "Designated two-wheeler parking is available for residents with vehicles. It helps reduce daily commute hassle and adds convenience for routine travel.",
-    image: hostelBuildingImage
+    image: twoWheelerParkingImage
   }
 ];
 

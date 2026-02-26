@@ -6,6 +6,18 @@ import { setSeoMeta, getSeoKeywords } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
 import bedroomImage from "../assets/images/bedroom.jpeg";
 import diningImage from "../assets/images/dining.jpeg";
+import water24HoursImage from "../assets/images/SHARED & COMMON FACILITIES/24 Hours Water Supply.png";
+import cctvAndGeyserSolarImage from "../assets/images/SHARED & COMMON FACILITIES/CCTV Camera and Geyser_Solar.png";
+import diningHallImage from "../assets/images/SHARED & COMMON FACILITIES/Dining Hall.png";
+import inductionCommonUseImage from "../assets/images/SHARED & COMMON FACILITIES/Induction for Common Use.png";
+import ironCommonUseImage from "../assets/images/SHARED & COMMON FACILITIES/Iron for Common Use.png";
+import laundryServicesImage from "../assets/images/SHARED & COMMON FACILITIES/Laundry Services.png";
+import liftServiceImage from "../assets/images/SHARED & COMMON FACILITIES/Lift Service.png";
+import powerBackupImage from "../assets/images/SHARED & COMMON FACILITIES/Power Backup (Genset).png";
+import professionalStaffImage from "../assets/images/SHARED & COMMON FACILITIES/Professional Staff (Warden, Attendant, Security, Housekeeping).png";
+import recreationAreasImage from "../assets/images/SHARED & COMMON FACILITIES/Recreation Areas (TV, Reading, Indoor Games).png";
+import roWaterFacilityImage from "../assets/images/SHARED & COMMON FACILITIES/RO Water Facility (Water Cooler).png";
+import tvCommonUseImage from "../assets/images/SHARED & COMMON FACILITIES/TV for Common Use.png";
 import "./Home.css";
 import "./FacilitiesBenefits.css";
 
@@ -35,18 +47,18 @@ const keyAmenitiesHighlights = [
   }
 ];
 const sharedCommonFacilities = [
-  { title: "Laundry Services", image: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Induction for Common Use", image: "https://images.unsplash.com/photo-1556911220-bda9f7f7597e?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Iron for Common Use", image: "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Dining Hall", image: diningImage },
-  { title: "Recreation Areas (TV, Reading, Indoor Games)", image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Lift Service", image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80" },
-  { title: "RO Water Facility (Water Cooler)", image: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1200&q=80" },
-  { title: "TV for Common Use", image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1200&q=80" },
-  { title: "24 Hours Water Supply", image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Power Backup (Genset)", image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Professional Staff (Warden, Attendant, Security, Housekeeping)", image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" },
-  { title: "CCTV Camera and Geyser/Solar", image: bedroomImage }
+  { title: "Laundry Services", image: laundryServicesImage },
+  { title: "Induction for Common Use", image: inductionCommonUseImage },
+  { title: "Iron for Common Use", image: ironCommonUseImage },
+  { title: "Dining Hall", image: diningHallImage },
+  { title: "Recreation Areas (TV, Reading, Indoor Games)", image: recreationAreasImage },
+  { title: "Lift Service", image: liftServiceImage },
+  { title: "RO Water Facility (Water Cooler)", image: roWaterFacilityImage },
+  { title: "TV for Common Use", image: tvCommonUseImage },
+  { title: "24 Hours Water Supply", image: water24HoursImage },
+  { title: "Power Backup (Genset)", image: powerBackupImage },
+  { title: "Professional Staff (Warden, Attendant, Security, Housekeeping)", image: professionalStaffImage },
+  { title: "CCTV Camera and Geyser/Solar", image: cctvAndGeyserSolarImage }
 ];
 const healthSafetyHighlights = [
   {

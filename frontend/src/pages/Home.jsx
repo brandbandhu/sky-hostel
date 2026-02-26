@@ -5,7 +5,12 @@ import { getFriendlySupabaseError, submitLeadForm } from "../lib/formSubmissions
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import cloudVideo from "../cloud video.mp4";
-import hostelBuildingImage from "../assets/images/hostel building.jpeg";
+import bedroomAreaImage from "../assets/images/carousel img/bedroom area.png";
+import diningAreaImage from "../assets/images/carousel img/Dining.png";
+import secureEntryImage from "../assets/images/facilities/Secure Entry.png";
+import skyOasisImage from "../assets/images/sky Oasis.jpeg";
+import studyAreaImage from "../assets/images/carousel img/study area.png";
+import studyAreaTwoImage from "../assets/images/carousel img/study area2.png";
 import logoImage from "../assets/images/logo.png";
 import "./Home.css";
 
@@ -19,50 +24,49 @@ const REGISTRATION_FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSdu8fzk
 const properties = [
   {
     slug: "sky-1",
-    distance: "300 metre from Vishwaraj Hospital",
+    distance: "300 metre from MIT ADT University, Rajbaug Campus",
     title: "Sky 1",
     subtitle: "Boys Hostel",
-    image: hostelBuildingImage
+    image: bedroomAreaImage
   },
   {
     slug: "sky-2",
-    distance: "50 metre from Vishwaraj Hospital",
-    title: "Sky 2",
+    distance: "10 metre from MIT ADT University, Rajbaug Campus",
+    title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
-    image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80"
+    image: skyOasisImage
   }
 ];
 
 const creativeRooms = [
-  "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1800&q=80",
-  "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1800&q=80",
-  "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1800&q=80",
-  "https://images.unsplash.com/photo-1616594039964-3f3b13f3ffdd?auto=format&fit=crop&w=1800&q=80",
-  "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=1800&q=80"
+  bedroomAreaImage,
+  diningAreaImage,
+  studyAreaImage,
+  studyAreaTwoImage
 ];
 
 const locationFeature = {
   title: "500 meters from MIT ADT, Loni Kalbhor",
   text: "Are you looking for a boys hostel near MIT ADT Loni Kalbhor? Sky Hostel offers a safe and comfortable environment with modern amenities. Enjoy facilities like high-speed Wi-Fi, hygienic food service, and professionally managed living spaces designed for study and daily comfort.",
-  image: "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1800&q=80"
+  image: diningAreaImage
 };
 
 const facilitiesTiles = [
   {
     title: "Comfort Rooms",
-    image: "https://images.unsplash.com/photo-1617098474202-0d0d7f60aafa?auto=format&fit=crop&w=1200&q=80"
+    image: bedroomAreaImage
   },
   {
     title: "Study Space",
-    image: "https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1200&q=80"
+    image: studyAreaImage
   },
   {
     title: "Dining Zone",
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80"
+    image: diningAreaImage
   },
   {
     title: "Secure Entry",
-    image: "https://images.unsplash.com/photo-1486304873000-235643847519?auto=format&fit=crop&w=1200&q=80"
+    image: secureEntryImage
   }
 ];
 
@@ -406,7 +410,7 @@ const Home = () => {
                 Accommodation.
               </h1>
               <p className="subtext">
-                Trusted Boys Hostel Near Vishwaraj Hospital with Safe &amp; Secure Stay
+                Trusted Boys Hostel Near MIT ADT University, Rajbaug Campus with Safe &amp; Secure Stay
               </p>
               <div className="cta-row">
                 <a href={`tel:${PHONE_NUMBER_LINK}`} className="btn btn-solid">
@@ -485,8 +489,8 @@ const Home = () => {
               </div>
               <div className="hero-image-stack">
                 <img
-                  src={hostelBuildingImage}
-                  alt="Sky Hostel building"
+                  src={skyOasisImage}
+                  alt="Sky Hostel room view"
                 />
                 <div className="hero-image-glass" aria-hidden="true" />
               </div>
@@ -580,7 +584,7 @@ const Home = () => {
           <div className="container">
             <div className="location-feature-grid">
               <div className="location-feature-media">
-                <img src={locationFeature.image} alt="Sky Hostel common rooftop space" />
+                <img src={locationFeature.image} alt="Sky Hostel common dining area" />
               </div>
               <div className="location-feature-copy">
                 <h3>{locationFeature.title}</h3>
@@ -595,8 +599,8 @@ const Home = () => {
             <div className="facilities-grid">
               <article className="facilities-large-media fade-up" style={{ "--delay": "40ms" }}>
                 <img
-                  src={hostelBuildingImage}
-                  alt="Sky Hostel building exterior"
+                  src={studyAreaImage}
+                  alt="Sky Hostel study area"
                 />
               </article>
 
