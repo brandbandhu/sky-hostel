@@ -241,6 +241,10 @@
     border-radius: 22px;
   }
 
+  .facilities-feature-card:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+
   .facilities-feature-card:nth-child(even) .facilities-feature-media,
   .facilities-feature-card:nth-child(even) .facilities-feature-content {
     order: initial;
@@ -291,12 +295,21 @@
 
   .facilities-cards {
     margin-top: 28px;
-    gap: 14px;
+    gap: 16px;
   }
 
   .facilities-feature-card {
     grid-template-columns: 1fr;
+    min-height: auto;
     border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(14, 116, 144, 0.12);
+    box-shadow: 0 12px 24px rgba(2, 132, 199, 0.14);
+    transform: none;
+  }
+
+  .facilities-feature-card:nth-child(even) {
+    grid-template-columns: 1fr;
   }
 
   .facilities-feature-card:nth-child(even) .facilities-feature-media,
@@ -305,15 +318,33 @@
   }
 
   .facilities-feature-media {
-    min-height: 220px;
+    min-height: 210px;
   }
 
   .facilities-feature-content {
-    padding: 20px 16px 18px;
+    padding: 16px 16px 14px;
+    background: #ffffff;
+    justify-content: flex-start;
+  }
+
+  .facilities-feature-content h2 {
+    font-size: clamp(1.9rem, 7vw, 2.4rem);
+    line-height: 1.05;
   }
 
   .facilities-feature-content p {
-    margin-top: 10px;
+    margin-top: 12px;
+    font-size: 1.03rem;
+    line-height: 1.45;
+  }
+
+  .facilities-feature-card:hover {
+    transform: none;
+    box-shadow: 0 12px 24px rgba(2, 132, 199, 0.14);
+  }
+
+  .facilities-feature-card:hover .facilities-feature-media img {
+    transform: none;
   }
 
   .facilities-security-full {
@@ -989,6 +1020,16 @@
 }
 
 @media (max-width: 640px) {
+  .facilities-bottom-unified,
+  .vision-mission-section,
+  .shared-common-section,
+  .health-safety-section,
+  .hostel-policies-section {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .key-amenities-shell {
     border-radius: 0;
     padding: 0;
