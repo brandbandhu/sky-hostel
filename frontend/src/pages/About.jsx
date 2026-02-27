@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Bath, BedDouble, FileText, Instagram, ShieldCheck, Sparkles, Wifi } from "lucide-react";
+import { Bath, BedDouble, FileText, Instagram, Lightbulb, PlugZap, ShieldCheck, Shirt, Sparkles, Wifi } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { setSeoMeta, getSeoKeywords } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
@@ -28,22 +28,37 @@ const keyAmenitiesHighlights = [
   {
     icon: Wifi,
     title: "High-Speed Internet",
-    text: "Fast and reliable Wi-Fi is available for online lectures, assignments, and daily connectivity."
+    text: "High-speed Wi-Fi is widely available for online lectures and other activities."
+  },
+  {
+    icon: Bath,
+    title: "Bathroom Setup",
+    text: "Western toilet and whole bathroom setup for comfort, convenience, and hygiene."
   },
   {
     icon: BedDouble,
     title: "Furnished Rooms",
-    text: "Beds, mattresses, study tables, chairs, shelves, shoe racks, mats, and wardrobes are provided."
-  },
-  {
-    icon: Bath,
-    title: "Full Bathroom Setup",
-    text: "Western toilet and complete bathroom setup for comfort and hygiene in daily routine."
+    text: "Beds, mattresses, study tables, chairs, book shelf, shoe rack, door mat, and wardrobes are provided."
   },
   {
     icon: Sparkles,
-    title: "Daily Room Care",
-    text: "Regular housekeeping, balcony cloth-hanger support, fan, tube lights, and charging points."
+    title: "Daily Housekeeping",
+    text: "Daily housekeeping support for regular room cleaning."
+  },
+  {
+    icon: Shirt,
+    title: "Balcony Cloth Hanger",
+    text: "Cloth hanger support is available for balcony use."
+  },
+  {
+    icon: Lightbulb,
+    title: "Fan & Tube Lights",
+    text: "Every room includes fan and tube lights for daily comfort."
+  },
+  {
+    icon: PlugZap,
+    title: "Charging Points",
+    text: "Convenient charging points are available in rooms."
   }
 ];
 const sharedCommonFacilities = [
@@ -294,7 +309,7 @@ const About = () => {
 
           <section className="director-message-section">
             <div className="director-message-content">
-              <h2 className="director-message-heading">ABOUT SKY HOSTELS</h2>
+              <h2 className="director-message-heading about-sky-hostels-heading">ABOUT SKY HOSTELS</h2>
               <p>
                 Sky Hostels PG is a premium boy&apos;s hostel located on Loni Kalbhor, Pune Solapur
                 Highway, offering easy connectivity and a peaceful environment. We ensure luxury
@@ -555,9 +570,6 @@ const About = () => {
                         <Link to="/properties">Our Properties</Link>
                         <Link to="/facilities-benefits">Facilities &amp; Benefits</Link>
                       </nav>
-                      <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`} className="sky-home-footer-phone">
-                        {contactInfo.phone}
-                      </a>
                     </div>
                     <div className="sky-home-footer-col">
                       <h4 className="sky-home-footer-heading">Contact</h4>
@@ -597,22 +609,6 @@ const About = () => {
                       >
                         <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.19 2.23.19v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
                       </a>
-                    </div>
-                    <div className="sky-home-footer-col sky-home-footer-newsletter">
-                      <h4 className="sky-home-footer-heading">Stay Connected</h4>
-                      <p className="sky-home-footer-subtext">Stay up-to-date with the latest news and updates.</p>
-                      <form className="sky-home-footer-form" onSubmit={(event) => event.preventDefault()}>
-                        <input
-                          type="email"
-                          name="footer_email"
-                          placeholder="Email"
-                          className="sky-home-footer-input"
-                          required
-                        />
-                        <button type="submit" className="sky-home-footer-submit">
-                          Subscribe
-                        </button>
-                      </form>
                     </div>
                   </div>
                   <div className="sky-home-footer-bottom">

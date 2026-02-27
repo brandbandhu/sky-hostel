@@ -1,90 +1,120 @@
-import { supabase } from "./supabaseClient";
+import { sendEnquiry } from "../api/client";
 
-const missingConfigError = {
-  code: "SUPABASE_CONFIG_MISSING",
-  message: "Supabase configuration is missing. Please set REACT_APP_SUPABASE_URL and REACT_APP_SUPABASE_ANON_KEY."
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY =
+  process.env.REACT_APP_WEB3FORMS_ACCESS_KEY || "4ebe6032-6529-4ffa-a83d-37b1c39755d7";
+const DEFAULT_EMAIL = "skyhostels3@gmail.com";
+
+const normalizeError = (error) => {
+  if (!error) return new Error("Unable to submit right now. Please try again.");
+  if (error instanceof Error) return error;
+  return new Error(String(error));
 };
 
-const isTableMissing = (error) => {
-  if (!error) return false;
-  if (error.code === "42P01" || error.code === "PGRST205") return true;
-  const message = String(error.message || "").toLowerCase();
-  return (
-    message.includes("could not find the table") ||
-    message.includes("relation") && message.includes("does not exist")
-  );
+const submitToWeb3Forms = async ({
+  name,
+  email,
+  phone,
+  subject,
+  message,
+  source,
+  lookingFor
+}) => {
+  const payload = {
+    access_key: WEB3FORMS_ACCESS_KEY,
+    from_name: "Sky Hostels Website",
+    subject: subject || "Website Enquiry",
+    name: name || "Website Visitor",
+    email: email || DEFAULT_EMAIL,
+    phone: phone || "",
+    message: message || "No message provided.",
+    source: source || "website_form",
+    looking_for: lookingFor || "",
+    botcheck: ""
+  };
+
+  const response = await fetch(WEB3FORMS_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok || data.success === false) {
+    throw new Error(data.message || `Web3Forms submission failed (${response.status}).`);
+  }
 };
-const isPolicyError = (error) => error?.code === "42501";
 
 export const getFriendlySupabaseError = (error) => {
   if (!error) return "Unable to submit right now. Please try again.";
-  if (isPolicyError(error)) {
-    return "Database policy blocked this request. Please enable INSERT policy for anon role.";
+  const message = String(error.message || error).trim();
+  if (!message) return "Unable to submit right now. Please try again.";
+  if (message.toLowerCase().includes("supabase configuration is missing")) {
+    return "Form service is updating. Please try again in a moment.";
   }
-  if (isTableMissing(error)) {
-    return "Database table is missing. Please create required tables in Supabase.";
+  if (message.toLowerCase().includes("failed to fetch")) {
+    return "Server is unreachable. Please check backend URL and internet connectivity.";
   }
-  return error.message || "Unable to submit right now. Please try again.";
+  return message;
 };
 
 export const submitLeadForm = async ({ name, phone, lookingFor, source = "home_form" }) => {
-  if (!supabase) return { error: missingConfigError };
-
-  const payload = {
-    name,
-    phone,
-    looking_for: lookingFor,
-    created_at: new Date().toISOString()
-  };
-
-  const leadInsert = await supabase.from("leads").insert([payload]);
-  if (!leadInsert.error) return { error: null };
-
-  if (!isTableMissing(leadInsert.error)) {
-    return { error: leadInsert.error };
-  }
-
-  const fallbackMessage = `Lead from ${source}. Looking for: ${lookingFor || "Not specified"}.`;
-  const fallbackInsert = await supabase.from("contact_messages").insert([
-    {
+  try {
+    const subject = `Lead - ${source}`;
+    const message = `Lead form submission from ${source}.`;
+    await submitToWeb3Forms({
       name,
-      email: "lead@skyhostels.local",
-      phone,
-      subject: `Lead - ${source}`,
-      message: fallbackMessage
-    }
-  ]);
+      email: DEFAULT_EMAIL,
+      phone: phone || "",
+      subject,
+      message,
+      lookingFor: lookingFor || "",
+      source
+    });
 
-  return { error: fallbackInsert.error || null };
+    // Keep backend submission as best effort for DB storage when available.
+    sendEnquiry({
+      name,
+      phone: phone || "",
+      looking_for: lookingFor || "",
+      subject,
+      message,
+      source
+    }).catch(() => {});
+
+    return { error: null };
+  } catch (error) {
+    return { error: normalizeError(error) };
+  }
 };
 
-export const submitContactForm = async ({ name, email, phone, subject, message }) => {
-  if (!supabase) return { error: missingConfigError };
-
-  const contactInsert = await supabase.from("contact_messages").insert([
-    {
+export const submitContactForm = async ({ name, email, phone, subject, message, source = "contact_form", lookingFor }) => {
+  try {
+    await submitToWeb3Forms({
       name,
       email,
       phone,
       subject,
-      message
-    }
-  ]);
+      message,
+      source
+    });
 
-  if (!contactInsert.error) return { error: null };
-
-  if (!isTableMissing(contactInsert.error)) {
-    return { error: contactInsert.error };
-  }
-
-  const fallbackInsert = await supabase.from("leads").insert([
-    {
+    // Keep backend submission as best effort for DB storage when available.
+    sendEnquiry({
       name,
+      email,
       phone,
-      looking_for: subject || "Contact Enquiry",
-      created_at: new Date().toISOString()
-    }
-  ]);
+      subject,
+      message,
+      looking_for: lookingFor || "",
+      source
+    }).catch(() => {});
 
-  return { error: fallbackInsert.error || null };
+    return { error: null };
+  } catch (error) {
+    return { error: normalizeError(error) };
+  }
 };

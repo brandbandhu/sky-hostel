@@ -7,10 +7,13 @@ import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import cloudVideo from "../cloud video.mp4";
 import bedroomAreaImage from "../assets/images/carousel img/bedroom area.png";
 import diningAreaImage from "../assets/images/carousel img/Dining.png";
+import hostelBuildingImage from "../assets/images/hostel building.jpeg";
 import secureEntryImage from "../assets/images/facilities/Secure Entry.png";
 import skyOasisImage from "../assets/images/sky Oasis.jpeg";
 import studyAreaImage from "../assets/images/carousel img/study area.png";
 import studyAreaTwoImage from "../assets/images/carousel img/study area2.png";
+import roomImage from "../assets/images/carousel img/room.png";
+import washroomImage from "../assets/images/carousel img/washroom.png";
 import logoImage from "../assets/images/logo.png";
 import "./Home.css";
 
@@ -27,7 +30,7 @@ const properties = [
     distance: "300 metre from MIT ADT University, Rajbaug Campus",
     title: "Sky 1",
     subtitle: "Boys Hostel",
-    image: bedroomAreaImage
+    image: hostelBuildingImage
   },
   {
     slug: "sky-2",
@@ -42,7 +45,9 @@ const creativeRooms = [
   bedroomAreaImage,
   diningAreaImage,
   studyAreaImage,
-  studyAreaTwoImage
+  studyAreaTwoImage,
+  roomImage,
+  washroomImage
 ];
 
 const locationFeature = {
@@ -699,9 +704,6 @@ const Home = () => {
                   <Link to="/properties">Our Properties</Link>
                   <Link to="/facilities-benefits">Facilities & Benefits</Link>
                 </nav>
-                <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`} className="sky-home-footer-phone">
-                  {contactInfo.phone}
-                </a>
               </div>
               <div className="sky-home-footer-col">
                 <h4 className="sky-home-footer-heading">Contact</h4>
@@ -739,29 +741,6 @@ const Home = () => {
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.19 2.23.19v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
                 </a>
-                
-              </div>
-              <div className="sky-home-footer-col sky-home-footer-newsletter">
-                <h4 className="sky-home-footer-heading">Stay Connected</h4>
-                <p className="sky-home-footer-subtext">Stay up-to-date with the latest news and updates.</p>
-                <form
-                  className="sky-home-footer-form"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    const email = e.target.querySelector('input[name="footer_email"]').value;
-                    if (email) submitLeadForm({ email, name: "", phone: "", lookingFor: "Newsletter" }).catch(() => {});
-                    e.target.reset();
-                  }}
-                >
-                  <input
-                    type="email"
-                    name="footer_email"
-                    placeholder="Email"
-                    className="sky-home-footer-input"
-                    required
-                  />
-                  <button type="submit" className="sky-home-footer-submit">Subscribe</button>
-                </form>
               </div>
             </div>
               <div className="sky-home-footer-bottom">

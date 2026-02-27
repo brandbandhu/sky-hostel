@@ -62,7 +62,9 @@ const WelcomePopup = () => {
                     subject: `Popup enquiry - ${formData.lookingFor || "Not specified"}`,
                     message: `Popup form enquiry. Looking for: ${
                       formData.lookingFor || "Not specified"
-                    }.`
+                    }.`,
+                    lookingFor: formData.lookingFor || "",
+                    source: "welcome_popup"
                   });
 
                   if (error) {

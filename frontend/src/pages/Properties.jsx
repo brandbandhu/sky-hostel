@@ -68,7 +68,8 @@ const Properties = () => {
       email,
       phone: mobile,
       subject: "Properties Enquiry",
-      message
+      message,
+      source: "properties_contact_form"
     });
 
     if (error) {
@@ -241,9 +242,6 @@ const Properties = () => {
                     <Link to="/properties">Our Properties</Link>
                     <Link to="/facilities-benefits">Facilities & Benefits</Link>
                   </nav>
-                  <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`} className="sky-home-footer-phone">
-                    {contactInfo.phone}
-                  </a>
                 </div>
 
                 <div className="sky-home-footer-col">
@@ -283,16 +281,6 @@ const Properties = () => {
                   >
                     <Facebook size={28} />
                   </a>
-                  
-                </div>
-
-                <div className="sky-home-footer-col sky-home-footer-newsletter">
-                  <h4 className="sky-home-footer-heading">Stay Connected</h4>
-                  <p className="sky-home-footer-subtext">Stay up-to-date with the latest news and updates.</p>
-                  <form className="sky-home-footer-form" onSubmit={(event) => event.preventDefault()}>
-                    <input type="email" name="footer_email" placeholder="Email" className="sky-home-footer-input" required />
-                    <button type="submit" className="sky-home-footer-submit">Subscribe</button>
-                  </form>
                 </div>
               </div>
               <div className="sky-home-footer-bottom">
