@@ -79,6 +79,7 @@ const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(true);
   const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [lookingFor, setLookingFor] = useState("");
   const [status, setStatus] = useState({ type: "", message: "" });
@@ -207,7 +208,7 @@ const Home = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!firstName.trim() || !phone.trim() || !lookingFor) {
+    if (!firstName.trim() || !email.trim() || !phone.trim() || !lookingFor) {
       setStatus({ type: "error", message: "Please fill all required fields." });
       return;
     }
@@ -217,6 +218,7 @@ const Home = () => {
 
     const { error } = await submitLeadForm({
       name: firstName.trim(),
+      email: email.trim(),
       phone: phone.trim(),
       lookingFor,
       source: "home_inline_form"
@@ -230,6 +232,7 @@ const Home = () => {
 
     setStatus({ type: "success", message: "Thank you. Your request has been submitted successfully." });
     setFirstName("");
+    setEmail("");
     setPhone("");
     setLookingFor("");
     setSubmitting(false);
@@ -462,7 +465,20 @@ const Home = () => {
                     />
                   </div>
 
-                  <div className="field">
+                  <div className="field field-full">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="Enter your email address"
+                      value={email}
+                      onChange={(event) => setEmail(event.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="field field-full">
                     <label htmlFor="lookingFor">Looking For</label>
                     <select
                       id="lookingFor"

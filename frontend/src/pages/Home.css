@@ -257,7 +257,7 @@
   gap: 12px;
 }
 
-.sky-home #leadForm .field:nth-child(3),
+.sky-home #leadForm .field-full,
 .sky-home #leadForm .submit-btn,
 .sky-home #leadForm .form-status {
   grid-column: 1 / -1;

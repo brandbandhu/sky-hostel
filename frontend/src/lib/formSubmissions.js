@@ -61,13 +61,13 @@ export const getFriendlySupabaseError = (error) => {
   return message;
 };
 
-export const submitLeadForm = async ({ name, phone, lookingFor, source = "home_form" }) => {
+export const submitLeadForm = async ({ name, email, phone, lookingFor, source = "home_form" }) => {
   try {
     const subject = `Lead - ${source}`;
     const message = `Lead form submission from ${source}.`;
     await submitToWeb3Forms({
       name,
-      email: DEFAULT_EMAIL,
+      email: email || DEFAULT_EMAIL,
       phone: phone || "",
       subject,
       message,
@@ -78,6 +78,7 @@ export const submitLeadForm = async ({ name, phone, lookingFor, source = "home_f
     // Keep backend submission as best effort for DB storage when available.
     sendEnquiry({
       name,
+      email: email || DEFAULT_EMAIL,
       phone: phone || "",
       looking_for: lookingFor || "",
       subject,
