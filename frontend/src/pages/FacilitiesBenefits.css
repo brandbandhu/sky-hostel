@@ -12,7 +12,7 @@
   width: min(1200px, 100%);
   margin: 0 auto;
   --about-heading-color: #0369a1;
-  --about-heading-size: clamp(1.85rem, 3.8vw, 3.6rem);
+  --about-heading-size: clamp(1.65rem, 3.2vw, 3.15rem);
   --about-heading-weight: 500;
 }
 

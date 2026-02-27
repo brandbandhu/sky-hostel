@@ -5,6 +5,7 @@ import { contactInfo } from "../data/mock";
 import { getFriendlySupabaseError, submitContactForm } from "../lib/formSubmissions";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
+import roomImage from "../assets/images/carousel img/room.png";
 import hostelBuildingImage from "../assets/images/hostel building.jpeg";
 import skyOasisImage from "../assets/images/sky Oasis.jpeg";
 
@@ -16,14 +17,14 @@ const FACEBOOK_LINK = "https://www.facebook.com/profile.php?id=61588214504098";
 const properties = [
   {
     slug: "sky-1",
-    distance: "300 metre from MIT ADT University, Rajbaug Campus",
-    title: "Sky 1",
+    distance: "100 metre distance from MIT ADT University, Rajbaug Campus",
+    title: "Sky 1 - Opposite Vishwaraj Hospital",
     subtitle: "Boys Hostel",
     image: hostelBuildingImage
   },
   {
     slug: "sky-2",
-    distance: "10 metre from MIT ADT University, Rajbaug Campus",
+    distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
     image: skyOasisImage
@@ -249,7 +250,7 @@ const Properties = () => {
                   <p className="sky-home-footer-line">Email - <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a></p>
                   <p className="sky-home-footer-line">Mobile - {contactInfo.phone}</p>
                   <p className="sky-home-footer-line">
-                    Address -{" "}
+                    Address 1 -{" "}
                     <a
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
                       target="_blank"
@@ -257,6 +258,17 @@ const Properties = () => {
                       className="sky-home-footer-address-link"
                     >
                       {contactInfo.address}
+                    </a>
+                  </p>
+                  <p className="sky-home-footer-line">
+                    Address 2 -{" "}
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address2)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="sky-home-footer-address-link"
+                    >
+                      {contactInfo.address2}
                     </a>
                   </p>
                 </div>
@@ -284,7 +296,12 @@ const Properties = () => {
                 </div>
               </div>
               <div className="sky-home-footer-bottom">
-                <p>Copyright ©{new Date().getFullYear()} All Rights Reserved By Sky Hostel &nbsp; Designed By Webakoof</p>
+                <p>
+                  Copyright 2026 All Rights Reserved By Sky Hostel &nbsp; Designed By{" "}
+                  <a href="https://webakoof.com" target="_blank" rel="noopener noreferrer">
+                    Webakoof
+                  </a>
+                </p>
               </div>
             </footer>
           </div>

@@ -4,6 +4,7 @@ export const contactInfo = {
   phone: '+91 9130888003',
   email: 'skyhostels3@gmail.com',
   address: 'SKY HOSTELS, Gat No. 310, Opp. Vishwaraj Hospital, Near Kulkarni Clinic, Sky Apartment, Pune Solapur Highway, Kadamwak Wasti, Haveli Taluka, Pune 412201',
+  address2: 'SKY HOSTELS, Chintamani Park, Pune Solapur Highway, Haveli Taluka, Pune 412201',
   whatsappLink: 'https://wa.me/919130888003'
 };
 

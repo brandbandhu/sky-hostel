@@ -8,11 +8,11 @@ import cloudVideo from "../cloud video.mp4";
 import bedroomAreaImage from "../assets/images/carousel img/bedroom area.png";
 import diningAreaImage from "../assets/images/carousel img/Dining.png";
 import hostelBuildingImage from "../assets/images/hostel building.jpeg";
+import roomImage from "../assets/images/carousel img/room.png";
 import secureEntryImage from "../assets/images/facilities/Secure Entry.png";
 import skyOasisImage from "../assets/images/sky Oasis.jpeg";
 import studyAreaImage from "../assets/images/carousel img/study area.png";
 import studyAreaTwoImage from "../assets/images/carousel img/study area2.png";
-import roomImage from "../assets/images/carousel img/room.png";
 import washroomImage from "../assets/images/carousel img/washroom.png";
 import logoImage from "../assets/images/logo.png";
 import "./Home.css";
@@ -27,14 +27,14 @@ const REGISTRATION_FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSdu8fzk
 const properties = [
   {
     slug: "sky-1",
-    distance: "300 metre from MIT ADT University, Rajbaug Campus",
-    title: "Sky 1",
+    distance: "100 metre distance from MIT ADT University, Rajbaug Campus",
+    title: "Sky 1 - Opposite Vishwaraj Hospital",
     subtitle: "Boys Hostel",
     image: hostelBuildingImage
   },
   {
     slug: "sky-2",
-    distance: "10 metre from MIT ADT University, Rajbaug Campus",
+    distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
     image: skyOasisImage
@@ -283,7 +283,7 @@ const Home = () => {
 
             <div className="visit-popup-media">
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                src={hostelBuildingImage}
                 alt="Sky Hostels"
               />
             </div>
@@ -488,16 +488,11 @@ const Home = () => {
             </div>
 
             <div className="hero-media fade-up" ref={heroParallaxRef}>
-              <div className="hero-blur-shape" aria-hidden="true" />
-              <div className="floating-shape" aria-hidden="true" ref={floatingShapeRef}>
-                <div className="floating-shape-core" />
-              </div>
               <div className="hero-image-stack">
                 <img
-                  src={skyOasisImage}
+                  src={roomImage}
                   alt="Sky Hostel room view"
                 />
-                <div className="hero-image-glass" aria-hidden="true" />
               </div>
             </div>
           </div>
@@ -710,7 +705,7 @@ const Home = () => {
                 <p className="sky-home-footer-line">Email - <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a></p>
                 <p className="sky-home-footer-line">Mobile - {contactInfo.phone}</p>
                 <p className="sky-home-footer-line">
-                  Address -{" "}
+                  Address 1 -{" "}
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
                     target="_blank"
@@ -718,6 +713,17 @@ const Home = () => {
                     className="sky-home-footer-address-link"
                   >
                     {contactInfo.address}
+                  </a>
+                </p>
+                <p className="sky-home-footer-line">
+                  Address 2 -{" "}
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address2)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sky-home-footer-address-link"
+                  >
+                    {contactInfo.address2}
                   </a>
                 </p>
               </div>
@@ -744,7 +750,12 @@ const Home = () => {
               </div>
             </div>
               <div className="sky-home-footer-bottom">
-                <p>Copyright Â©{new Date().getFullYear()} All Rights Reserved By Sky Hostel &nbsp; Designed By Webakoof</p>
+                <p>
+                  Copyright 2026 All Rights Reserved By Sky Hostel &nbsp; Designed By{" "}
+                  <a href="https://webakoof.com" target="_blank" rel="noopener noreferrer">
+                    Webakoof
+                  </a>
+                </p>
               </div>
           <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`} className="sky-home-float-phone" aria-label="Call">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>

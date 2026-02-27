@@ -6,10 +6,14 @@ import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
 import electricityWaterImage from "../assets/images/facilities/Electricity  Water.png";
 import foodFacilityImage from "../assets/images/facilities/Food Facility Available.png";
+import fridgeImage from "../assets/images/facilities/fridge.png";
+import geyserImage from "../assets/images/facilities/geyser.png";
 import housekeepingImage from "../assets/images/facilities/Housekeeping.png";
 import laundryImage from "../assets/images/facilities/Laundry.png";
 import secureEntryImage from "../assets/images/facilities/Secure Entry.png";
 import twoWheelerParkingImage from "../assets/images/facilities/Two-wheeler Parking Available.png";
+import washingMachineImage from "../assets/images/facilities/washing machine.png";
+import westernToiletsImage from "../assets/images/facilities/Western toilets.png";
 import wifiImage from "../assets/images/facilities/Wi-Fi.png";
 import "./Home.css";
 import "./FacilitiesBenefits.css";
@@ -47,6 +51,30 @@ const facilityCards = [
     description:
       "Washing machine facilities are available for convenient in-house laundry management. Residents can wash clothes on schedule without depending on outside services. This saves time and makes day-to-day living easier.",
     image: laundryImage
+  },
+  {
+    title: "Fridge",
+    description:
+      "Common fridge facility is available for safe storage of water bottles, milk products, and essentials. Residents can keep daily-use food items fresh and organized.",
+    image: fridgeImage
+  },
+  {
+    title: "Western Toilets",
+    description:
+      "Modern western toilet setup is provided for hygienic and comfortable use. Bathrooms are designed for convenience and maintained regularly.",
+    image: westernToiletsImage
+  },
+  {
+    title: "Geyser",
+    description:
+      "Hot water is available through geyser support for daily bathing comfort, especially during colder weather and early morning routines.",
+    image: geyserImage
+  },
+  {
+    title: "Washing Machine",
+    description:
+      "Dedicated washing machine facility helps residents manage laundry efficiently within the hostel premises, saving time and effort.",
+    image: washingMachineImage
   },
   {
     title: "Secure Entry",
@@ -199,7 +227,7 @@ const FacilitiesBenefits = () => {
                       </p>
                       <p className="sky-home-footer-line">Mobile - {contactInfo.phone}</p>
                       <p className="sky-home-footer-line">
-                        Address -{" "}
+                        Address 1 -{" "}
                         <a
                           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
                           target="_blank"
@@ -207,6 +235,17 @@ const FacilitiesBenefits = () => {
                           className="sky-home-footer-address-link"
                         >
                           {contactInfo.address}
+                        </a>
+                      </p>
+                      <p className="sky-home-footer-line">
+                        Address 2 -{" "}
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address2)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="sky-home-footer-address-link"
+                        >
+                          {contactInfo.address2}
                         </a>
                       </p>
                     </div>
@@ -234,8 +273,10 @@ const FacilitiesBenefits = () => {
                   </div>
                   <div className="sky-home-footer-bottom">
                     <p>
-                      Copyright {new Date().getFullYear()} All Rights Reserved By Sky Hostel &nbsp; Designed By
-                      Webakoof
+                      Copyright 2026 All Rights Reserved By Sky Hostel &nbsp; Designed By{" "}
+                      <a href="https://webakoof.com" target="_blank" rel="noopener noreferrer">
+                        Webakoof
+                      </a>
                     </p>
                   </div>
                 </footer>

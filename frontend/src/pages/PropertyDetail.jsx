@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { Facebook, Instagram } from "lucide-react";
+import { BedDouble, Facebook, Instagram, MapPin, ShieldCheck, Shirt, Sparkles, UtensilsCrossed, Wifi, Zap } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
+import hostelBuildingImage from "../assets/images/hostel building.jpeg";
 import skyOasisImage from "../assets/images/sky Oasis.jpeg";
+import sky1BedImage from "../assets/images/Sky 1/bed.png";
+import sky1DiningImage from "../assets/images/Sky 1/dining.png";
+import sky1RoomImage from "../assets/images/Sky 1/room.png";
+import sky1StudyAreaImage from "../assets/images/Sky 1/study area.png";
+import sky1WashroomImage from "../assets/images/Sky 1/washroom.png";
+import carouselDiningImage from "../assets/images/carousel img/Dining.png";
+import carouselRoomImage from "../assets/images/carousel img/room1.png";
+import carouselStudyImage from "../assets/images/carousel img/study area2.png";
+import carouselWashroomImage from "../assets/images/carousel img/washroom1.png";
 
 import "./Home.css";
 import "./PropertyDetail.css";
@@ -12,12 +22,24 @@ const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
 const FACEBOOK_LINK = "https://www.facebook.com/profile.php?id=61588214504098";
 const REGISTRATION_FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSdu8fzkKVPr2MXzm_d7p04J7WF9z6CQbDbJV9V1QKr1iP9F6g/viewform?usp=header";
 
+const getHighlightIcon = (text) => {
+  const value = String(text || "").toLowerCase();
+  if (value.includes("wi-fi")) return Wifi;
+  if (value.includes("housekeeping") || value.includes("clean")) return Sparkles;
+  if (value.includes("electricity") || value.includes("water")) return Zap;
+  if (value.includes("food")) return UtensilsCrossed;
+  if (value.includes("laundry")) return Shirt;
+  if (value.includes("cctv") || value.includes("security")) return ShieldCheck;
+  if (value.includes("distance") || value.includes("mit adt")) return MapPin;
+  return BedDouble;
+};
+
 const propertyDetails = {
   "sky-1": {
-    title: "Sky 1",
+    title: "Sky 1 - Opposite Vishwaraj Hospital",
     subtitle: "Boys Hostel",
-    distance: "300 metre from MIT ADT University, Rajbaug Campus",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1800&q=80",
+    distance: "100 metre distance from MIT ADT University, Rajbaug Campus",
+    image: hostelBuildingImage,
     description:
       "Sky 1 is a premium boys hostel wing designed for students who want comfort, discipline, and convenience near MIT ADT University, Rajbaug Campus. The property is planned for daily student life with clean rooms, practical storage, study-friendly common areas, and dependable core services.",
     highlights: [
@@ -28,33 +50,34 @@ const propertyDetails = {
       "Food facility support with student-friendly meal timings",
       "Laundry facility with washing machine access",
       "24 Hrs CCTV and security monitoring for resident safety",
-      "Wing distance: 300 metre from MIT ADT University, Rajbaug Campus"
+      "Wing distance: 100 metre distance from MIT ADT University, Rajbaug Campus"
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=2200&q=80"
+      sky1RoomImage,
+      sky1BedImage,
+      sky1StudyAreaImage,
+      sky1DiningImage,
+      sky1WashroomImage
     ]
   },
   "sky-2": {
     title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
-    distance: "10 metre from MIT ADT University, Rajbaug Campus",
+    distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     image: skyOasisImage,
     description:
       "Sky 2 - Chintamani Park is a boys hostel wing located very close to MIT ADT University, Rajbaug Campus. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
     highlights: [
-      "Wing distance: 10 metre from MIT ADT University, Rajbaug Campus",
+      "Wing distance: 10 metre distance from MIT ADT University, Rajbaug Campus",
       "Modern student-focused amenities",
       "Safe and secure managed environment",
       "Clean and practical room setup"
     ],
     gallery: [
-      skyOasisImage,
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=2200&q=80",
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=2200&q=80"
+      carouselRoomImage,
+      carouselStudyImage,
+      carouselDiningImage,
+      carouselWashroomImage
     ]
   }
 };
@@ -131,9 +154,17 @@ const PropertyDetail = () => {
             <p className="property-detail-distance">{property.distance}</p>
             <p className="property-detail-description">{property.description}</p>
             <ul>
-              {property.highlights.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
+              {property.highlights.map((item) => {
+                const Icon = getHighlightIcon(item);
+                return (
+                  <li key={item}>
+                    <span className="property-highlight-icon" aria-hidden="true">
+                      <Icon size={18} />
+                    </span>
+                    <span className="property-highlight-text">{item}</span>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="property-detail-actions">
@@ -286,7 +317,7 @@ const PropertyDetail = () => {
                   <p className="sky-home-footer-line">Email - <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a></p>
                   <p className="sky-home-footer-line">Mobile - {contactInfo.phone}</p>
                   <p className="sky-home-footer-line">
-                    Address -{" "}
+                    Address 1 -{" "}
                     <a
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
                       target="_blank"
@@ -294,6 +325,17 @@ const PropertyDetail = () => {
                       className="sky-home-footer-address-link"
                     >
                       {contactInfo.address}
+                    </a>
+                  </p>
+                  <p className="sky-home-footer-line">
+                    Address 2 -{" "}
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address2)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="sky-home-footer-address-link"
+                    >
+                      {contactInfo.address2}
                     </a>
                   </p>
                 </div>
@@ -322,8 +364,10 @@ const PropertyDetail = () => {
               </div>
               <div className="sky-home-footer-bottom">
                 <p>
-                  Copyright {new Date().getFullYear()} All Rights Reserved By Sky Hostel &nbsp; Designed By
-                  Webakoof
+                  Copyright 2026 All Rights Reserved By Sky Hostel &nbsp; Designed By{" "}
+                  <a href="https://webakoof.com" target="_blank" rel="noopener noreferrer">
+                    Webakoof
+                  </a>
                 </p>
               </div>
             </footer>

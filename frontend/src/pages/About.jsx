@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Bath, BedDouble, FileText, Instagram, Lightbulb, PlugZap, ShieldCheck, Shirt, Sparkles, Wifi } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { setSeoMeta, getSeoKeywords } from "../lib/seo";
+import directorsMsgImage from "../assets/images/directors msg .png";
 import logoImage from "../assets/images/logo.png";
 import bedroomImage from "../assets/images/bedroom.jpeg";
 import diningImage from "../assets/images/dining.jpeg";
@@ -13,7 +14,6 @@ import inductionCommonUseImage from "../assets/images/SHARED & COMMON FACILITIES
 import ironCommonUseImage from "../assets/images/SHARED & COMMON FACILITIES/Iron for Common Use.png";
 import laundryServicesImage from "../assets/images/SHARED & COMMON FACILITIES/Laundry Services.png";
 import liftServiceImage from "../assets/images/SHARED & COMMON FACILITIES/Lift Service.png";
-import powerBackupImage from "../assets/images/SHARED & COMMON FACILITIES/Power Backup (Genset).png";
 import professionalStaffImage from "../assets/images/SHARED & COMMON FACILITIES/Professional Staff (Warden, Attendant, Security, Housekeeping).png";
 import recreationAreasImage from "../assets/images/SHARED & COMMON FACILITIES/Recreation Areas (TV, Reading, Indoor Games).png";
 import roWaterFacilityImage from "../assets/images/SHARED & COMMON FACILITIES/RO Water Facility (Water Cooler).png";
@@ -71,7 +71,6 @@ const sharedCommonFacilities = [
   { title: "RO Water Facility (Water Cooler)", image: roWaterFacilityImage },
   { title: "TV for Common Use", image: tvCommonUseImage },
   { title: "24 Hours Water Supply", image: water24HoursImage },
-  { title: "Power Backup (Genset)", image: powerBackupImage },
   { title: "Professional Staff (Warden, Attendant, Security, Housekeeping)", image: professionalStaffImage },
   { title: "CCTV Camera and Geyser/Solar", image: cctvAndGeyserSolarImage }
 ];
@@ -131,7 +130,7 @@ const documentsRequired = [
   "Permanent Address Proof"
 ];
 const rulesDiscipline = [
-  "Strict discipline must be maintained.",
+  "Appropriate discipline must be maintained.",
   "Timely entry regulations.",
   "No unauthorized visitors allowed.",
   "Maintain cleanliness and hygiene.",
@@ -149,15 +148,6 @@ const hostelPolicies = [
   },
   {
     code: "B",
-    title: "Code of Conduct",
-    points: [
-      "Residents must maintain discipline, cleanliness, and respect for fellow hostel mates.",
-      "Alcohol, smoking, drugs, and any unlawful activities are strictly prohibited.",
-      "Silence hours (e.g., 10:00 pm to 6:00 am) must be observed."
-    ]
-  },
-  {
-    code: "C",
     title: "Visitors & Guests",
     points: [
       "Visitors are allowed only during specified hours in common areas.",
@@ -165,15 +155,7 @@ const hostelPolicies = [
     ]
   },
   {
-    code: "D",
-    title: "Attendance & Timings",
-    points: [
-      "Hostel gates will be closed at fixed timings (e.g., 10:30 pm).",
-      "Late entry requires prior permission from the warden."
-    ]
-  },
-  {
-    code: "E",
+    code: "C",
     title: "Facilities Usage",
     points: [
       "Residents must take care of hostel property (furniture, electrical fittings, appliances).",
@@ -182,7 +164,7 @@ const hostelPolicies = [
     ]
   },
   {
-    code: "F",
+    code: "D",
     title: "Vacating the Hostel",
     points: [
       "Residents must give at least 1-month written notice before vacating.",
@@ -284,7 +266,7 @@ const About = () => {
           <section className="director-message-section">
             <div className="director-message-grid">
               <div className="director-message-media">
-                <img src={bedroomImage} alt="Sky Hostel bedroom" />
+                <img src={directorsMsgImage} alt="Director message" />
               </div>
               <div className="director-message-content">
                 <p>
@@ -301,7 +283,7 @@ const About = () => {
                   <br />
                   Director
                   <br />
-                  Sky Hospitality Services
+                  Sky Group
                 </p>
               </div>
             </div>
@@ -313,7 +295,11 @@ const About = () => {
               <p>
                 Sky Hostels PG is a premium boy&apos;s hostel located on Loni Kalbhor, Pune Solapur
                 Highway, offering easy connectivity and a peaceful environment. We ensure luxury
-                living with modern facilities, nutritious meals, and strict discipline.
+                living with modern facilities, nutritious meals, and appropriate discipline.
+              </p>
+              <p>
+                Our highly experienced management team is committed to assisting students with both
+                their studies and accommodation needs.
               </p>
             </div>
           </section>
@@ -578,7 +564,7 @@ const About = () => {
                       </p>
                       <p className="sky-home-footer-line">Mobile - {contactInfo.phone}</p>
                       <p className="sky-home-footer-line">
-                        Address -{" "}
+                        Address 1 -{" "}
                         <a
                           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
                           target="_blank"
@@ -586,6 +572,17 @@ const About = () => {
                           className="sky-home-footer-address-link"
                         >
                           {contactInfo.address}
+                        </a>
+                      </p>
+                      <p className="sky-home-footer-line">
+                        Address 2 -{" "}
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address2)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="sky-home-footer-address-link"
+                        >
+                          {contactInfo.address2}
                         </a>
                       </p>
                     </div>
@@ -613,8 +610,10 @@ const About = () => {
                   </div>
                   <div className="sky-home-footer-bottom">
                     <p>
-                      Copyright {new Date().getFullYear()} All Rights Reserved By Sky Hostel &nbsp; Designed By
-                      Webakoof
+                      Copyright 2026 All Rights Reserved By Sky Hostel &nbsp; Designed By{" "}
+                      <a href="https://webakoof.com" target="_blank" rel="noopener noreferrer">
+                        Webakoof
+                      </a>
                     </p>
                   </div>
                 </footer>

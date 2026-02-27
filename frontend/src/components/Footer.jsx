@@ -81,7 +81,11 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-sky-400 flex-shrink-0 mt-1" />
-                <span className="text-slate-400 text-sm">{contactInfo.address}</span>
+                <span className="text-slate-400 text-sm">Address 1 - {contactInfo.address}</span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 text-sky-400 flex-shrink-0 mt-1" />
+                <span className="text-slate-400 text-sm">Address 2 - {contactInfo.address2}</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-sky-400 flex-shrink-0" />
@@ -101,8 +105,12 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-slate-700">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-slate-400 text-sm">© 2026 Sky Hostels. All rights reserved.</p>
-            <p className="text-slate-400 text-sm">Made with care for your comfort</p>
+            <p className="text-slate-400 text-sm">
+              Copyright 2026 All Rights Reserved By Sky Hostel &nbsp; Designed By{" "}
+              <a href="https://webakoof.com" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-blue-900">
+                Webakoof
+              </a>
+            </p>
           </div>
         </div>
       </div>
