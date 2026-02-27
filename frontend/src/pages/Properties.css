@@ -84,6 +84,8 @@
   color: inherit;
   text-decoration: none;
   display: block;
+  flex: 1;
+  min-width: 0;
 }
 
 .properties-strip-bottom h3 {
@@ -92,18 +94,22 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: normal;
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .properties-strip-bottom p {
   margin: 8px 0 0;
   font-size: 0.9rem;
   color: rgba(240, 249, 255, 0.96);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .properties-strip-cta {
@@ -335,10 +341,35 @@
 
   .properties-strip-bottom h3 {
     font-size: clamp(1.5rem, 8vw, 2rem);
+    -webkit-line-clamp: 3;
   }
 
   .properties-strip-bottom p {
     font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .properties-strip-card {
+    min-height: 340px;
+  }
+
+  .properties-strip-top {
+    font-size: 1.1rem;
+    max-width: 14ch;
+  }
+
+  .properties-strip-bottom {
+    bottom: 18px;
+    gap: 10px;
+  }
+
+  .properties-strip-bottom h3 {
+    font-size: clamp(1.2rem, 6.5vw, 1.6rem);
+  }
+
+  .properties-strip-cta {
+    font-size: 1.35rem;
   }
 }
 

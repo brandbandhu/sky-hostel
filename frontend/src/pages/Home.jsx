@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Instagram } from "lucide-react";
+import { Instagram, Menu, X } from "lucide-react";
 import { getFriendlySupabaseError, submitLeadForm } from "../lib/formSubmissions";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
@@ -30,14 +30,14 @@ const properties = [
     distance: "100 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 1 - Opposite Vishwaraj Hospital",
     subtitle: "Boys Hostel",
-    image: hostelBuildingImage
+    image: skyOasisImage
   },
   {
     slug: "sky-2",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
-    image: skyOasisImage
+    image: hostelBuildingImage
   }
 ];
 
@@ -359,9 +359,7 @@ const Home = () => {
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((prev) => !prev)}
             >
-              <span />
-              <span />
-              <span />
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
 
             <ul className="nav-links">
@@ -387,6 +385,7 @@ const Home = () => {
           </div>
 
           <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+            <div className="mobile-menu-divider" />
             <Link to="/about" onClick={closeMobileMenu}>
               About Us
             </Link>

@@ -31,10 +31,10 @@ const Header = () => {
     <header 
       className={`${isPropertiesPage ? 'relative' : 'fixed top-0 left-0 right-0'} z-50 transition-all duration-300 ${
         isPropertiesPage
-          ? 'bg-[#eaf5ff] backdrop-blur-md shadow-[0_8px_24px_rgba(2,132,199,0.14)]'
+          ? 'bg-[#d7e4ef] shadow-[0_8px_24px_rgba(2,132,199,0.14)]'
           : isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-lg'
-            : 'bg-white/90 backdrop-blur-sm'
+            ? 'bg-[#d7e4ef] shadow-lg'
+            : 'bg-[#d7e4ef]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,7 +75,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-sky-50 transition-colors duration-300"
+            className="lg:hidden p-2 rounded-xl border border-sky-200 bg-white text-slate-700 hover:bg-sky-50 transition-colors duration-300"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -84,7 +84,7 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className={`lg:hidden py-4 border-t animate-in slide-in-from-top duration-300 ${
-            isPropertiesPage ? 'border-sky-200 bg-[#eaf5ff]' : 'border-slate-200'
+            isPropertiesPage ? 'border-sky-200 bg-[#d7e4ef]' : 'border-slate-200 bg-[#d7e4ef]'
           }`}>
             <nav className="flex flex-col space-y-2">
               {navLinks.map((link) => (
@@ -92,7 +92,7 @@ const Header = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-[0.98rem] font-normal transition-all duration-300 ${
+                  className={`px-4 py-3 rounded-lg text-[1.08rem] font-medium tracking-[0.01em] leading-[1.35] transition-all duration-300 ${
                     isActive(link.path)
                       ? (isPropertiesPage ? 'text-sky-800 bg-transparent' : 'text-sky-600 bg-sky-50')
                       : (isPropertiesPage ? 'text-slate-700 hover:text-sky-700 bg-transparent hover:bg-transparent' : 'text-slate-700 hover:text-sky-600 hover:bg-sky-50/50')
@@ -105,7 +105,7 @@ const Header = () => {
                 href={contactInfo.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-2 px-4 py-3 bg-sky-500 text-white rounded-lg font-medium hover:bg-sky-600 transition-all duration-300 mt-4"
+                className="flex items-center justify-center space-x-2 px-4 py-3 bg-sky-500 text-white rounded-lg text-[1.02rem] font-semibold tracking-[0.01em] hover:bg-sky-600 transition-all duration-300 mt-4"
               >
                 <Phone className="w-4 h-4" />
                 <span>Book on WhatsApp</span>

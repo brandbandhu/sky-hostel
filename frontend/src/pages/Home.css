@@ -59,8 +59,7 @@
 .sky-home .navbar {
   position: relative;
   z-index: 3;
-  background: rgba(234, 245, 255, 0.86);
-  backdrop-filter: blur(8px);
+  background: #d7e4ef;
   border-bottom: 1px solid rgba(14, 165, 233, 0.2);
 }
 
@@ -165,20 +164,20 @@
 
 .sky-home .hamburger {
   display: none;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--border-soft);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.7);
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  border-radius: 12px;
+  background: #ffffff;
+  color: #0369a1;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
   cursor: pointer;
 }
 
-.sky-home .hamburger span {
+.sky-home .hamburger svg {
   display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--dark);
-  margin: 4px auto;
 }
 
 .sky-home .mobile-menu {
@@ -485,13 +484,17 @@
   color: inherit;
   text-decoration: none;
   display: block;
+  flex: 1;
+  min-width: 0;
 }
 
 .sky-home .property-bottom h4 {
   margin: 0;
   font-size: clamp(1.95rem, 2.2vw, 2.8rem);
-  line-height: 1;
+  line-height: 1.08;
   font-weight: 700;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 .sky-home .property-bottom p {
@@ -1680,12 +1683,12 @@
 }
 
 .sky-home .visit-popup {
-  width: min(1120px, 100%);
+  width: min(620px, 100%);
   border-radius: 22px;
   overflow: hidden;
   background: #dff3ff;
   display: grid;
-  grid-template-columns: 1.03fr 0.97fr;
+  grid-template-columns: 1fr;
   position: relative;
   box-shadow: 0 26px 70px rgba(2, 30, 55, 0.42);
 }
@@ -1706,12 +1709,12 @@
 }
 
 .sky-home .visit-popup-media {
-  min-height: 560px;
+  min-height: 220px;
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px;
+  padding: 16px 22px 18px;
 }
 
 .sky-home .visit-popup-media img {
@@ -1720,7 +1723,7 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  object-position: center;
+  object-position: center bottom;
   display: block;
 }
 
@@ -1894,30 +1897,65 @@
   }
 
   .sky-home .hamburger {
-    display: inline-block;
+    display: inline-flex;
     margin-left: auto;
   }
 
   .sky-home .mobile-menu {
     display: grid;
-    gap: 12px;
-    background: rgba(240, 249, 255, 0.95);
-    backdrop-filter: blur(8px);
+    gap: 14px;
+    background: #d7e4ef;
     border-top: 1px solid rgba(14, 165, 233, 0.15);
     max-height: 0;
     overflow: hidden;
-    padding: 0 27px;
+    padding: 0 10px;
     transition: max-height 0.28s ease, padding 0.28s ease;
   }
 
   .sky-home .mobile-menu.open {
-    max-height: 340px;
-    padding: 15px 27px 20px;
+    max-height: 430px;
+    padding: 8px 10px 16px;
+  }
+
+  .sky-home .mobile-menu-divider {
+    height: 1px;
+    background: #b4c9db;
+    margin-bottom: 2px;
   }
 
   .sky-home .mobile-menu a {
-    padding: 6px 0;
+    padding: 2px 14px;
+    color: #0f172a;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.08rem;
     font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.35;
+    text-decoration: none;
+  }
+
+  .sky-home .mobile-menu .btn {
+    width: 100%;
+    height: 44px;
+    margin: 0;
+    border-radius: 999px;
+    box-shadow: none;
+    transform: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .sky-home .mobile-menu .btn-solid {
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #ffffff;
+  }
+
+  .sky-home .mobile-menu .btn-outline {
+    background: #e9f1f8;
+    border: 1px solid rgba(14, 165, 233, 0.45);
+    color: #0369a1;
   }
 }
 
@@ -2018,10 +2056,13 @@
     left: 18px;
     right: 18px;
     bottom: 16px;
+    align-items: flex-end;
+    gap: 10px;
   }
 
   .sky-home .property-bottom h4 {
-    font-size: 2rem;
+    font-size: clamp(1.95rem, 8vw, 2.35rem);
+    line-height: 1.06;
   }
 
   .sky-home .property-bottom p {
@@ -2032,6 +2073,7 @@
     width: 72px;
     height: 72px;
     font-size: 2rem;
+    flex: 0 0 auto;
   }
 
   .sky-home .animated-highlights {
@@ -2294,7 +2336,7 @@
 
   .sky-home .sky-home-footer-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 20px;
     margin-bottom: 24px;
   }
 
@@ -2304,8 +2346,12 @@
     padding: 32px 16px 24px;
   }
 
+  .sky-home .sky-home-footer-col {
+    text-align: left;
+  }
+
   .sky-home .sky-home-footer-logo {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .sky-home .sky-home-footer-logo-icon {
@@ -2324,11 +2370,12 @@
 
   .sky-home .sky-home-footer-heading {
     font-size: 0.9rem;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .sky-home .sky-home-footer-line {
     font-size: 0.85rem;
+    margin-bottom: 6px;
   }
 
   .sky-home .sky-home-footer-line a,
@@ -2338,6 +2385,14 @@
 
   .sky-home .sky-home-footer-subtext {
     font-size: 0.85rem;
+  }
+
+  .sky-home .sky-home-footer-social {
+    margin-top: 0;
+  }
+
+  .sky-home .sky-home-footer-social + .sky-home-footer-social {
+    margin-left: 14px;
   }
 
   .sky-home .sky-home-footer-form {
@@ -2384,7 +2439,32 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 420px) {
+  .sky-home .property-card {
+    min-height: 420px;
+  }
+
+  .sky-home .property-top {
+    font-size: clamp(1.15rem, 7.2vw, 1.55rem);
+    max-width: 14ch;
+  }
+
+  .sky-home .property-bottom h4 {
+    font-size: clamp(1.55rem, 7.2vw, 2rem);
+  }
+
+  .sky-home .property-bottom p {
+    font-size: 1.02rem;
+  }
+
+  .sky-home .property-arrow {
+    width: 58px;
+    height: 58px;
+    font-size: 1.55rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
   .sky-home .sky-home-footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 32px 24px;
@@ -2396,19 +2476,28 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+}
 
+@media (max-width: 900px) {
   .sky-home .visit-popup {
     grid-template-columns: 1fr;
     max-height: 95vh;
     overflow-y: auto;
+    width: min(560px, 100%);
   }
 
-  .sky-home .visit-popup-media {
-    min-height: 220px;
+  .sky-home .visit-popup-overlay {
+    padding: 10px;
   }
 
   .sky-home .visit-popup-form-wrap {
-    padding: 22px 16px 16px;
+    padding: 22px 16px 12px;
+  }
+
+  .sky-home .visit-popup-media {
+    min-height: 190px;
+    padding: 18px 16px 16px;
+    align-items: flex-start;
   }
 
   .sky-home .visit-popup-close {

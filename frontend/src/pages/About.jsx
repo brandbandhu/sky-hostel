@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Bath, BedDouble, FileText, Instagram, Lightbulb, PlugZap, ShieldCheck, Shirt, Sparkles, Wifi } from "lucide-react";
+import { Bath, BedDouble, FileText, Instagram, Lightbulb, Menu, PlugZap, ShieldCheck, Shirt, Sparkles, Wifi, X } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { setSeoMeta, getSeoKeywords } from "../lib/seo";
 import directorsMsgImage from "../assets/images/directors msg .png";
@@ -176,6 +176,7 @@ const hostelPolicies = [
 const About = () => {
   const [sharedCarouselIndex, setSharedCarouselIndex] = useState(0);
   const [sharedVisibleCards, setSharedVisibleCards] = useState(3);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setSeoMeta({
@@ -233,6 +234,8 @@ const About = () => {
     });
   };
 
+  const closeMobileMenu = () => setMenuOpen(false);
+
   return (
     <div className="facilities-page">
       <section className="facilities-one-section">
@@ -241,6 +244,15 @@ const About = () => {
             <Link to="/" className="facilities-local-logo">
               <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
             </Link>
+            <button
+              type="button"
+              className="facilities-local-toggle"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((prev) => !prev)}
+            >
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
             <nav className="facilities-local-nav">
               <Link to="/">Home</Link>
               <Link to="/about">About Us</Link>
@@ -253,6 +265,17 @@ const About = () => {
                 href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`}
                 className="facilities-local-btn facilities-local-btn-outline"
               >
+                {contactInfo.phone}
+              </a>
+            </div>
+            <div className={`facilities-local-mobile-menu ${menuOpen ? "open" : ""}`}>
+              <Link to="/about" onClick={closeMobileMenu}>About Us</Link>
+              <Link to="/properties" onClick={closeMobileMenu}>Our Properties</Link>
+              <Link to="/facilities-benefits" onClick={closeMobileMenu}>Facilities &amp; Benefits</Link>
+              <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="facilities-local-btn facilities-local-btn-solid" onClick={closeMobileMenu}>
+                Google Registration Form
+              </a>
+              <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`} className="facilities-local-btn facilities-local-btn-outline" onClick={closeMobileMenu}>
                 {contactInfo.phone}
               </a>
             </div>

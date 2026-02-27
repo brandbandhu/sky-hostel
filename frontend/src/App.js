@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
@@ -19,6 +19,10 @@ const AppLayout = () => {
   const isProperties = location.pathname === "/properties" || location.pathname.startsWith("/properties/");
   const isFacilities = location.pathname === "/facilities-benefits" || location.pathname === "/facilities";
   const isAbout = location.pathname === "/about";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <>

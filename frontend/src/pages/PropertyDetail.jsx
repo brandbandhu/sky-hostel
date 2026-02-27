@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { BedDouble, Facebook, Instagram, MapPin, ShieldCheck, Shirt, Sparkles, UtensilsCrossed, Wifi, Zap } from "lucide-react";
+import { BedDouble, Facebook, Instagram, MapPin, Menu, ShieldCheck, Shirt, Sparkles, UtensilsCrossed, Wifi, X, Zap } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
@@ -39,7 +39,7 @@ const propertyDetails = {
     title: "Sky 1 - Opposite Vishwaraj Hospital",
     subtitle: "Boys Hostel",
     distance: "100 metre distance from MIT ADT University, Rajbaug Campus",
-    image: hostelBuildingImage,
+    image: skyOasisImage,
     description:
       "Sky 1 is a premium boys hostel wing designed for students who want comfort, discipline, and convenience near MIT ADT University, Rajbaug Campus. The property is planned for daily student life with clean rooms, practical storage, study-friendly common areas, and dependable core services.",
     highlights: [
@@ -64,7 +64,7 @@ const propertyDetails = {
     title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
-    image: skyOasisImage,
+    image: hostelBuildingImage,
     description:
       "Sky 2 - Chintamani Park is a boys hostel wing located very close to MIT ADT University, Rajbaug Campus. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
     highlights: [
@@ -86,6 +86,7 @@ const PropertyDetail = () => {
   const { slug } = useParams();
   const property = propertyDetails[slug];
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
   const directionsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`;
   const hasGallery = Boolean(property?.gallery?.length);
 
@@ -120,6 +121,8 @@ const PropertyDetail = () => {
     setGalleryIndex((prev) => (prev + 1) % property.gallery.length);
   };
 
+  const closeMobileMenu = () => setMenuOpen(false);
+
   return (
     <main className="property-detail-page">
       <section className="property-detail-section">
@@ -128,6 +131,15 @@ const PropertyDetail = () => {
             <Link to="/" className="property-local-logo">
               <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
             </Link>
+            <button
+              type="button"
+              className="property-local-toggle"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((prev) => !prev)}
+            >
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
             <nav className="property-local-nav">
               <Link to="/">Home</Link>
               <Link to="/about">About Us</Link>
@@ -137,6 +149,17 @@ const PropertyDetail = () => {
             <div className="property-local-actions">
               <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="property-local-btn property-local-btn-solid">Google Registration Form</a>
               <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`} className="property-local-btn property-local-btn-outline">
+                {contactInfo.phone}
+              </a>
+            </div>
+            <div className={`property-local-mobile-menu ${menuOpen ? "open" : ""}`}>
+              <Link to="/about" onClick={closeMobileMenu}>About Us</Link>
+              <Link to="/properties" onClick={closeMobileMenu}>Our Properties</Link>
+              <Link to="/facilities-benefits" onClick={closeMobileMenu}>Facilities &amp; Benefits</Link>
+              <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="property-local-btn property-local-btn-solid" onClick={closeMobileMenu}>
+                Google Registration Form
+              </a>
+              <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`} className="property-local-btn property-local-btn-outline" onClick={closeMobileMenu}>
                 {contactInfo.phone}
               </a>
             </div>

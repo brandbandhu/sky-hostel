@@ -20,14 +20,14 @@ const properties = [
     distance: "100 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 1 - Opposite Vishwaraj Hospital",
     subtitle: "Boys Hostel",
-    image: hostelBuildingImage
+    image: skyOasisImage
   },
   {
     slug: "sky-2",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
-    image: skyOasisImage
+    image: hostelBuildingImage
   }
 ];
 

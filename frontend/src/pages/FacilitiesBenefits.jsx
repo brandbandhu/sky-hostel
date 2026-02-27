@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Menu, X } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
@@ -91,6 +91,8 @@ const facilityCards = [
 ];
 
 const FacilitiesBenefits = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     setSeoMeta({
       title: "Facilities & Benefits | Hostel Near MIT ADT University College | Sky Hostels",
@@ -107,6 +109,8 @@ const FacilitiesBenefits = () => {
     });
   }, []);
 
+  const closeMobileMenu = () => setMenuOpen(false);
+
   return (
     <div className="facilities-page">
       <section className="facilities-one-section">
@@ -115,6 +119,15 @@ const FacilitiesBenefits = () => {
             <Link to="/" className="facilities-local-logo">
               <img src={logoImage} alt="Sky Hostels" className="brand-logo-img" />
             </Link>
+            <button
+              type="button"
+              className="facilities-local-toggle"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((prev) => !prev)}
+            >
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
             <nav className="facilities-local-nav">
               <Link to="/">Home</Link>
               <Link to="/about">About Us</Link>
@@ -127,6 +140,17 @@ const FacilitiesBenefits = () => {
                 href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`}
                 className="facilities-local-btn facilities-local-btn-outline"
               >
+                {contactInfo.phone}
+              </a>
+            </div>
+            <div className={`facilities-local-mobile-menu ${menuOpen ? "open" : ""}`}>
+              <Link to="/about" onClick={closeMobileMenu}>About Us</Link>
+              <Link to="/properties" onClick={closeMobileMenu}>Our Properties</Link>
+              <Link to="/facilities-benefits" onClick={closeMobileMenu}>Facilities &amp; Benefits</Link>
+              <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="facilities-local-btn facilities-local-btn-solid" onClick={closeMobileMenu}>
+                Google Registration Form
+              </a>
+              <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`} className="facilities-local-btn facilities-local-btn-outline" onClick={closeMobileMenu}>
                 {contactInfo.phone}
               </a>
             </div>
