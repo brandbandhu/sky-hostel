@@ -4,6 +4,10 @@ const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const WEB3FORMS_ACCESS_KEY =
   process.env.REACT_APP_WEB3FORMS_ACCESS_KEY || "4ebe6032-6529-4ffa-a83d-37b1c39755d7";
 const DEFAULT_EMAIL = "skyhostels3@gmail.com";
+const APPS_SCRIPT_DEPLOYMENT_ID = "AKfycbx3Ig4Pddf6lXHcXxxD6bQJpPJTFyTKxC2DrTyNTswv2NmSKjDPg7vOurVqsWhfE4xu";
+const GOOGLE_SHEET_WEBHOOK =
+  process.env.REACT_APP_GAS_WEB_APP_URL ||
+  `https://script.google.com/macros/s/${APPS_SCRIPT_DEPLOYMENT_ID}/exec`;
 
 const normalizeError = (error) => {
   if (!error) return new Error("Unable to submit right now. Please try again.");
@@ -48,6 +52,19 @@ const submitToWeb3Forms = async ({
   }
 };
 
+const sendToGoogleSheet = async (payload) => {
+  if (!GOOGLE_SHEET_WEBHOOK) return;
+
+  await fetch(GOOGLE_SHEET_WEBHOOK, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(payload)
+  });
+};
+
 export const getFriendlySupabaseError = (error) => {
   if (!error) return "Unable to submit right now. Please try again.";
   const message = String(error.message || error).trim();
@@ -65,6 +82,19 @@ export const submitLeadForm = async ({ name, email, phone, lookingFor, source = 
   try {
     const subject = `Lead - ${source}`;
     const message = `Lead form submission from ${source}.`;
+
+    sendToGoogleSheet({
+      name: name || "",
+      email: email || DEFAULT_EMAIL,
+      phone: phone || "",
+      lookingFor: lookingFor || "",
+      subject,
+      message,
+      source,
+      pageUrl: typeof window !== "undefined" ? window.location.href : "",
+      userAgent: typeof navigator !== "undefined" ? navigator.userAgent : ""
+    }).catch(() => {});
+
     await submitToWeb3Forms({
       name,
       email: email || DEFAULT_EMAIL,
@@ -94,6 +124,18 @@ export const submitLeadForm = async ({ name, email, phone, lookingFor, source = 
 
 export const submitContactForm = async ({ name, email, phone, subject, message, source = "contact_form", lookingFor }) => {
   try {
+    sendToGoogleSheet({
+      name: name || "",
+      email: email || "",
+      phone: phone || "",
+      lookingFor: lookingFor || "",
+      subject: subject || "",
+      message: message || "",
+      source,
+      pageUrl: typeof window !== "undefined" ? window.location.href : "",
+      userAgent: typeof navigator !== "undefined" ? navigator.userAgent : ""
+    }).catch(() => {});
+
     await submitToWeb3Forms({
       name,
       email,
