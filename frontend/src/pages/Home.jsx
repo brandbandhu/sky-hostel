@@ -17,7 +17,6 @@ import washroomImage from "../assets/images/carousel img/washroom.png";
 import logoImage from "../assets/images/logo.png";
 import "./Home.css";
 
-const { useRef } = React;
 const WHATSAPP_LINK = contactInfo.whatsappLink;
 const PHONE_NUMBER_LINK = contactInfo.phone.replace(/[^\d+]/g, "");
 const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
@@ -96,9 +95,7 @@ const Home = () => {
   const [popupStatus, setPopupStatus] = useState({ type: "", message: "" });
   const [popupSubmitting, setPopupSubmitting] = useState(false);
   const [creativeIndex, setCreativeIndex] = useState(0);
-  const heroParallaxRef = useRef(null);
-  const floatingShapeRef = useRef(null);
-  const parallaxFrameRef = useRef(null);
+  const [isHeroVideoReady, setIsHeroVideoReady] = useState(false);
 
   useEffect(() => {
     setSeoMeta({
@@ -150,54 +147,24 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const heroElement = heroParallaxRef.current;
-    const shapeElement = floatingShapeRef.current;
+    let timerId;
+    const loadVideo = () => setIsHeroVideoReady(true);
 
-    if (!heroElement || !shapeElement || !window.matchMedia("(pointer:fine)").matches) {
-      return undefined;
+    if (document.readyState === "complete") {
+      timerId = window.setTimeout(loadVideo, 1200);
+    } else {
+      const onLoad = () => {
+        timerId = window.setTimeout(loadVideo, 1200);
+      };
+      window.addEventListener("load", onLoad, { once: true });
+      return () => {
+        window.removeEventListener("load", onLoad);
+        if (timerId) window.clearTimeout(timerId);
+      };
     }
 
-    const state = {
-      x: 0,
-      y: 0,
-      tx: 0,
-      ty: 0
-    };
-
-    const animate = () => {
-      state.x += (state.tx - state.x) * 0.11;
-      state.y += (state.ty - state.y) * 0.11;
-
-      shapeElement.style.setProperty("--shape-x", `${state.x.toFixed(2)}px`);
-      shapeElement.style.setProperty("--shape-y", `${state.y.toFixed(2)}px`);
-
-      parallaxFrameRef.current = window.requestAnimationFrame(animate);
-    };
-
-    const handlePointerMove = (event) => {
-      const rect = heroElement.getBoundingClientRect();
-      const normalizedX = (event.clientX - rect.left) / rect.width - 0.5;
-      const normalizedY = (event.clientY - rect.top) / rect.height - 0.5;
-
-      state.tx = normalizedX * 20;
-      state.ty = normalizedY * 20;
-    };
-
-    const handlePointerLeave = () => {
-      state.tx = 0;
-      state.ty = 0;
-    };
-
-    heroElement.addEventListener("mousemove", handlePointerMove);
-    heroElement.addEventListener("mouseleave", handlePointerLeave);
-    parallaxFrameRef.current = window.requestAnimationFrame(animate);
-
     return () => {
-      heroElement.removeEventListener("mousemove", handlePointerMove);
-      heroElement.removeEventListener("mouseleave", handlePointerLeave);
-      if (parallaxFrameRef.current) {
-        window.cancelAnimationFrame(parallaxFrameRef.current);
-      }
+      if (timerId) window.clearTimeout(timerId);
     };
   }, []);
 
@@ -382,9 +349,13 @@ const Home = () => {
       )}
 
       <header className="hero-shell" id="home">
-        <video className="hero-bg-video" autoPlay muted loop playsInline>
-          <source src={cloudVideo} type="video/mp4" />
-        </video>
+        {isHeroVideoReady ? (
+          <video className="hero-bg-video" autoPlay muted loop playsInline preload="none" poster={hostelBuildingImage}>
+            <source src={cloudVideo} type="video/mp4" />
+          </video>
+        ) : (
+          <img className="hero-bg-video" src={hostelBuildingImage} alt="" loading="eager" decoding="async" />
+        )}
         <nav className="navbar">
           <div className="container nav-wrap">
             <a href="#home" className="logo" aria-label="Sky Hostels Home">
@@ -551,7 +522,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="hero-media fade-up" ref={heroParallaxRef}>
+            <div className="hero-media fade-up">
               <div className="hero-image-stack">
                 <img
                   src={roomImage}

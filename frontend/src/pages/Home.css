@@ -336,59 +336,6 @@
   object-position: center 35%;
 }
 
-.sky-home .hero-image-glass {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background:
-    linear-gradient(140deg, rgba(255, 255, 255, 0.3), rgba(14, 165, 233, 0.06) 52%, rgba(2, 132, 199, 0.28)),
-    radial-gradient(circle at 14% 16%, rgba(255, 255, 255, 0.42), transparent 42%);
-}
-
-.sky-home .hero-blur-shape {
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  top: 44%;
-  right: -64px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.52) 0%, rgba(14, 165, 233, 0.08) 72%, transparent 100%);
-  filter: blur(18px);
-  opacity: 0.75;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.sky-home .floating-shape {
-  position: absolute;
-  top: 15%;
-  right: -62px;
-  width: 188px;
-  height: 188px;
-  z-index: 4;
-  opacity: 0.74;
-  pointer-events: none;
-  animation: floatShape 5s ease-in-out infinite;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-}
-
-.sky-home .floating-shape-core {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(240, 249, 255, 0.95) 0%, rgba(56, 189, 248, 0.68) 40%, rgba(14, 165, 233, 0.82) 100%),
-    repeating-conic-gradient(from 4deg, rgba(224, 242, 254, 0.46) 0deg 12deg, rgba(14, 165, 233, 0.12) 12deg 24deg);
-  box-shadow:
-    0 0 36px rgba(56, 189, 248, 0.42),
-    0 18px 40px rgba(2, 132, 199, 0.24);
-  backdrop-filter: blur(3px);
-  transform: translate3d(var(--shape-x, 0px), var(--shape-y, 0px), 0);
-  will-change: transform;
-}
-
 .sky-home .section {
   padding: 84px 0;
 }
@@ -1819,25 +1766,7 @@
   margin: 2px auto 0;
 }
 
-@keyframes floatShape {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .sky-home .floating-shape {
-    animation: none;
-  }
-
-  .sky-home .floating-shape-core {
-    transform: translate3d(0, 0, 0);
-  }
-
   .sky-home .obj3d {
     animation: none;
   }
@@ -2078,23 +2007,6 @@
 
   .sky-home .hero-media img {
     object-position: center 20%;
-  }
-
-  .sky-home .hero-blur-shape {
-    width: 160px;
-    height: 160px;
-    right: -30px;
-    top: 50%;
-    opacity: 0.55;
-  }
-
-  .sky-home .floating-shape {
-    width: 108px;
-    height: 108px;
-    right: -18px;
-    top: 10%;
-    opacity: 0.35;
-    z-index: 1;
   }
 
   .sky-home .whatsapp-float {
