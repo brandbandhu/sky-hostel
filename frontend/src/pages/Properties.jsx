@@ -37,7 +37,7 @@ const Properties = () => {
 
   useEffect(() => {
     setSeoMeta({
-      title: "Our Properties | MIT ADT University College Hostel Options | Sky Hostels",
+      title: "Our Properties | MIT ADT University College Hostel Options | SKY HOSTEL",
       description:
         "Explore Sky Hostels wing-wise properties near MIT ADT University, Rajbaug Campus: Sky 1 and Sky 2 - Chintamani Park for boys.",
       keywords: getSeoKeywords([
@@ -57,19 +57,20 @@ const Properties = () => {
 
     const formElement = event.currentTarget;
     const formData = new FormData(formElement);
-    const firstName = String(formData.get("firstName") || "").trim();
-    const lastName = String(formData.get("lastName") || "").trim();
+    const studentName = String(formData.get("studentName") || "").trim();
     const email = String(formData.get("email") || "").trim();
-    const mobile = String(formData.get("mobile") || "").trim();
-    const message = String(formData.get("message") || "").trim();
-    const fullName = `${firstName} ${lastName}`.trim();
+    const phoneNumber = String(formData.get("phoneNumber") || "").trim();
+    const collegeCourse = String(formData.get("collegeCourse") || "").trim();
+    const lookingFor = String(formData.get("lookingFor") || "").trim();
+    const message = `Looking for: ${lookingFor}\nCollege/Course: ${collegeCourse}`;
 
     const { error } = await submitContactForm({
-      name: fullName,
+      name: studentName,
       email,
-      phone: mobile,
+      phone: phoneNumber,
       subject: "Properties Enquiry",
       message,
+      lookingFor,
       source: "properties_contact_form"
     });
 
@@ -134,33 +135,33 @@ const Properties = () => {
           <form className="properties-contact-form" onSubmit={handleContactSubmit}>
             <div className="properties-contact-grid">
               <div className="properties-field">
-                <label htmlFor="propertyFirstName">First Name</label>
-                <input id="propertyFirstName" name="firstName" type="text" placeholder="Enter first name" required />
+                <label htmlFor="propertyStudentName">Name of the Students</label>
+                <input id="propertyStudentName" name="studentName" type="text" placeholder="Enter student name" required />
               </div>
               <div className="properties-field">
-                <label htmlFor="propertyLastName">Last Name</label>
-                <input id="propertyLastName" name="lastName" type="text" placeholder="Enter last name" required />
-              </div>
-              <div className="properties-field">
-                <label htmlFor="propertyEmail">Email</label>
-                <input id="propertyEmail" name="email" type="email" placeholder="Enter email address" required />
-              </div>
-              <div className="properties-field">
-                <label htmlFor="propertyMobile">Mobile Number</label>
+                <label htmlFor="propertyPhoneNumber">Phone Number</label>
                 <input
-                  id="propertyMobile"
-                  name="mobile"
+                  id="propertyPhoneNumber"
+                  name="phoneNumber"
                   type="tel"
                   pattern="[0-9+\\-\\s]{8,15}"
-                  placeholder="Enter mobile number"
+                  placeholder="Enter phone number"
                   required
                 />
               </div>
+              <div className="properties-field">
+                <label htmlFor="propertyEmail">Email ID</label>
+                <input id="propertyEmail" name="email" type="email" placeholder="Enter email address" required />
+              </div>
+              <div className="properties-field">
+                <label htmlFor="propertyCollegeCourse">College/ Course</label>
+                <input id="propertyCollegeCourse" name="collegeCourse" type="text" placeholder="Enter college/course" required />
+              </div>
               <div className="properties-field properties-field-full">
-                <label htmlFor="propertyMessage">Message</label>
+                <label htmlFor="propertyLookingFor">Looking for</label>
                 <textarea
-                  id="propertyMessage"
-                  name="message"
+                  id="propertyLookingFor"
+                  name="lookingFor"
                   rows="5"
                   placeholder="Tell us what you are looking for"
                   required

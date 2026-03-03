@@ -180,7 +180,7 @@ const About = () => {
 
   useEffect(() => {
     setSeoMeta({
-      title: "About Us | Sky Hostels",
+      title: "About Us | SKY HOSTEL",
       description:
         "Learn about Sky Hostels - trusted boys hostel near Vishwaraj Hospital focused on safe accommodation, cleanliness, discipline, and a study-friendly environment.",
       keywords: getSeoKeywords([

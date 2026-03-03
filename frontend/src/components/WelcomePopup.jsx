@@ -7,7 +7,9 @@ const WelcomePopup = () => {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     phone: "",
+    collegeCourse: "",
     lookingFor: "",
   });
 
@@ -57,12 +59,13 @@ const WelcomePopup = () => {
                 try {
                   const { error } = await submitContactForm({
                     name: formData.name,
-                    email: "popup@skyhostels.local",
+                    email: formData.email,
                     phone: formData.phone,
                     subject: `Popup enquiry - ${formData.lookingFor || "Not specified"}`,
                     message: `Popup form enquiry. Looking for: ${
                       formData.lookingFor || "Not specified"
-                    }.`,
+                    }. College/Course: ${formData.collegeCourse || "Not specified"}.`,
+                    collegeCourse: formData.collegeCourse || "",
                     lookingFor: formData.lookingFor || "",
                     source: "welcome_popup"
                   });
@@ -73,7 +76,7 @@ const WelcomePopup = () => {
                   }
 
                   toast.success("Thanks! We will contact you shortly.");
-                  setFormData({ name: "", phone: "", lookingFor: "" });
+                  setFormData({ name: "", email: "", phone: "", collegeCourse: "", lookingFor: "" });
                   setOpen(false);
                 } catch (err) {
                   console.error("Failed to save popup enquiry:", err);
@@ -83,7 +86,7 @@ const WelcomePopup = () => {
             >
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                  Full name *
+                  Name of the Student *
                 </label>
                 <input
                   type="text"
@@ -100,7 +103,7 @@ const WelcomePopup = () => {
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                  Phone *
+                  Phone Number *
                 </label>
                 <input
                   type="tel"
@@ -117,11 +120,46 @@ const WelcomePopup = () => {
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                  Looking for
+                  Email ID *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+                  placeholder="For ex. john@example.com"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, email: e.target.value }))
+                  }
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  College/Course *
+                </label>
+                <input
+                  type="text"
+                  name="collegeCourse"
+                  required
+                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+                  placeholder="For ex. MIT ADT / B.Tech"
+                  value={formData.collegeCourse}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, collegeCourse: e.target.value }))
+                  }
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  Looking for *
                 </label>
                 <select
                   className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
                   value={formData.lookingFor}
+                  required
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, lookingFor: e.target.value }))
                   }

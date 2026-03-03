@@ -95,7 +95,7 @@ const FacilitiesBenefits = () => {
 
   useEffect(() => {
     setSeoMeta({
-      title: "Facilities & Benefits | Hostel Near MIT ADT University College | Sky Hostels",
+      title: "Facilities & Benefits | Hostel Near MIT ADT University College | SKY HOSTEL",
       description:
         "Discover facilities and benefits at Sky Hostels near MIT ADT University College, including food facility, Wi-Fi, housekeeping, laundry, secure entry, and more.",
       keywords: getSeoKeywords([

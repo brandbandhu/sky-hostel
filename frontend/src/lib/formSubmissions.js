@@ -22,7 +22,8 @@ const submitToWeb3Forms = async ({
   subject,
   message,
   source,
-  lookingFor
+  lookingFor,
+  collegeCourse
 }) => {
   const payload = {
     access_key: WEB3FORMS_ACCESS_KEY,
@@ -34,6 +35,7 @@ const submitToWeb3Forms = async ({
     message: message || "No message provided.",
     source: source || "website_form",
     looking_for: lookingFor || "",
+    college_course: collegeCourse || "",
     botcheck: ""
   };
 
@@ -78,16 +80,21 @@ export const getFriendlySupabaseError = (error) => {
   return message;
 };
 
-export const submitLeadForm = async ({ name, email, phone, lookingFor, source = "home_form" }) => {
+export const submitLeadForm = async ({ name, email, phone, lookingFor, collegeCourse, source = "home_form" }) => {
   try {
     const subject = `Lead - ${source}`;
-    const message = `Lead form submission from ${source}.`;
+    const message = `Lead form submission from ${source}. College/Course: ${collegeCourse || "Not provided"}.`;
 
     sendToGoogleSheet({
       name: name || "",
       email: email || DEFAULT_EMAIL,
       phone: phone || "",
+      collegeCourse: collegeCourse || "",
+      collegecourse: collegeCourse || "",
+      college_course: collegeCourse || "",
       lookingFor: lookingFor || "",
+      lookingfor: lookingFor || "",
+      looking_for: lookingFor || "",
       subject,
       message,
       source,
@@ -102,6 +109,7 @@ export const submitLeadForm = async ({ name, email, phone, lookingFor, source = 
       subject,
       message,
       lookingFor: lookingFor || "",
+      collegeCourse: collegeCourse || "",
       source
     });
 
@@ -111,6 +119,7 @@ export const submitLeadForm = async ({ name, email, phone, lookingFor, source = 
       email: email || DEFAULT_EMAIL,
       phone: phone || "",
       looking_for: lookingFor || "",
+      college_course: collegeCourse || "",
       subject,
       message,
       source
@@ -122,13 +131,18 @@ export const submitLeadForm = async ({ name, email, phone, lookingFor, source = 
   }
 };
 
-export const submitContactForm = async ({ name, email, phone, subject, message, source = "contact_form", lookingFor }) => {
+export const submitContactForm = async ({ name, email, phone, subject, message, source = "contact_form", lookingFor, collegeCourse }) => {
   try {
     sendToGoogleSheet({
       name: name || "",
       email: email || "",
       phone: phone || "",
+      collegeCourse: collegeCourse || "",
+      collegecourse: collegeCourse || "",
+      college_course: collegeCourse || "",
       lookingFor: lookingFor || "",
+      lookingfor: lookingFor || "",
+      looking_for: lookingFor || "",
       subject: subject || "",
       message: message || "",
       source,

@@ -1093,6 +1093,41 @@
   margin: 0 auto;
 }
 
+.sky-home .trust-booking-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 34px;
+}
+
+.sky-home .trust-booking-card {
+  background: rgba(9, 43, 70, 0.66);
+  border: 1px solid rgba(125, 211, 252, 0.24);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 24px rgba(2, 6, 23, 0.26);
+}
+
+.sky-home .trust-booking-card h4 {
+  margin: 0 0 6px;
+  color: #e0f2fe;
+  font-size: 1rem;
+}
+
+.sky-home .trust-booking-card p {
+  margin: 0;
+  color: rgba(224, 242, 254, 0.84);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.sky-home .trust-booking-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
 .sky-home .hostel-cartoon-copy h3 {
   margin: 0;
   color: #f0f9ff;
@@ -1516,6 +1551,20 @@
   color: #7dd3fc;
 }
 
+.sky-home .sky-home-footer-link {
+  display: inline-flex;
+  margin-top: 10px;
+  color: #7dd3fc;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.45);
+  font-size: 0.9rem;
+}
+
+.sky-home .sky-home-footer-link:hover {
+  color: #bae6fd;
+  border-bottom-color: rgba(186, 230, 253, 0.8);
+}
+
 .sky-home .sky-home-footer-subtext {
   margin: 0 0 14px;
   font-size: 0.9rem;
@@ -1728,24 +1777,46 @@
 }
 
 .sky-home .visit-popup-form-wrap {
-  padding: 38px 30px 30px;
+  padding: 30px 26px 22px;
   background: #d7ecfa;
 }
 
 .sky-home .visit-popup-form-wrap h2 {
-  margin: 0 0 24px;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  line-height: 1.2;
+  margin: 0 0 14px;
+  font-size: clamp(1.25rem, 2.1vw, 1.8rem);
+  line-height: 1.15;
 }
 
 .sky-home .visit-popup-form {
   display: grid;
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 10px 14px;
+}
+
+.sky-home .visit-popup-form .field-full,
+.sky-home .visit-popup-form .visit-popup-submit,
+.sky-home .visit-popup-form .form-status {
+  grid-column: 1 / -1;
+}
+
+.sky-home .visit-popup-form .field {
+  gap: 6px;
+}
+
+.sky-home .visit-popup-form .field label {
+  font-size: 0.78rem;
+}
+
+.sky-home .visit-popup-form input,
+.sky-home .visit-popup-form select {
+  height: 46px;
+  border-radius: 12px;
+  font-size: 0.92rem;
 }
 
 .sky-home .visit-popup-submit {
   width: min(220px, 100%);
-  margin: 4px auto 0;
+  margin: 2px auto 0;
 }
 
 @keyframes floatShape {
@@ -1876,6 +1947,10 @@
 
   .sky-home .scene-3d-stage {
     height: 300px;
+  }
+
+  .sky-home .trust-booking-strip {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -2505,6 +2580,17 @@
     left: 10px;
     font-size: 1.2rem;
     padding: 8px 12px;
+  }
+
+  .sky-home .visit-popup-form {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .sky-home .trust-booking-strip {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 22px;
   }
 }
 

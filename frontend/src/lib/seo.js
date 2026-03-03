@@ -1,4 +1,7 @@
-const DEFAULT_TITLE = "Sky Hostels | Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor";
+const SITE_NAME = "SKY HOSTEL";
+const SITE_ALT_NAME = "Sky Hostels";
+const LOGO_PATH = "/favicon.png";
+const DEFAULT_TITLE = "SKY HOSTEL | Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor";
 
 const DEFAULT_DESCRIPTION =
   "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor. Sky Hostels offers safe, comfortable, and student-friendly accommodation with modern amenities.";
@@ -8,6 +11,7 @@ const BASE_KEYWORDS = [
   "MIT ADT University College hostel",
   "Hostel near MIT ADT University College",
   "Boys hostel near MIT ADT Loni Kalbhor",
+  "SKY HOSTEL",
   "Sky Hostels",
   "student hostel Loni Kalbhor",
   "hostel in Pune Solapur Highway",
@@ -37,6 +41,18 @@ function upsertCanonical(url) {
   link.setAttribute("href", url);
 }
 
+function upsertJsonLd(scriptId, data) {
+  if (!scriptId || !data) return;
+  let scriptTag = document.querySelector(`script#${scriptId}[type="application/ld+json"]`);
+  if (!scriptTag) {
+    scriptTag = document.createElement("script");
+    scriptTag.setAttribute("type", "application/ld+json");
+    scriptTag.setAttribute("id", scriptId);
+    document.head.appendChild(scriptTag);
+  }
+  scriptTag.textContent = JSON.stringify(data);
+}
+
 export function getSeoKeywords(extraKeywords = []) {
   const merged = [...BASE_KEYWORDS, ...extraKeywords].filter(Boolean);
   return Array.from(new Set(merged)).join(", ");
@@ -53,20 +69,41 @@ export function setSeoMeta({
   const origin = window.location?.origin || "";
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   const canonicalUrl = `${origin}${normalizedPath}`;
+  const logoUrl = `${origin}${LOGO_PATH}`;
 
   upsertMeta("name", "description", description);
   upsertMeta("name", "keywords", keywords);
   upsertMeta("name", "robots", "index, follow");
 
   upsertMeta("property", "og:type", "website");
+  upsertMeta("property", "og:site_name", SITE_NAME);
   upsertMeta("property", "og:title", title);
   upsertMeta("property", "og:description", description);
   upsertMeta("property", "og:url", canonicalUrl);
+  upsertMeta("property", "og:image", logoUrl);
 
   upsertMeta("name", "twitter:card", "summary_large_image");
   upsertMeta("name", "twitter:title", title);
   upsertMeta("name", "twitter:description", description);
+  upsertMeta("name", "twitter:image", logoUrl);
 
   upsertCanonical(canonicalUrl);
+
+  upsertJsonLd("sky-hostel-org-ld", {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    alternateName: SITE_ALT_NAME,
+    url: origin || canonicalUrl,
+    logo: logoUrl
+  });
+
+  upsertJsonLd("sky-hostel-site-ld", {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    alternateName: SITE_ALT_NAME,
+    url: origin || canonicalUrl
+  });
 }
 

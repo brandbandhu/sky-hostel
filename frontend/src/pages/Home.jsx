@@ -23,6 +23,9 @@ const PHONE_NUMBER_LINK = contactInfo.phone.replace(/[^\d+]/g, "");
 const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
 const FACEBOOK_LINK = "https://www.facebook.com/profile.php?id=61588214504098";
 const REGISTRATION_FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSdu8fzkKVPr2MXzm_d7p04J7WF9z6CQbDbJV9V1QKr1iP9F6g/viewform?usp=header";
+const GOOGLE_MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`;
+const GOOGLE_REVIEWS_LINK =
+  "https://www.google.com/search?q=Sky+Hostels+Loni+Kalbhor+reviews";
 
 const properties = [
   {
@@ -81,11 +84,14 @@ const Home = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [collegeCourse, setCollegeCourse] = useState("");
   const [lookingFor, setLookingFor] = useState("");
   const [status, setStatus] = useState({ type: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
   const [popupFirstName, setPopupFirstName] = useState("");
+  const [popupEmail, setPopupEmail] = useState("");
   const [popupPhone, setPopupPhone] = useState("");
+  const [popupCollegeCourse, setPopupCollegeCourse] = useState("");
   const [popupLookingFor, setPopupLookingFor] = useState("");
   const [popupStatus, setPopupStatus] = useState({ type: "", message: "" });
   const [popupSubmitting, setPopupSubmitting] = useState(false);
@@ -96,7 +102,7 @@ const Home = () => {
 
   useEffect(() => {
     setSeoMeta({
-      title: "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor | Sky Hostels",
+      title: "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor | SKY HOSTEL",
       description:
         "Sky Hostels offers premium boys hostel accommodation near MIT ADT University College, Loni Kalbhor with Wi-Fi, food, security, and modern amenities.",
       keywords: getSeoKeywords([
@@ -208,7 +214,7 @@ const Home = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!firstName.trim() || !email.trim() || !phone.trim() || !lookingFor) {
+    if (!firstName.trim() || !phone.trim() || !email.trim() || !collegeCourse.trim() || !lookingFor) {
       setStatus({ type: "error", message: "Please fill all required fields." });
       return;
     }
@@ -220,6 +226,7 @@ const Home = () => {
       name: firstName.trim(),
       email: email.trim(),
       phone: phone.trim(),
+      collegeCourse: collegeCourse.trim(),
       lookingFor,
       source: "home_inline_form"
     });
@@ -232,8 +239,9 @@ const Home = () => {
 
     setStatus({ type: "success", message: "Thank you. Your request has been submitted successfully." });
     setFirstName("");
-    setEmail("");
     setPhone("");
+    setEmail("");
+    setCollegeCourse("");
     setLookingFor("");
     setSubmitting(false);
   };
@@ -241,7 +249,7 @@ const Home = () => {
   const handlePopupSubmit = async (event) => {
     event.preventDefault();
 
-    if (!popupFirstName.trim() || !popupPhone.trim() || !popupLookingFor) {
+    if (!popupFirstName.trim() || !popupPhone.trim() || !popupEmail.trim() || !popupCollegeCourse.trim() || !popupLookingFor) {
       setPopupStatus({ type: "error", message: "Please fill all required fields." });
       return;
     }
@@ -251,7 +259,9 @@ const Home = () => {
 
     const { error } = await submitLeadForm({
       name: popupFirstName.trim(),
+      email: popupEmail.trim(),
       phone: popupPhone.trim(),
+      collegeCourse: popupCollegeCourse.trim(),
       lookingFor: popupLookingFor,
       source: "home_visit_popup"
     });
@@ -264,7 +274,9 @@ const Home = () => {
 
     setPopupStatus({ type: "success", message: "Thank you. Your request has been submitted successfully." });
     setPopupFirstName("");
+    setPopupEmail("");
     setPopupPhone("");
+    setPopupCollegeCourse("");
     setPopupLookingFor("");
     setPopupSubmitting(false);
     setTimeout(() => setShowPopup(false), 700);
@@ -296,7 +308,7 @@ const Home = () => {
 
               <form className="visit-popup-form" onSubmit={handlePopupSubmit}>
                 <div className="field">
-                  <label htmlFor="popupFirstName">Full Name *</label>
+                  <label htmlFor="popupFirstName">Name of the Student *</label>
                   <input
                     id="popupFirstName"
                     type="text"
@@ -308,7 +320,7 @@ const Home = () => {
                 </div>
 
                 <div className="field">
-                  <label htmlFor="popupPhone">Phone *</label>
+                  <label htmlFor="popupPhone">Phone Number *</label>
                   <input
                     id="popupPhone"
                     type="tel"
@@ -321,7 +333,31 @@ const Home = () => {
                 </div>
 
                 <div className="field">
-                  <label htmlFor="popupLookingFor">Looking For</label>
+                  <label htmlFor="popupEmail">Email ID *</label>
+                  <input
+                    id="popupEmail"
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={popupEmail}
+                    onChange={(event) => setPopupEmail(event.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="field">
+                  <label htmlFor="popupCollegeCourse">College/Course *</label>
+                  <input
+                    id="popupCollegeCourse"
+                    type="text"
+                    placeholder="Enter college and course"
+                    value={popupCollegeCourse}
+                    onChange={(event) => setPopupCollegeCourse(event.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="field field-full">
+                  <label htmlFor="popupLookingFor">Looking for *</label>
                   <select
                     id="popupLookingFor"
                     value={popupLookingFor}
@@ -432,14 +468,14 @@ const Home = () => {
                   WhatsApp
                 </a>
               </div>
-              <p className="subtext">Only Few Seats Available – Hurry Up!</p>
+              <p className="subtext">Only a Few Seats Available - Hurry Up!</p>
 
               <div className="quote-card fade-up" id="quoteForm">
                 <h2>Want a quote? Just fill in the form and we'll take it from there.</h2>
 
                 <form id="leadForm" onSubmit={handleSubmit}>
                   <div className="field">
-                    <label htmlFor="firstName">Full Name</label>
+                    <label htmlFor="firstName">Name of the Student</label>
                     <input
                       id="firstName"
                       name="firstName"
@@ -452,7 +488,7 @@ const Home = () => {
                   </div>
 
                   <div className="field">
-                    <label htmlFor="phone">Phone</label>
+                    <label htmlFor="phone">Phone Number</label>
                     <input
                       id="phone"
                       name="phone"
@@ -466,7 +502,7 @@ const Home = () => {
                   </div>
 
                   <div className="field field-full">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email ID</label>
                     <input
                       id="email"
                       name="email"
@@ -479,7 +515,20 @@ const Home = () => {
                   </div>
 
                   <div className="field field-full">
-                    <label htmlFor="lookingFor">Looking For</label>
+                    <label htmlFor="collegeCourse">College/Course</label>
+                    <input
+                      id="collegeCourse"
+                      name="collegeCourse"
+                      type="text"
+                      placeholder="Enter your college and course"
+                      value={collegeCourse}
+                      onChange={(event) => setCollegeCourse(event.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="field field-full">
+                    <label htmlFor="lookingFor">Looking for</label>
                     <select
                       id="lookingFor"
                       name="lookingFor"
@@ -633,7 +682,7 @@ const Home = () => {
                 <a href="#quoteForm" className="facilities-feature-btn">
                   Explore Features
                 </a>
-                <p className="subtext">Only Few Seats Available – Hurry Up!</p>
+                <p className="subtext">Only a Few Seats Available - Hurry Up!</p>
               </article>
 
               <div className="facilities-tiles">
@@ -651,6 +700,36 @@ const Home = () => {
 
         <section className="hostel-cartoon-section">
           <div className="container">
+            <section className="trust-booking-strip fade-up" aria-label="Pricing booking and reviews">
+              <article className="trust-booking-card">
+                <h4>Pricing & Availability</h4>
+                <p>Seat plans and rent details are shared instantly on call or WhatsApp.</p>
+                <div className="trust-booking-actions">
+                  <a href={`tel:${PHONE_NUMBER_LINK}`} className="btn btn-outline small">Call for Pricing</a>
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-solid small">WhatsApp</a>
+                </div>
+              </article>
+
+              <article className="trust-booking-card">
+                <h4>Online Registration</h4>
+                <p>Reserve your seat quickly through our official registration form.</p>
+                <div className="trust-booking-actions">
+                  <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-solid small">
+                    Register Now
+                  </a>
+                </div>
+              </article>
+
+              <article className="trust-booking-card">
+                <h4>Reviews & Location</h4>
+                <p>Check public listing details and map location before booking.</p>
+                <div className="trust-booking-actions">
+                  <a href={GOOGLE_MAPS_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-outline small">Google Maps</a>
+                  <a href={GOOGLE_REVIEWS_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-solid small">Google Reviews</a>
+                </div>
+              </article>
+            </section>
+
             <div className="hostel-cartoon-copy fade-up">
               <h3>A Better Way to Stay and Study.</h3>
               <p>
@@ -762,6 +841,15 @@ const Home = () => {
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.19 2.23.19v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
                 </a>
+                <a
+                  href={GOOGLE_REVIEWS_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sky-home-footer-link"
+                  aria-label="Google Reviews"
+                >
+                  <span>Google Reviews</span>
+                </a>
               </div>
             </div>
               <div className="sky-home-footer-bottom">
@@ -796,5 +884,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
