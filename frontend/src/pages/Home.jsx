@@ -11,6 +11,7 @@ import hostelBuildingImage from "../assets/images/hostel building.jpeg";
 import roomImage from "../assets/images/carousel img/room.png";
 import secureEntryImage from "../assets/images/facilities/Secure Entry.png";
 import skyOasisImage from "../assets/images/sky Oasis.jpeg";
+import skyThreeImage from "../assets/images/Sky 3.jpeg";
 import studyAreaImage from "../assets/images/carousel img/study area.png";
 import studyAreaTwoImage from "../assets/images/carousel img/study area2.png";
 import washroomImage from "../assets/images/carousel img/washroom.png";
@@ -40,6 +41,13 @@ const properties = [
     title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
     image: hostelBuildingImage
+  },
+  {
+    slug: "sky-3",
+    distance: "300 metre distance from MIT ADT University, Rajbaug Campus",
+    title: "Sky 3 - Opposite Joynest, Pune Solapur Highway, Loni Kalbhor, Pune",
+    subtitle: "Boys Hostel",
+    image: skyThreeImage
   }
 ];
 
@@ -108,6 +116,7 @@ const Home = () => {
         "Hostel near MIT ADT University College",
         "Sky 1 boys hostel",
         "Sky 2 boys hostel",
+        "Sky 3 boys hostel",
         "hostel facilities near MIT ADT"
       ]),
       path: "/"

@@ -6,6 +6,7 @@ import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
 import hostelBuildingImage from "../assets/images/hostel building.jpeg";
 import skyOasisImage from "../assets/images/sky Oasis.jpeg";
+import skyThreeImage from "../assets/images/Sky 3.jpeg";
 import sky1BedImage from "../assets/images/Sky 1/bed.png";
 import sky1DiningImage from "../assets/images/Sky 1/dining.png";
 import sky1RoomImage from "../assets/images/Sky 1/room.png";
@@ -74,6 +75,27 @@ const propertyDetails = {
       "Clean and practical room setup"
     ],
     gallery: [
+      carouselRoomImage,
+      carouselStudyImage,
+      carouselDiningImage,
+      carouselWashroomImage
+    ]
+  },
+  "sky-3": {
+    title: "Sky 3 - Opposite Joynest, Pune Solapur Highway, Loni Kalbhor, Pune",
+    subtitle: "Boys Hostel",
+    distance: "300 metre distance from MIT ADT University, Rajbaug Campus",
+    image: skyThreeImage,
+    description:
+      "Sky 3 is a boys hostel wing located opposite Joynest on Pune Solapur Highway, Loni Kalbhor, Pune. It is planned for students who want a practical stay option with quick campus access and core daily amenities.",
+    highlights: [
+      "Wing distance: 300 metre distance from MIT ADT University, Rajbaug Campus",
+      "Location: Opposite Joynest, Pune Solapur Highway, Loni Kalbhor, Pune",
+      "Student-focused room setup and practical shared facilities",
+      "Safe managed environment with essential services"
+    ],
+    gallery: [
+      skyThreeImage,
       carouselRoomImage,
       carouselStudyImage,
       carouselDiningImage,

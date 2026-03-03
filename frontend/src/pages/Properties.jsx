@@ -8,6 +8,7 @@ import logoImage from "../assets/images/logo.png";
 import roomImage from "../assets/images/carousel img/room.png";
 import hostelBuildingImage from "../assets/images/hostel building.jpeg";
 import skyOasisImage from "../assets/images/sky Oasis.jpeg";
+import skyThreeImage from "../assets/images/Sky 3.jpeg";
 
 import "./Home.css";
 import "./Properties.css";
@@ -28,6 +29,13 @@ const properties = [
     title: "Sky 2 - Chintamani Park",
     subtitle: "Boys Hostel",
     image: hostelBuildingImage
+  },
+  {
+    slug: "sky-3",
+    distance: "300 metre distance from MIT ADT University, Rajbaug Campus",
+    title: "Sky 3 - Opposite Joynest, Pune Solapur Highway, Loni Kalbhor, Pune",
+    subtitle: "Boys Hostel",
+    image: skyThreeImage
   }
 ];
 
@@ -39,11 +47,12 @@ const Properties = () => {
     setSeoMeta({
       title: "Our Properties | MIT ADT University College Hostel Options | SKY HOSTEL",
       description:
-        "Explore Sky Hostels wing-wise properties near MIT ADT University, Rajbaug Campus: Sky 1 and Sky 2 - Chintamani Park for boys.",
+        "Explore Sky Hostels wing-wise properties near MIT ADT University, Rajbaug Campus: Sky 1, Sky 2 - Chintamani Park, and Sky 3 opposite Joynest for boys.",
       keywords: getSeoKeywords([
         "Our Properties Sky Hostels",
         "Sky 1 boys hostel",
         "Sky 2 Chintamani Park boys hostel",
+        "Sky 3 boys hostel",
         "Boys hostel near MIT ADT University Rajbaug Campus"
       ]),
       path: "/properties"
