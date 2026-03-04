@@ -16,9 +16,9 @@ import smtplib
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# Supabase configuration
-SUPABASE_URL = os.environ["SUPABASE_URL"].rstrip("/")
-SUPABASE_SERVICE_ROLE_KEY = os.environ["SUPABASE_SERVICE_ROLE_KEY"]
+# Supabase configuration (optional)
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
+SUPABASE_SERVICE_ROLE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "").strip()
 SUPABASE_TABLE = os.environ.get("SUPABASE_TABLE", "status_checks")
 SUPABASE_CONTACT_TABLE = os.environ.get("SUPABASE_CONTACT_TABLE", "contact_messages")
 NOTIFICATION_EMAIL_TO = os.environ.get("NOTIFICATION_EMAIL_TO", "skyhostels3@gmail.com")
@@ -38,6 +38,7 @@ app = FastAPI()
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
+STATUS_CHECKS_MEMORY: List["StatusCheck"] = []
 
 
 # Define Models
@@ -54,7 +55,11 @@ class StatusCheckCreate(BaseModel):
 
 
 async def insert_status_check(status_obj: StatusCheck) -> StatusCheck:
-    """Insert a status check row into Supabase."""
+    """Insert a status check row into Supabase when configured, else memory fallback."""
+    if not _is_supabase_enabled():
+        STATUS_CHECKS_MEMORY.append(status_obj)
+        return status_obj
+
     url = f"{SUPABASE_URL}/rest/v1/{SUPABASE_TABLE}"
     headers = {
         "apikey": SUPABASE_SERVICE_ROLE_KEY,
@@ -69,14 +74,21 @@ async def insert_status_check(status_obj: StatusCheck) -> StatusCheck:
     }
 
     async with httpx.AsyncClient() as client:
-        response = await client.post(url, headers=headers, json=payload, params={"select": "*"})
-        response.raise_for_status()
+        try:
+            response = await client.post(url, headers=headers, json=payload, params={"select": "*"})
+            response.raise_for_status()
+        except Exception as exc:
+            logger.warning("Supabase status insert failed, falling back to memory: %s", exc)
+            STATUS_CHECKS_MEMORY.append(status_obj)
 
     return status_obj
 
 
 async def fetch_status_checks() -> List[StatusCheck]:
-    """Fetch status checks from Supabase."""
+    """Fetch status checks from Supabase when configured, else memory fallback."""
+    if not _is_supabase_enabled():
+        return sorted(STATUS_CHECKS_MEMORY, key=lambda item: item.timestamp, reverse=True)
+
     url = f"{SUPABASE_URL}/rest/v1/{SUPABASE_TABLE}"
     headers = {
         "apikey": SUPABASE_SERVICE_ROLE_KEY,
@@ -88,8 +100,12 @@ async def fetch_status_checks() -> List[StatusCheck]:
     }
 
     async with httpx.AsyncClient() as client:
-        response = await client.get(url, headers=headers, params=params)
-        response.raise_for_status()
+        try:
+            response = await client.get(url, headers=headers, params=params)
+            response.raise_for_status()
+        except Exception as exc:
+            logger.warning("Supabase status fetch failed, returning memory fallback: %s", exc)
+            return sorted(STATUS_CHECKS_MEMORY, key=lambda item: item.timestamp, reverse=True)
 
     data = response.json()
     status_checks: List[StatusCheck] = []
@@ -133,8 +149,16 @@ class EnquiryCreate(BaseModel):
     source: Optional[str] = "website_form"
 
 
-async def insert_contact_message(contact: ContactMessage) -> None:
-    """Insert a contact message row into Supabase."""
+def _is_supabase_enabled() -> bool:
+    return bool(SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY)
+
+
+async def insert_contact_message(contact: ContactMessage) -> dict:
+    """Insert contact message into Supabase when configured, else skip DB storage gracefully."""
+    if not _is_supabase_enabled():
+        logger.info("Supabase storage skipped for enquiry: configuration is not set.")
+        return {"stored": False, "reason": "supabase_not_configured"}
+
     url = f"{SUPABASE_URL}/rest/v1/{SUPABASE_CONTACT_TABLE}"
     headers = {
         "apikey": SUPABASE_SERVICE_ROLE_KEY,
@@ -154,8 +178,13 @@ async def insert_contact_message(contact: ContactMessage) -> None:
     }
 
     async with httpx.AsyncClient() as client:
-        response = await client.post(url, headers=headers, json=payload)
-        response.raise_for_status()
+        try:
+            response = await client.post(url, headers=headers, json=payload)
+            response.raise_for_status()
+            return {"stored": True}
+        except Exception as exc:
+            logger.warning("Supabase contact insert failed, continuing without DB storage: %s", exc)
+            return {"stored": False, "reason": "supabase_write_failed"}
 
 
 def _clean(value: Optional[str]) -> str:
@@ -262,12 +291,13 @@ async def _send_whatsapp_notification(contact: ContactMessage) -> dict:
 
 async def _process_enquiry_submission(input_data: EnquiryCreate) -> dict:
     contact = _create_contact_message_from_enquiry(input_data)
-    await insert_contact_message(contact)
+    storage_result = await insert_contact_message(contact)
 
     email_result = _send_email_notification(contact)
     whatsapp_result = await _send_whatsapp_notification(contact)
     return {
         "success": True,
+        "storage": storage_result,
         "notifications": {
             "email": email_result,
             "whatsapp": whatsapp_result,
