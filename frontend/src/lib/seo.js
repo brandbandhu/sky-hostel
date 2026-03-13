@@ -1,13 +1,13 @@
 const SITE_NAME = "SKY HOSTEL";
 const SITE_ALT_NAME = "Sky Hostels";
 const LOGO_PATH = "/favicon.png";
-const DEFAULT_TITLE = "SKY HOSTEL | Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor";
+const DEFAULT_TITLE = "SKY HOSTEL | Premium Boys/Girls Hostel Near MIT ADT University College, Loni Kalbhor";
 
 const DEFAULT_DESCRIPTION =
-  "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor. Sky Hostels offers safe, comfortable, and student-friendly accommodation with modern amenities.";
+  "Premium Boys/Girls Hostel Near MIT ADT University College, Loni Kalbhor. Sky Hostels offers safe, comfortable, and student-friendly accommodation with modern amenities.";
 
 const BASE_KEYWORDS = [
-  "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor",
+  "Premium Boys/Girls Hostel Near MIT ADT University College, Loni Kalbhor",
   "MIT ADT University College hostel",
   "Hostel near MIT ADT University College",
   "Boys hostel near MIT ADT Loni Kalbhor",
@@ -106,4 +106,6 @@ export function setSeoMeta({
     url: origin || canonicalUrl
   });
 }
+
+
 

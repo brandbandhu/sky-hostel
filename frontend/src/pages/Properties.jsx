@@ -20,21 +20,21 @@ const properties = [
     slug: "sky-1",
     distance: "100 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 1 - Opposite Vishwaraj Hospital",
-    subtitle: "Boys Hostel",
+    subtitle: "Boys/Girls Hostel",
     image: skyOasisImage
   },
   {
     slug: "sky-2",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 2 - Chintamani Park",
-    subtitle: "Girls Hostel",
+    subtitle: "Boys/Girls Hostel",
     image: hostelBuildingImage
   },
   {
     slug: "sky-3",
     distance: "300 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 3 - Opposite Joynest, Pune Solapur Highway",
-    subtitle: "Boys Hostel",
+    subtitle: "Boys/Girls Hostel",
     image: skyThreeImage
   }
 ];
@@ -50,9 +50,9 @@ const Properties = () => {
         "Explore Sky Hostels wing-wise properties near MIT ADT University, Rajbaug Campus: Sky 1 (boys), Sky 2 - Chintamani Park (girls), and Sky 3 opposite Joynest (boys).",
       keywords: getSeoKeywords([
         "Our Properties Sky Hostels",
-        "Sky 1 boys hostel",
-        "Sky 2 Chintamani Park girls hostel",
-        "Sky 3 boys hostel",
+        "Sky 1 boys/girls hostel",
+        "Sky 2 Chintamani Park boys/girls hostel",
+        "Sky 3 boys/girls hostel",
         "Boys hostel near MIT ADT University Rajbaug Campus"
       ]),
       path: "/properties"
@@ -322,6 +322,8 @@ const Properties = () => {
 };
 
 export default Properties;
+
+
 
 
 

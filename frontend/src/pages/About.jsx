@@ -182,11 +182,11 @@ const About = () => {
     setSeoMeta({
       title: "About Us | SKY HOSTEL",
       description:
-        "Learn about Sky Hostels - trusted boys hostel near Vishwaraj Hospital focused on safe accommodation, cleanliness, discipline, and a study-friendly environment.",
+        "Learn about Sky Hostels - trusted boys/girls hostel near Vishwaraj Hospital focused on safe accommodation, cleanliness, discipline, and a study-friendly environment.",
       keywords: getSeoKeywords([
         "About Sky Hostels",
         "Boys hostel near Vishwaraj Hospital",
-        "Safe and secure boys hostel",
+        "Safe and secure boys/girls hostel",
         "Study friendly hostel Pune"
       ]),
       path: "/about"
@@ -650,3 +650,5 @@ const About = () => {
 };
 
 export default About;
+
+

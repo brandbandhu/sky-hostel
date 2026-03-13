@@ -38,13 +38,13 @@ const getHighlightIcon = (text) => {
 const propertyDetails = {
   "sky-1": {
     title: "Sky 1 - Opposite Vishwaraj Hospital",
-    subtitle: "Boys Hostel",
+    subtitle: "Boys/Girls Hostel",
     distance: "100 metre distance from MIT ADT University, Rajbaug Campus",
     image: skyOasisImage,
     description:
-      "Sky 1 is a premium boys hostel wing designed for students who want comfort, discipline, and convenience near MIT ADT University, Rajbaug Campus. The property is planned for daily student life with clean rooms, practical storage, study-friendly common areas, and dependable core services.",
+      "Sky 1 is a premium boys/girls hostel wing designed for students who want comfort, discipline, and convenience near MIT ADT University, Rajbaug Campus. The property is planned for daily student life with clean rooms, practical storage, study-friendly common areas, and dependable core services.",
     highlights: [
-      "Well-maintained boys hostel rooms with comfortable layouts",
+      "Well-maintained boys/girls hostel rooms with comfortable layouts",
       "High-speed Wi-Fi support for lectures, assignments, and online classes",
       "Daily housekeeping with consistent hygiene standards",
       "24 Hrs electricity and water availability for uninterrupted routine",
@@ -63,11 +63,11 @@ const propertyDetails = {
   },
   "sky-2": {
     title: "Sky 2 - Chintamani Park",
-    subtitle: "Girls Hostel",
+    subtitle: "Boys/Girls Hostel",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     image: hostelBuildingImage,
     description:
-      "Sky 2 - Chintamani Park is a girls hostel wing located very close to MIT ADT University, Rajbaug Campus. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
+      "Sky 2 - Chintamani Park is a boys/girls hostel wing located very close to MIT ADT University, Rajbaug Campus. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
     highlights: [
       "Wing distance: 10 metre distance from MIT ADT University, Rajbaug Campus",
       "Modern student-focused amenities",
@@ -83,11 +83,11 @@ const propertyDetails = {
   },
   "sky-3": {
     title: "Sky 3 - Opposite Joynest, Pune Solapur Highway",
-    subtitle: "Boys Hostel",
+    subtitle: "Boys/Girls Hostel",
     distance: "300 metre distance from MIT ADT University, Rajbaug Campus",
     image: skyThreeImage,
     description:
-      "Sky 3 is a boys hostel wing located opposite Joynest on Pune Solapur Highway. It is planned for students who want a practical stay option with quick campus access and core daily amenities.",
+      "Sky 3 is a boys/girls hostel wing located opposite Joynest on Pune Solapur Highway. It is planned for students who want a practical stay option with quick campus access and core daily amenities.",
     highlights: [
       "Wing distance: 300 metre distance from MIT ADT University, Rajbaug Campus",
       "Location: Opposite Joynest, Pune Solapur Highway",
@@ -424,6 +424,8 @@ const PropertyDetail = () => {
 };
 
 export default PropertyDetail;
+
+
 
 
 

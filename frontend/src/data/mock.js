@@ -9,7 +9,7 @@ export const contactInfo = {
 };
 
 export const heroContent = {
-  title: 'Premium Boys Hostel Near Vishwaraj Hospital, Pune',
+  title: 'Premium Boys/Girls Hostel Near Vishwaraj Hospital, Pune',
   subtitle: 'Affordable Double Sharing Rooms • 24x7 Security • High-Speed Wi-Fi',
   backgroundImage: 'https://images.unsplash.com/photo-1605848312612-bfc9e8b12d56?w=1920&q=80'
 };
@@ -170,3 +170,5 @@ export const mockContacts = [
     createdAt: '2025-01-03T09:15:00Z'
   }
 ];
+
+
