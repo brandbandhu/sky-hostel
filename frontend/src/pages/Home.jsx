@@ -32,7 +32,7 @@ const properties = [
     slug: "sky-1",
     distance: "100 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 1 - Opposite Vishwaraj Hospital",
-    subtitle: "Boys/Girls Hostel",
+    subtitle: "Boys Hostel",
     image: skyOasisImage
   },
   {
@@ -46,7 +46,7 @@ const properties = [
     slug: "sky-3",
     distance: "300 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 3 - Opposite Joynest, Pune Solapur Highway",
-    subtitle: "Boys/Girls Hostel",
+    subtitle: "Boys Hostel",
     image: skyThreeImage
   }
 ];
@@ -114,9 +114,9 @@ const Home = () => {
         "Premium Boys/Girls Hostel Near MIT ADT University College, Loni Kalbhor",
         "MIT ADT University College hostel",
         "Hostel near MIT ADT University College",
-        "Sky 1 boys/girls hostel",
+        "Sky 1 boys hostel",
         "Sky 2 boys/girls hostel",
-        "Sky 3 boys/girls hostel",
+        "Sky 3 boys hostel",
         "hostel facilities near MIT ADT"
       ]),
       path: "/"
