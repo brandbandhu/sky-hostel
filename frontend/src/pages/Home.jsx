@@ -39,13 +39,13 @@ const properties = [
     slug: "sky-2",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 2 - Chintamani Park",
-    subtitle: "Boys Hostel",
+    subtitle: "Girls Hostel",
     image: hostelBuildingImage
   },
   {
     slug: "sky-3",
     distance: "300 metre distance from MIT ADT University, Rajbaug Campus",
-    title: "Sky 3 - Opposite Joynest, Pune Solapur Highway, Loni Kalbhor, Pune",
+    title: "Sky 3 - Opposite Joynest, Pune Solapur Highway",
     subtitle: "Boys Hostel",
     image: skyThreeImage
   }
@@ -107,7 +107,7 @@ const Home = () => {
 
   useEffect(() => {
     setSeoMeta({
-      title: "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor | SKY HOSTEL",
+      title: "Sky Hostels",
       description:
         "Sky Hostels offers premium boys hostel accommodation near MIT ADT University College, Loni Kalbhor with Wi-Fi, food, security, and modern amenities.",
       keywords: getSeoKeywords([
@@ -343,7 +343,7 @@ const Home = () => {
                     <option value="" disabled>
                       Select an option
                     </option>
-                    <option value="Boys Hostel">Boys Hostel</option>
+                    <option value="Girls Hostel">Girls Hostel</option>
                   </select>
                 </div>
 
@@ -433,7 +433,7 @@ const Home = () => {
                 Accommodation.
               </h1>
               <p className="subtext">
-                Trusted Boys Hostel Near MIT ADT University, Rajbaug Campus with Safe &amp; Secure Stay
+                Trusted Girls Hostel Near MIT ADT University, Rajbaug Campus with Safe &amp; Secure Stay
               </p>
               <div className="cta-row">
                 <a href={`tel:${PHONE_NUMBER_LINK}`} className="btn btn-solid">
@@ -519,7 +519,7 @@ const Home = () => {
                       <option value="" disabled>
                         Select an option
                       </option>
-                      <option value="Boys Hostel">Boys Hostel</option>
+                      <option value="Girls Hostel">Girls Hostel</option>
                     </select>
                   </div>
 

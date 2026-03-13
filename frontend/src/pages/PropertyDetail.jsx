@@ -63,11 +63,11 @@ const propertyDetails = {
   },
   "sky-2": {
     title: "Sky 2 - Chintamani Park",
-    subtitle: "Boys Hostel",
+    subtitle: "Girls Hostel",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     image: hostelBuildingImage,
     description:
-      "Sky 2 - Chintamani Park is a boys hostel wing located very close to MIT ADT University, Rajbaug Campus. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
+      "Sky 2 - Chintamani Park is a girls hostel wing located very close to MIT ADT University, Rajbaug Campus. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
     highlights: [
       "Wing distance: 10 metre distance from MIT ADT University, Rajbaug Campus",
       "Modern student-focused amenities",
@@ -82,15 +82,15 @@ const propertyDetails = {
     ]
   },
   "sky-3": {
-    title: "Sky 3 - Opposite Joynest, Pune Solapur Highway, Loni Kalbhor, Pune",
+    title: "Sky 3 - Opposite Joynest, Pune Solapur Highway",
     subtitle: "Boys Hostel",
     distance: "300 metre distance from MIT ADT University, Rajbaug Campus",
     image: skyThreeImage,
     description:
-      "Sky 3 is a boys hostel wing located opposite Joynest on Pune Solapur Highway, Loni Kalbhor, Pune. It is planned for students who want a practical stay option with quick campus access and core daily amenities.",
+      "Sky 3 is a boys hostel wing located opposite Joynest on Pune Solapur Highway. It is planned for students who want a practical stay option with quick campus access and core daily amenities.",
     highlights: [
       "Wing distance: 300 metre distance from MIT ADT University, Rajbaug Campus",
-      "Location: Opposite Joynest, Pune Solapur Highway, Loni Kalbhor, Pune",
+      "Location: Opposite Joynest, Pune Solapur Highway",
       "Student-focused room setup and practical shared facilities",
       "Safe managed environment with essential services"
     ],
@@ -124,7 +124,7 @@ const PropertyDetail = () => {
       keywords: getSeoKeywords([
         `${property.title} ${property.subtitle}`,
         `Hostel near MIT ADT University College ${property.title}`,
-        "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor",
+        "Premium Hostel Near MIT ADT University College, Loni Kalbhor",
         "MIT ADT University College hostel"
       ]),
       path: `/properties/${slug}`

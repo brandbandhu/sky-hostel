@@ -15,6 +15,7 @@ import twoWheelerParkingImage from "../assets/images/facilities/Two-wheeler Park
 import washingMachineImage from "../assets/images/facilities/washing machine.png";
 import westernToiletsImage from "../assets/images/facilities/Western toilets.png";
 import wifiImage from "../assets/images/facilities/Wi-Fi.png";
+import acFacilitiesImage from "../assets/images/facilities/AC.png";
 import "./Home.css";
 import "./FacilitiesBenefits.css";
 const INSTAGRAM_LINK = "https://www.instagram.com/skyhostels4u/";
@@ -87,6 +88,12 @@ const facilityCards = [
     description:
       "Designated two-wheeler parking is available for residents with vehicles. It helps reduce daily commute hassle and adds convenience for routine travel.",
     image: twoWheelerParkingImage
+  },
+  {
+    title: "AC Facilities",
+    description:
+      "AC facility is available in selected rooms to keep the stay comfortable during warmer days. It helps residents rest, study, and recover better after long hours.",
+    image: acFacilitiesImage
   }
 ];
 
