@@ -109,7 +109,7 @@ const Home = () => {
     setSeoMeta({
       title: "Sky Hostels",
       description:
-        "Sky Hostels offers premium boys hostel accommodation near MIT ADT University College, Loni Kalbhor with Wi-Fi, food, security, and modern amenities.",
+        "Sky Hostels offers premium girls hostel accommodation near MIT ADT University College, Loni Kalbhor with Wi-Fi, food, security, and modern amenities.",
       keywords: getSeoKeywords([
         "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor",
         "MIT ADT University College hostel",
