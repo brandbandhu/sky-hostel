@@ -63,11 +63,11 @@ const propertyDetails = {
   },
   "sky-2": {
     title: "Sky 2 - Chintamani Park",
-    subtitle: "Boys/Girls Hostel",
+    subtitle: "Girls Hostel",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     image: hostelBuildingImage,
     description:
-      "Sky 2 - Chintamani Park is a boys/girls hostel wing located very close to MIT ADT University, Rajbaug Campus. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
+      "Sky 2 - Chintamani Park is a girls hostel wing located very close to MIT ADT University, Rajbaug Campus. It is designed for convenient access, safe living, and a focused routine with essential daily amenities.",
     highlights: [
       "Wing distance: 10 metre distance from MIT ADT University, Rajbaug Campus",
       "Modern student-focused amenities",

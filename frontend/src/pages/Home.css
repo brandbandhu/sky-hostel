@@ -1044,7 +1044,7 @@
 
 .sky-home .trust-booking-strip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 34px;
 }
@@ -1091,6 +1091,94 @@
   font-size: clamp(1rem, 1.35vw, 1.42rem);
   line-height: 1.55;
   max-width: 68ch;
+}
+
+.sky-home .location-cards-section {
+  padding: 46px 0 60px;
+  background: #ffffff;
+}
+
+.sky-home .location-cards-head {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.sky-home .location-cards-head h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: clamp(1.65rem, 2.7vw, 2.5rem);
+}
+
+.sky-home .location-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.sky-home .location-card {
+  background: #0b3657;
+  border-radius: 18px;
+  padding: 16px 18px 18px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 0 16px 30px rgba(2, 6, 23, 0.24);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  aspect-ratio: 5 / 4;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.sky-home .location-card-tag {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  color: rgba(224, 242, 254, 0.7);
+  font-weight: 600;
+}
+
+.sky-home .location-card h3 {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.3vw, 1.35rem);
+  color: #f8fafc;
+}
+
+.sky-home .location-card p {
+  margin: 0;
+  color: rgba(224, 242, 254, 0.85);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.sky-home .location-card .btn {
+  margin: 6px auto 0;
+}
+
+.sky-home .location-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(56, 189, 248, 0.22), transparent 38%),
+    radial-gradient(circle at 88% 88%, rgba(14, 165, 233, 0.25), transparent 42%);
+  pointer-events: none;
+}
+
+.sky-home .location-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.sky-home .location-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 22px 40px rgba(2, 6, 23, 0.38);
 }
 
 /* ---------- 3D objects scene (real CSS 3D) ---------- */
@@ -1883,6 +1971,15 @@
   .sky-home .trust-booking-strip {
     grid-template-columns: 1fr 1fr;
   }
+
+  .sky-home .location-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sky-home .location-card {
+    aspect-ratio: auto;
+    min-height: 260px;
+  }
 }
 
 
@@ -2027,6 +2124,10 @@
   .sky-home .properties-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .sky-home .location-cards-section {
+    padding: 46px 0 58px;
   }
 
   .sky-home .property-card {

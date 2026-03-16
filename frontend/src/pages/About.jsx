@@ -316,7 +316,7 @@ const About = () => {
             <div className="director-message-content">
               <h2 className="director-message-heading about-sky-hostels-heading">ABOUT SKY HOSTELS</h2>
               <p>
-                Sky Hostels PG is a premium boy&apos;s hostel located on Loni Kalbhor, Pune Solapur
+                Sky Hostels PG is a premium boys and girls hostel located on Loni Kalbhor, Pune Solapur
                 Highway, offering easy connectivity and a peaceful environment. We ensure luxury
                 living with modern facilities, nutritious meals, and appropriate discipline.
               </p>

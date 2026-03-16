@@ -39,7 +39,7 @@ const properties = [
     slug: "sky-2",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 2 - Chintamani Park",
-    subtitle: "Boys/Girls Hostel",
+    subtitle: "Girls Hostel",
     image: hostelBuildingImage
   },
   {
@@ -115,7 +115,7 @@ const Home = () => {
         "MIT ADT University College hostel",
         "Hostel near MIT ADT University College",
         "Sky 1 boys hostel",
-        "Sky 2 boys/girls hostel",
+        "Sky 2 girls hostel",
         "Sky 3 boys hostel",
         "hostel facilities near MIT ADT"
       ]),
@@ -434,7 +434,7 @@ const Home = () => {
                 Accommodation.
               </h1>
               <p className="subtext">
-                Trusted Boys/Girls Hostel Near MIT ADT University, Rajbaug Campus with Safe &amp; Secure Stay
+                Trusted Girls Hostel Near MIT ADT University, Rajbaug Campus with Safe &amp; Secure Stay
               </p>
               <div className="cta-row">
                 <a href={`tel:${PHONE_NUMBER_LINK}`} className="btn btn-solid">
@@ -680,6 +680,45 @@ const Home = () => {
           </div>
         </section>
 
+        <section className="location-cards-section fade-up" aria-label="Hostel locations">
+          <div className="container">
+            <div className="location-cards-head">
+              <h3>Find Us</h3>
+            </div>
+            <div className="location-cards-grid">
+              <article className="location-card">
+                <p className="location-card-tag">Sky Hostels 1</p>
+                <h3>Boys Hostel</h3>
+                <p>Opp. Vishwaraj Hospital</p>
+                <p>{contactInfo.address}</p>
+                <a
+                  href="https://www.google.com/maps/place/18%C2%B029'16.9%22N+74%C2%B001'20.2%22E/@18.4880186,74.0196994,17z/data=!3m1!4b1!4m4!3m3!8m2!3d18.4880186!4d74.0222743?hl=en&entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-solid small"
+                >
+                  Google Maps
+                </a>
+              </article>
+
+              <article className="location-card">
+                <p className="location-card-tag">Sky Hostels 2</p>
+                <h3>Girls Hostel</h3>
+                <p>Chintamani Park</p>
+                <p>{contactInfo.address2}</p>
+                <a
+                  href="https://maps.app.goo.gl/ptoekxFAR3Au5jzB6?g_st=iw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-solid small"
+                >
+                  Google Maps
+                </a>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section className="hostel-cartoon-section">
           <div className="container">
             <section className="trust-booking-strip fade-up" aria-label="Pricing booking and reviews">
@@ -699,15 +738,6 @@ const Home = () => {
                   <a href={REGISTRATION_FORM_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-solid small">
                     Register Now
                   </a>
-                </div>
-              </article>
-
-              <article className="trust-booking-card">
-                <h4>Reviews & Location</h4>
-                <p>Check public listing details and map location before booking.</p>
-                <div className="trust-booking-actions">
-                  <a href={GOOGLE_MAPS_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-outline small">Google Maps</a>
-                  <a href={GOOGLE_REVIEWS_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-solid small">Google Reviews</a>
                 </div>
               </article>
             </section>
@@ -866,5 +896,7 @@ const Home = () => {
 };
 
 export default Home;
+
+
 
 
