@@ -1574,10 +1574,22 @@
   color: #7dd3fc !important;
 }
 
-.sky-home .sky-home-footer-social {
+.sky-home .sky-home-footer-social,
+.sky-home .sky-home-footer-link {
   display: inline-flex;
+  align-items: center;
   color: rgba(224, 242, 254, 0.9);
+}
+
+.sky-home .sky-home-footer-socials-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-top: 4px;
+}
+
+.sky-home .sky-home-footer-social {
+  margin-top: 0;
 }
 
 .sky-home .sky-home-footer-social + .sky-home-footer-social {
@@ -1589,12 +1601,13 @@
 }
 
 .sky-home .sky-home-footer-link {
-  display: inline-flex;
+  margin-left: 0;
   margin-top: 10px;
   color: #7dd3fc;
   text-decoration: none;
   border-bottom: 1px solid rgba(125, 211, 252, 0.45);
   font-size: 0.9rem;
+  line-height: 1;
 }
 
 .sky-home .sky-home-footer-link:hover {

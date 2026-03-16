@@ -835,24 +835,26 @@ const Home = () => {
               </div>
               <div className="sky-home-footer-col">
                 <h4 className="sky-home-footer-heading">Socials</h4>
-                <a
-                  href={INSTAGRAM_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="sky-home-footer-social"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={28} />
-                </a>
-                <a
-                  href={FACEBOOK_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="sky-home-footer-social"
-                  aria-label="Facebook"
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.19 2.23.19v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
-                </a>
+                <div className="sky-home-footer-socials-row">
+                  <a
+                    href={INSTAGRAM_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sky-home-footer-social"
+                    aria-label="Instagram"
+                  >
+                    <Instagram size={28} />
+                  </a>
+                  <a
+                    href={FACEBOOK_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sky-home-footer-social"
+                    aria-label="Facebook"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.19 2.23.19v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
+                  </a>
+                </div>
                 <a
                   href={GOOGLE_REVIEWS_LINK}
                   target="_blank"
