@@ -434,7 +434,7 @@ const Home = () => {
                 Accommodation.
               </h1>
               <p className="subtext">
-                Trusted Girls Hostel Near MIT ADT University, Rajbaug Campus with Safe &amp; Secure Stay
+                Trusted Boys/Girls Hostel Near MIT ADT University, Rajbaug Campus with Safe &amp; Secure Stay
               </p>
               <div className="cta-row">
                 <a href={`tel:${PHONE_NUMBER_LINK}`} className="btn btn-solid">
