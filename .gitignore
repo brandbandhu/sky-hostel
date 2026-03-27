@@ -84,3 +84,7 @@ backend/.env
 frontend/.env
 frontend/*.log
 backend/*.log
+backend-dev.log
+backend-dev.err.log
+frontend-dev-run.log
+frontend-dev-run.err.log
