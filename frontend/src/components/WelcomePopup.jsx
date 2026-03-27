@@ -18,6 +18,8 @@ const WelcomePopup = () => {
     setOpen(true);
   }, []);
 
+  const sanitizePhone = (value) => value.replace(/\D/g, "").slice(0, 10);
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="max-w-3xl p-0 overflow-hidden bg-white sm:rounded-3xl">
@@ -111,9 +113,13 @@ const WelcomePopup = () => {
                   required
                   className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
                   placeholder="+91 00000 00000"
+                  inputMode="numeric"
+                  pattern="\\d{10}"
+                  minLength={10}
+                  maxLength={10}
                   value={formData.phone}
                   onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, phone: e.target.value }))
+                    setFormData((prev) => ({ ...prev, phone: sanitizePhone(e.target.value) }))
                   }
                 />
               </div>

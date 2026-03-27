@@ -105,6 +105,8 @@ const Home = () => {
   const [creativeIndex, setCreativeIndex] = useState(0);
   const [isHeroVideoReady, setIsHeroVideoReady] = useState(false);
 
+  const sanitizePhone = (value) => value.replace(/\D/g, "").slice(0, 10);
+
   useEffect(() => {
     setSeoMeta({
       title: "Sky Hostels",
@@ -301,9 +303,12 @@ const Home = () => {
                     id="popupPhone"
                     type="tel"
                     placeholder="0000 0000 00"
-                    pattern="[0-9+\\-\\s]{8,15}"
+                    inputMode="numeric"
+                    pattern="\\d{10}"
+                    minLength={10}
+                    maxLength={10}
                     value={popupPhone}
-                    onChange={(event) => setPopupPhone(event.target.value)}
+                    onChange={(event) => setPopupPhone(sanitizePhone(event.target.value))}
                     required
                   />
                 </div>
@@ -470,16 +475,19 @@ const Home = () => {
 
                   <div className="field">
                     <label htmlFor="phone">Phone Number</label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="Enter your phone number"
-                      pattern="[0-9+\\-\\s]{8,15}"
-                      value={phone}
-                      onChange={(event) => setPhone(event.target.value)}
-                      required
-                    />
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Enter your phone number"
+                    inputMode="numeric"
+                    pattern="\\d{10}"
+                    minLength={10}
+                    maxLength={10}
+                    value={phone}
+                    onChange={(event) => setPhone(sanitizePhone(event.target.value))}
+                    required
+                  />
                   </div>
 
                   <div className="field field-full">

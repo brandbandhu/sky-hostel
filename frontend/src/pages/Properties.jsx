@@ -153,8 +153,14 @@ const Properties = () => {
                   id="propertyPhoneNumber"
                   name="phoneNumber"
                   type="tel"
-                  pattern="[0-9+\\-\\s]{8,15}"
+                  inputMode="numeric"
+                  pattern="\\d{10}"
+                  minLength={10}
+                  maxLength={10}
                   placeholder="Enter phone number"
+                  onInput={(event) => {
+                    event.target.value = event.target.value.replace(/\D/g, "").slice(0, 10);
+                  }}
                   required
                 />
               </div>
