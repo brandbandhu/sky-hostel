@@ -278,8 +278,8 @@ const Home = () => {
 
             <div className="visit-popup-media">
               <img
-                src={hostelBuildingImage}
-                alt="Sky Hostels"
+                src={studySpaceImage}
+                alt="Sky Hostel study space"
               />
             </div>
 
