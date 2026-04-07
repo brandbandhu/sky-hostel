@@ -14,6 +14,7 @@ import skyOasisImage from "../assets/images/sky Oasis.jpeg";
 import skyThreeImage from "../assets/images/Sky 3.jpeg";
 import studyAreaImage from "../assets/images/carousel img/study area.png";
 import studyAreaTwoImage from "../assets/images/carousel img/study area2.png";
+import studySpaceImage from "../assets/images/carousel img/study space.png";
 import washroomImage from "../assets/images/carousel img/washroom.png";
 import logoImage from "../assets/images/logo.png";
 import "./Home.css";
@@ -56,6 +57,7 @@ const creativeRooms = [
   diningAreaImage,
   studyAreaImage,
   studyAreaTwoImage,
+  studySpaceImage,
   roomImage,
   washroomImage
 ];
@@ -544,8 +546,8 @@ const Home = () => {
             <div className="hero-media fade-up">
               <div className="hero-image-stack">
                 <img
-                  src={roomImage}
-                  alt="Sky Hostel room view"
+                  src={studySpaceImage}
+                  alt="Sky Hostel study space"
                 />
               </div>
             </div>
@@ -906,7 +908,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
-
