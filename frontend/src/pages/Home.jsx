@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Menu, X } from "lucide-react";
 import { getFriendlySupabaseError, submitLeadForm } from "../lib/formSubmissions";
+import { getLeadFormError, sanitizePhone } from "../lib/leadFormValidation";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import cloudVideo from "../cloud video.mp4";
@@ -107,8 +108,6 @@ const Home = () => {
   const [creativeIndex, setCreativeIndex] = useState(0);
   const [isHeroVideoReady, setIsHeroVideoReady] = useState(false);
 
-  const sanitizePhone = (value) => value.replace(/\D/g, "").slice(0, 10);
-
   useEffect(() => {
     setSeoMeta({
       title: "Sky Hostels",
@@ -194,8 +193,16 @@ const Home = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!firstName.trim() || !phone.trim() || !email.trim() || !collegeCourse.trim() || !lookingFor) {
-      setStatus({ type: "error", message: "Please fill all required fields." });
+    const validationError = getLeadFormError({
+      name: firstName,
+      email,
+      phone,
+      collegeCourse,
+      lookingFor
+    });
+
+    if (validationError) {
+      setStatus({ type: "error", message: validationError });
       return;
     }
 
@@ -229,8 +236,16 @@ const Home = () => {
   const handlePopupSubmit = async (event) => {
     event.preventDefault();
 
-    if (!popupFirstName.trim() || !popupPhone.trim() || !popupEmail.trim() || !popupCollegeCourse.trim() || !popupLookingFor) {
-      setPopupStatus({ type: "error", message: "Please fill all required fields." });
+    const validationError = getLeadFormError({
+      name: popupFirstName,
+      email: popupEmail,
+      phone: popupPhone,
+      collegeCourse: popupCollegeCourse,
+      lookingFor: popupLookingFor
+    });
+
+    if (validationError) {
+      setPopupStatus({ type: "error", message: validationError });
       return;
     }
 
@@ -286,7 +301,7 @@ const Home = () => {
             <div className="visit-popup-form-wrap">
               <h2>Want a quote? Just fill in the form and we&apos;ll take it from there.</h2>
 
-              <form className="visit-popup-form" onSubmit={handlePopupSubmit}>
+              <form className="visit-popup-form" onSubmit={handlePopupSubmit} noValidate>
                 <div className="field">
                   <label htmlFor="popupFirstName">Name of the Student *</label>
                   <input
@@ -303,14 +318,18 @@ const Home = () => {
                   <label htmlFor="popupPhone">Phone Number *</label>
                   <input
                     id="popupPhone"
-                    type="tel"
-                    placeholder="0000 0000 00"
+                    type="text"
+                    name="phone"
+                    autoComplete="tel-national"
+                    placeholder="Enter 10-digit phone number"
                     inputMode="numeric"
-                    pattern="\\d{10}"
-                    minLength={10}
                     maxLength={10}
                     value={popupPhone}
-                    onChange={(event) => setPopupPhone(sanitizePhone(event.target.value))}
+                    onChange={(event) => {
+                      setPopupPhone(sanitizePhone(event.target.value));
+                      if (popupStatus.message) setPopupStatus({ type: "", message: "" });
+                    }}
+                    aria-invalid={popupStatus.type === "error" && popupStatus.message.toLowerCase().includes("phone")}
                     required
                   />
                 </div>
@@ -461,7 +480,7 @@ const Home = () => {
               <div className="quote-card fade-up" id="quoteForm">
                 <h2>Want a quote? Just fill in the form and we'll take it from there.</h2>
 
-                <form id="leadForm" onSubmit={handleSubmit}>
+                <form id="leadForm" onSubmit={handleSubmit} noValidate>
                   <div className="field">
                     <label htmlFor="firstName">Name of the Student</label>
                     <input
@@ -480,14 +499,17 @@ const Home = () => {
                   <input
                     id="phone"
                     name="phone"
-                    type="tel"
-                    placeholder="Enter your phone number"
+                    type="text"
+                    autoComplete="tel-national"
+                    placeholder="Enter 10-digit phone number"
                     inputMode="numeric"
-                    pattern="\\d{10}"
-                    minLength={10}
                     maxLength={10}
                     value={phone}
-                    onChange={(event) => setPhone(sanitizePhone(event.target.value))}
+                    onChange={(event) => {
+                      setPhone(sanitizePhone(event.target.value));
+                      if (status.message) setStatus({ type: "", message: "" });
+                    }}
+                    aria-invalid={status.type === "error" && status.message.toLowerCase().includes("phone")}
                     required
                   />
                   </div>

@@ -78,6 +78,32 @@ if (config.enableVisualEdits && babelMetadataPlugin) {
 }
 
 webpackConfig.devServer = (devServerConfig) => {
+  const legacyBeforeSetup = devServerConfig.onBeforeSetupMiddleware;
+  const legacyAfterSetup = devServerConfig.onAfterSetupMiddleware;
+
+  if (legacyBeforeSetup || legacyAfterSetup) {
+    const originalSetupMiddlewares = devServerConfig.setupMiddlewares;
+
+    devServerConfig.setupMiddlewares = (middlewares, devServer) => {
+      if (legacyBeforeSetup) {
+        legacyBeforeSetup(devServer);
+      }
+
+      if (originalSetupMiddlewares) {
+        middlewares = originalSetupMiddlewares(middlewares, devServer);
+      }
+
+      if (legacyAfterSetup) {
+        legacyAfterSetup(devServer);
+      }
+
+      return middlewares;
+    };
+
+    delete devServerConfig.onBeforeSetupMiddleware;
+    delete devServerConfig.onAfterSetupMiddleware;
+  }
+
   // Apply visual edits dev server setup only if enabled
   if (config.enableVisualEdits && setupDevServer) {
     devServerConfig = setupDevServer(devServerConfig);

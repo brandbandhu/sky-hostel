@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
 import { contactInfo } from "../data/mock";
 import { getFriendlySupabaseError, submitContactForm } from "../lib/formSubmissions";
+import { getLeadFormError, sanitizePhone } from "../lib/leadFormValidation";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import logoImage from "../assets/images/logo.png";
 import roomImage from "../assets/images/carousel img/room.png";
@@ -72,6 +73,19 @@ const Properties = () => {
     const collegeCourse = String(formData.get("collegeCourse") || "").trim();
     const lookingFor = String(formData.get("lookingFor") || "").trim();
     const message = `Looking for: ${lookingFor}\nCollege/Course: ${collegeCourse}`;
+    const validationError = getLeadFormError({
+      name: studentName,
+      email,
+      phone: phoneNumber,
+      collegeCourse,
+      lookingFor
+    });
+
+    if (validationError) {
+      setStatus({ type: "error", message: validationError });
+      setSubmitting(false);
+      return;
+    }
 
     const { error } = await submitContactForm({
       name: studentName,
@@ -141,7 +155,7 @@ const Properties = () => {
       <section className="properties-contact-section">
         <div className="properties-contact-wrap">
           <h2>Get in Touch</h2>
-          <form className="properties-contact-form" onSubmit={handleContactSubmit}>
+          <form className="properties-contact-form" onSubmit={handleContactSubmit} noValidate>
             <div className="properties-contact-grid">
               <div className="properties-field">
                 <label htmlFor="propertyStudentName">Name of the Students</label>
@@ -152,14 +166,13 @@ const Properties = () => {
                 <input
                   id="propertyPhoneNumber"
                   name="phoneNumber"
-                  type="tel"
+                  type="text"
+                  autoComplete="tel-national"
                   inputMode="numeric"
-                  pattern="\\d{10}"
-                  minLength={10}
                   maxLength={10}
-                  placeholder="Enter phone number"
+                  placeholder="Enter 10-digit phone number"
                   onInput={(event) => {
-                    event.target.value = event.target.value.replace(/\D/g, "").slice(0, 10);
+                    event.target.value = sanitizePhone(event.target.value);
                   }}
                   required
                 />
@@ -328,7 +341,6 @@ const Properties = () => {
 };
 
 export default Properties;
-
 
 
 

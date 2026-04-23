@@ -1,5 +1,3 @@
-import { sendEnquiry } from "../api/client";
-
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const WEB3FORMS_ACCESS_KEY =
   process.env.REACT_APP_WEB3FORMS_ACCESS_KEY || "4ebe6032-6529-4ffa-a83d-37b1c39755d7";
@@ -75,7 +73,7 @@ export const getFriendlySupabaseError = (error) => {
     return "Form service is updating. Please try again in a moment.";
   }
   if (message.toLowerCase().includes("failed to fetch")) {
-    return "Server is unreachable. Please check backend URL and internet connectivity.";
+    return "Network error. Please check your internet connection and try again.";
   }
   return message;
 };
@@ -113,18 +111,6 @@ export const submitLeadForm = async ({ name, email, phone, lookingFor, collegeCo
       source
     });
 
-    // Keep backend submission as best effort for DB storage when available.
-    sendEnquiry({
-      name,
-      email: email || DEFAULT_EMAIL,
-      phone: phone || "",
-      looking_for: lookingFor || "",
-      college_course: collegeCourse || "",
-      subject,
-      message,
-      source
-    }).catch(() => {});
-
     return { error: null };
   } catch (error) {
     return { error: normalizeError(error) };
@@ -158,17 +144,6 @@ export const submitContactForm = async ({ name, email, phone, subject, message, 
       message,
       source
     });
-
-    // Keep backend submission as best effort for DB storage when available.
-    sendEnquiry({
-      name,
-      email,
-      phone,
-      subject,
-      message,
-      looking_for: lookingFor || "",
-      source
-    }).catch(() => {});
 
     return { error: null };
   } catch (error) {

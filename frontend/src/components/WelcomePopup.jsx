@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "./ui/dialog";
 import { toast } from "sonner";
 import { getFriendlySupabaseError, submitContactForm } from "../lib/formSubmissions";
+import { getLeadFormError, sanitizePhone } from "../lib/leadFormValidation";
 
 const WelcomePopup = () => {
   const [open, setOpen] = useState(false);
@@ -17,8 +18,6 @@ const WelcomePopup = () => {
     // Always show the popup when the site is loaded or refreshed
     setOpen(true);
   }, []);
-
-  const sanitizePhone = (value) => value.replace(/\D/g, "").slice(0, 10);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -56,8 +55,22 @@ const WelcomePopup = () => {
 
             <form
               className="space-y-4"
+              noValidate
               onSubmit={async (e) => {
                 e.preventDefault();
+                const validationError = getLeadFormError({
+                  name: formData.name,
+                  email: formData.email,
+                  phone: formData.phone,
+                  collegeCourse: formData.collegeCourse,
+                  lookingFor: formData.lookingFor
+                });
+
+                if (validationError) {
+                  toast.error(validationError);
+                  return;
+                }
+
                 try {
                   const { error } = await submitContactForm({
                     name: formData.name,
@@ -108,14 +121,13 @@ const WelcomePopup = () => {
                   Phone Number *
                 </label>
                 <input
-                  type="tel"
+                  type="text"
                   name="phone"
                   required
                   className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-                  placeholder="+91 00000 00000"
+                  placeholder="Enter 10-digit phone number"
+                  autoComplete="tel-national"
                   inputMode="numeric"
-                  pattern="\\d{10}"
-                  minLength={10}
                   maxLength={10}
                   value={formData.phone}
                   onChange={(e) =>
