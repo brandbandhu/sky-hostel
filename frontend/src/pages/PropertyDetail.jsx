@@ -7,15 +7,14 @@ import logoImage from "../assets/images/logo.png";
 import hostelBuildingImage from "../assets/images/hostel building.jpeg";
 import skyOasisImage from "../assets/images/sky Oasis.jpeg";
 import skyThreeImage from "../assets/images/Sky 3.jpeg";
+import sky1AcImage from "../assets/images/Sky 1/ac.png";
 import sky1BedImage from "../assets/images/Sky 1/bed.png";
-import sky1DiningImage from "../assets/images/Sky 1/dining.png";
+import sky1CupboardsImage from "../assets/images/Sky 1/cupboards.png";
+import sky1MirrorAreaImage from "../assets/images/Sky 1/mirror area.png";
 import sky1RoomImage from "../assets/images/Sky 1/room.png";
 import sky1StudyAreaImage from "../assets/images/Sky 1/study area.png";
+import sky1StudyAreaTwoImage from "../assets/images/Sky 1/study area2.png";
 import sky1WashroomImage from "../assets/images/Sky 1/washroom.png";
-import carouselDiningImage from "../assets/images/carousel img/Dining.png";
-import carouselRoomImage from "../assets/images/carousel img/room1.png";
-import carouselStudyImage from "../assets/images/carousel img/study area2.png";
-import carouselWashroomImage from "../assets/images/carousel img/washroom1.png";
 
 import "./Home.css";
 import "./PropertyDetail.css";
@@ -35,6 +34,17 @@ const getHighlightIcon = (text) => {
   return BedDouble;
 };
 
+const skyOneGalleryImages = [
+  sky1RoomImage,
+  sky1BedImage,
+  sky1StudyAreaImage,
+  sky1StudyAreaTwoImage,
+  sky1CupboardsImage,
+  sky1MirrorAreaImage,
+  sky1AcImage,
+  sky1WashroomImage
+];
+
 const propertyDetails = {
   "sky-1": {
     title: "Sky 1 - Opposite Vishwaraj Hospital",
@@ -53,13 +63,7 @@ const propertyDetails = {
       "24 Hrs CCTV and security monitoring for resident safety",
       "Wing distance: 100 metre distance from MIT ADT University, Rajbaug Campus"
     ],
-    gallery: [
-      sky1RoomImage,
-      sky1BedImage,
-      sky1StudyAreaImage,
-      sky1DiningImage,
-      sky1WashroomImage
-    ]
+    gallery: skyOneGalleryImages
   },
   "sky-2": {
     title: "Sky 2 - Chintamani Park",
@@ -74,12 +78,7 @@ const propertyDetails = {
       "Safe and secure managed environment",
       "Clean and practical room setup"
     ],
-    gallery: [
-      carouselRoomImage,
-      carouselStudyImage,
-      carouselDiningImage,
-      carouselWashroomImage
-    ]
+    gallery: skyOneGalleryImages
   },
   "sky-3": {
     title: "Sky 3 - Opposite Joynest, Pune Solapur Highway",
@@ -94,13 +93,7 @@ const propertyDetails = {
       "Student-focused room setup and practical shared facilities",
       "Safe managed environment with essential services"
     ],
-    gallery: [
-      skyThreeImage,
-      carouselRoomImage,
-      carouselStudyImage,
-      carouselDiningImage,
-      carouselWashroomImage
-    ]
+    gallery: skyOneGalleryImages
   }
 };
 
@@ -424,8 +417,5 @@ const PropertyDetail = () => {
 };
 
 export default PropertyDetail;
-
-
-
 
 

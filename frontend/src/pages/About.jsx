@@ -5,8 +5,8 @@ import { contactInfo } from "../data/mock";
 import { setSeoMeta, getSeoKeywords } from "../lib/seo";
 import directorsMsgImage from "../assets/images/directors msg .png";
 import logoImage from "../assets/images/logo.png";
-import bedroomImage from "../assets/images/bedroom.jpeg";
-import diningImage from "../assets/images/dining.jpeg";
+import bedroomImage from "../assets/images/carousel img/bed area.png";
+import diningImage from "../assets/images/carousel img/room img.png";
 import water24HoursImage from "../assets/images/SHARED & COMMON FACILITIES/24 Hours Water Supply.png";
 import cctvAndGeyserSolarImage from "../assets/images/SHARED & COMMON FACILITIES/CCTV Camera and Geyser_Solar.png";
 import diningHallImage from "../assets/images/SHARED & COMMON FACILITIES/Dining Hall.png";
@@ -650,5 +650,4 @@ const About = () => {
 };
 
 export default About;
-
 

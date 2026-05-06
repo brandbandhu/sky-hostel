@@ -6,17 +6,36 @@ import { getLeadFormError, sanitizePhone } from "../lib/leadFormValidation";
 import { contactInfo } from "../data/mock";
 import { getSeoKeywords, setSeoMeta } from "../lib/seo";
 import cloudVideo from "../cloud video.mp4";
-import bedroomAreaImage from "../assets/images/carousel img/bedroom area.png";
-import diningAreaImage from "../assets/images/carousel img/Dining.png";
+import acImage from "../assets/images/carousel img/ac.png";
+import basinImage from "../assets/images/carousel img/basin.png";
+import bedAreaImage from "../assets/images/carousel img/bed area.png";
+import bedImage from "../assets/images/carousel img/bed.png";
+import cupboardsImage from "../assets/images/carousel img/cupboards.png";
+import curtinsImage from "../assets/images/carousel img/curtins.png";
+import doorAreaImage from "../assets/images/carousel img/door area.png";
+import doorMatImage from "../assets/images/carousel img/door mat.png";
+import gyserImage from "../assets/images/carousel img/gyser.png";
 import hostelBuildingImage from "../assets/images/hostel building.jpeg";
+import imgOneImage from "../assets/images/carousel img/img1.png";
+import imgTwoImage from "../assets/images/carousel img/img2.png";
+import lockCupboardsImage from "../assets/images/carousel img/lock cupboards.png";
+import machinesImage from "../assets/images/carousel img/machines.png";
+import mirrorImage from "../assets/images/carousel img/mirror.png";
+import pilloImage from "../assets/images/carousel img/pillo.png";
+import plantImage from "../assets/images/carousel img/plant.png";
+import popupImage from "../assets/images/pop up.png";
+import roomImgImage from "../assets/images/carousel img/room img.png";
 import roomImage from "../assets/images/carousel img/room.png";
 import secureEntryImage from "../assets/images/facilities/Secure Entry.png";
+import showerImage from "../assets/images/carousel img/shower.png";
 import skyOasisImage from "../assets/images/sky Oasis.jpeg";
 import skyThreeImage from "../assets/images/Sky 3.jpeg";
-import studyAreaImage from "../assets/images/carousel img/study area.png";
-import studyAreaTwoImage from "../assets/images/carousel img/study area2.png";
-import studySpaceImage from "../assets/images/carousel img/study space.png";
+import studyTableImage from "../assets/images/carousel img/study table.png";
+import tapImage from "../assets/images/carousel img/tap.png";
+import tapsImage from "../assets/images/carousel img/taps.png";
 import washroomImage from "../assets/images/carousel img/washroom.png";
+import wifiImage from "../assets/images/carousel img/wifi.png";
+import windowImage from "../assets/images/carousel img/window.png";
 import logoImage from "../assets/images/logo.png";
 import "./Home.css";
 
@@ -54,33 +73,51 @@ const properties = [
 ];
 
 const creativeRooms = [
-  bedroomAreaImage,
-  diningAreaImage,
-  studyAreaImage,
-  studyAreaTwoImage,
-  studySpaceImage,
+  imgOneImage,
+  imgTwoImage,
+  bedAreaImage,
+  bedImage,
+  roomImgImage,
   roomImage,
-  washroomImage
+  studyTableImage,
+  cupboardsImage,
+  lockCupboardsImage,
+  windowImage,
+  curtinsImage,
+  acImage,
+  wifiImage,
+  plantImage,
+  doorAreaImage,
+  doorMatImage,
+  basinImage,
+  mirrorImage,
+  showerImage,
+  tapImage,
+  tapsImage,
+  washroomImage,
+  gyserImage,
+  machinesImage,
+  pilloImage
 ];
 
 const locationFeature = {
   title: "500 meters from MIT ADT, Loni Kalbhor",
   text: "Are you looking for a boys/girls hostel near MIT ADT Loni Kalbhor? Sky Hostel offers a safe and comfortable environment with modern amenities. Enjoy facilities like high-speed Wi-Fi, hygienic food service, and professionally managed living spaces designed for study and daily comfort.",
-  image: diningAreaImage
+  image: roomImgImage
 };
 
 const facilitiesTiles = [
   {
     title: "Comfort Rooms",
-    image: bedroomAreaImage
+    image: bedAreaImage
   },
   {
     title: "Study Space",
-    image: studyAreaImage
+    image: studyTableImage
   },
   {
-    title: "Dining Zone",
-    image: diningAreaImage
+    title: "Study & Bed Zone",
+    image: roomImgImage
   },
   {
     title: "Secure Entry",
@@ -293,8 +330,8 @@ const Home = () => {
 
             <div className="visit-popup-media">
               <img
-                src={studySpaceImage}
-                alt="Sky Hostel study space"
+                src={popupImage}
+                alt="Sky Hostel room"
               />
             </div>
 
@@ -386,11 +423,11 @@ const Home = () => {
 
       <header className="hero-shell" id="home">
         {isHeroVideoReady ? (
-          <video className="hero-bg-video" autoPlay muted loop playsInline preload="none" poster={hostelBuildingImage}>
+          <video className="hero-bg-video" autoPlay muted loop playsInline preload="none" poster={popupImage}>
             <source src={cloudVideo} type="video/mp4" />
           </video>
         ) : (
-          <img className="hero-bg-video" src={hostelBuildingImage} alt="" loading="eager" decoding="async" />
+          <img className="hero-bg-video" src={popupImage} alt="" loading="eager" decoding="async" />
         )}
         <nav className="navbar">
           <div className="container nav-wrap">
@@ -568,8 +605,8 @@ const Home = () => {
             <div className="hero-media fade-up">
               <div className="hero-image-stack">
                 <img
-                  src={studySpaceImage}
-                  alt="Sky Hostel study space"
+                  src={popupImage}
+                  alt="Sky Hostel room"
                 />
               </div>
             </div>
@@ -677,7 +714,7 @@ const Home = () => {
             <div className="facilities-grid">
               <article className="facilities-large-media fade-up" style={{ "--delay": "40ms" }}>
                 <img
-                  src={studyAreaImage}
+                  src={studyTableImage}
                   alt="Sky Hostel study area"
                 />
               </article>
