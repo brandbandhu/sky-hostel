@@ -28,7 +28,7 @@ const properties = [
     slug: "sky-2",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 2 - Chintamani Park",
-    subtitle: "Girls Hostel",
+    subtitle: "Boys Hostel",
     image: hostelBuildingImage
   },
   {
@@ -48,11 +48,11 @@ const Properties = () => {
     setSeoMeta({
       title: "Our Properties | MIT ADT University College Hostel Options | SKY HOSTEL",
       description:
-        "Explore Sky Hostels wing-wise properties near MIT ADT University, Rajbaug Campus: Sky 1 (boys), Sky 2 - Chintamani Park (girls), and Sky 3 opposite Joynest (boys).",
+        "Explore Sky Hostels wing-wise properties near MIT ADT University, Rajbaug Campus: Sky 1 (boys), Sky 2 - Chintamani Park (boys), and Sky 3 opposite Joynest (boys).",
       keywords: getSeoKeywords([
         "Our Properties Sky Hostels",
         "Sky 1 boys hostel",
-        "Sky 2 Chintamani Park girls hostel",
+        "Sky 2 Chintamani Park boys hostel",
         "Sky 3 boys hostel",
         "Boys hostel near MIT ADT University Rajbaug Campus"
       ]),
@@ -341,7 +341,6 @@ const Properties = () => {
 };
 
 export default Properties;
-
 
 
 

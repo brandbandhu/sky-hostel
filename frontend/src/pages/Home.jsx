@@ -60,7 +60,7 @@ const properties = [
     slug: "sky-2",
     distance: "10 metre distance from MIT ADT University, Rajbaug Campus",
     title: "Sky 2 - Chintamani Park",
-    subtitle: "Girls Hostel",
+    subtitle: "Boys Hostel",
     image: hostelBuildingImage
   },
   {
@@ -102,7 +102,7 @@ const creativeRooms = [
 
 const locationFeature = {
   title: "500 meters from MIT ADT, Loni Kalbhor",
-  text: "Are you looking for a boys/girls hostel near MIT ADT Loni Kalbhor? Sky Hostel offers a safe and comfortable environment with modern amenities. Enjoy facilities like high-speed Wi-Fi, hygienic food service, and professionally managed living spaces designed for study and daily comfort.",
+  text: "Are you looking for a boys hostel near MIT ADT Loni Kalbhor? Sky Hostel offers a safe and comfortable environment with modern amenities. Enjoy facilities like high-speed Wi-Fi, hygienic food service, and professionally managed living spaces designed for study and daily comfort.",
   image: roomImgImage
 };
 
@@ -149,13 +149,13 @@ const Home = () => {
     setSeoMeta({
       title: "Sky Hostels",
       description:
-        "Sky Hostels offers premium boys/girls hostel accommodation near MIT ADT University College, Loni Kalbhor with Wi-Fi, food, security, and modern amenities.",
+        "Sky Hostels offers premium boys hostel accommodation near MIT ADT University College, Loni Kalbhor with Wi-Fi, food, security, and modern amenities.",
       keywords: getSeoKeywords([
-        "Premium Boys/Girls Hostel Near MIT ADT University College, Loni Kalbhor",
+        "Premium Boys Hostel Near MIT ADT University College, Loni Kalbhor",
         "MIT ADT University College hostel",
         "Hostel near MIT ADT University College",
         "Sky 1 boys hostel",
-        "Sky 2 girls hostel",
+        "Sky 2 boys hostel",
         "Sky 3 boys hostel",
         "hostel facilities near MIT ADT"
       ]),
@@ -407,7 +407,6 @@ const Home = () => {
                       Select an option
                     </option>
                     <option value="Boys Hostel">Boys Hostel</option>
-                    <option value="Girls Hostel">Girls Hostel</option>
                   </select>
                 </div>
 
@@ -497,7 +496,7 @@ const Home = () => {
                 Accommodation.
               </h1>
               <p className="subtext">
-                Trusted Boys/Girls Hostel Near MIT ADT University, Rajbaug Campus with Safe &amp; Secure Stay
+                Trusted Boys Hostel Near MIT ADT University, Rajbaug Campus with Safe &amp; Secure Stay
               </p>
               <div className="cta-row">
                 <a href={`tel:${PHONE_NUMBER_LINK}`} className="btn btn-solid">
@@ -590,7 +589,6 @@ const Home = () => {
                         Select an option
                       </option>
                       <option value="Boys Hostel">Boys Hostel</option>
-                      <option value="Girls Hostel">Girls Hostel</option>
                     </select>
                   </div>
 
@@ -772,7 +770,7 @@ const Home = () => {
 
               <article className="location-card">
                 <p className="location-card-tag">Sky Hostels 2</p>
-                <h3>Girls Hostel</h3>
+                <h3>Boys Hostel</h3>
                 <p>Chintamani Park</p>
                 <p>{contactInfo.address2}</p>
                 <a

@@ -182,11 +182,11 @@ const About = () => {
     setSeoMeta({
       title: "About Us | SKY HOSTEL",
       description:
-        "Learn about Sky Hostels - trusted boys/girls hostel near Vishwaraj Hospital focused on safe accommodation, cleanliness, discipline, and a study-friendly environment.",
+        "Learn about Sky Hostels - trusted boys hostel near Vishwaraj Hospital focused on safe accommodation, cleanliness, discipline, and a study-friendly environment.",
       keywords: getSeoKeywords([
         "About Sky Hostels",
         "Boys hostel near Vishwaraj Hospital",
-        "Safe and secure boys/girls hostel",
+        "Safe and secure boys hostel",
         "Study friendly hostel Pune"
       ]),
       path: "/about"
@@ -316,7 +316,7 @@ const About = () => {
             <div className="director-message-content">
               <h2 className="director-message-heading about-sky-hostels-heading">ABOUT SKY HOSTELS</h2>
               <p>
-                Sky Hostels PG is a premium boys and girls hostel located on Loni Kalbhor, Pune Solapur
+                Sky Hostels PG is a premium boys hostel located on Loni Kalbhor, Pune Solapur
                 Highway, offering easy connectivity and a peaceful environment. We ensure luxury
                 living with modern facilities, nutritious meals, and appropriate discipline.
               </p>
@@ -650,4 +650,3 @@ const About = () => {
 };
 
 export default About;
-
